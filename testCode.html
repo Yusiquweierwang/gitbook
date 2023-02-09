@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="百度链接">
+        <a href="https://baidu.com">点击这里进入百度</a>
+    </div>
+
+    <style>
+        #百度链接{
+            color:antiquewhite;
+            position:absolute;
+            top:0px;
+            left:50px;
+            background-color:aqua;
+            margin:50px;
+            padding:30px;
+        }
+    </style>
+
+    <script>
+        //TODO:记得写VUE实例。。
+        const object={
+            a:function add(a,b){
+                return a+b;
+            },
+            b:'3smith'
+        }
+        for(const [key,value] of Object.entries(object)){
+            console.log([key,value])
+        }
+        //Object.entries()保留对象的键值对
+
+        for(const key in object){
+            console.log(key);
+        }
+        //for in保留可迭代对象的键
+        
+
+        //Set实例、String.split()用法
+        let text='i will survive i will survive';
+        let iSplit=text.split('i');
+        for(i of iSplit){
+            console.log(i);
+        }
+        let iSplitSet=new Set(text.split('i'));
+        for(i of iSplitSet){
+            console.log(i);
+        }
+        //  w
+        // ll surv
+        // ve 
+        // w
+        // ll surv
+        // ve
+
+        //  w
+        // ll surv
+        // ve 
+        // ve
+
+
+        //Map实例
+        var obj={a:'bar',b:'melon'};
+        var objMap=new Map(Object.entries(obj));
+        console.log(objMap);
+
+        function Car(make,model,year){
+            this.make=make;
+            this.model=model;
+            this.year=year;
+        }
+
+
+        //instanceof实例
+        let auto=new Car('honda','accord',1988);
+        console.log(auto instanceof Car);
+        console.log(Object.prototype.toString(auto));
+
+
+    </script>
+</body>
+</html>
