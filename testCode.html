@@ -76,14 +76,17 @@
             this.model=model;
             this.year=year;
         }
+        //TODO:多想想Map和entries()应用
+        
 
+        
 
-        //instanceof实例
-        let auto=new Car('honda','accord',1988);
+        //instanceof实例  Object.prototype.toString()方法能精确判断对象类型
+            let auto=new Car('honda','accord',1988);
         console.log(auto instanceof Car);
         console.log(Object.prototype.toString(auto));
+        
 
 
-    </script>
 </body>
 </html>

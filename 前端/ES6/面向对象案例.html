@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    h4{
+        margin:auto;
+        color:firebrick;
+    }
+    #tab{
+        
+        background-color:aqua;
+        justify-content: center;
+        align-items: center;
+        margin:50px;
+        padding:30px;
+        width:500px;
+
+    }
+</style>
+<body>
+    <main>
+        <h4>js面向对象 动态添加标签页</h4>
+        <div class="tabbox" id="tab">
+            <!--tab标签-->
+            <nav class="firstNav">
+                <ul>
+                    <li class="liactive"><span>测试1</span></li>
+                    <li><span>测试2</span><span class="iconfont" icon-guanbi"></span></li>
+                    <li><span>测试3</span><span class="iconfont" icon-guanbi"></span></li>
+                </ul>
+                <div class="tabadd">
+                    <span>+</span>
+                </div>
+            </nav>
+            <!-- tab内容 -->
+            <div class="tabscon">
+                <sectionn class="conacitve">测试1</sectionn>
+                <section>测试2</section>
+                <section>测试3</section>
+            </div>
+
+        </div>
+    </main>
+    <script >
+        //该对象有切换，添加，删除，更改功能
+
+        class Tab{
+            constructor(id){
+               //获取元素
+               this.main=document.querySelector(id);
+               this.lis=this.main.querySelectorAll('li');
+               this.section=this.main.querySelectorAll('section');
+               this.init();
+            }
+            init(){
+                //init事件初始化操作让相关元素绑定事件
+                for(var i=0;i<this.lis.length;i++){
+                    this.lis[i].index=i;
+                    this.lis[i].onclick=function(){
+                        console.log(this.index);
+                    }
+                }
+            }
+            //切换功能
+            toggleTab(){
+
+            }
+            //添加功能
+            addTable(){
+
+            }
+            //删除功能
+            delTab(){
+
+            }
+            //修改功能
+            editTab(){
+
+            }
+        }
+
+        var tab=new Tab('#tab');
+        
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
