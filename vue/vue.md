@@ -1,3 +1,5 @@
+[toc]
+
 # Vue
 
  
@@ -82,7 +84,7 @@
 
 2.声明式编码，让编码人员无序直接操作DOM，提高开发效率。
 
-**命令式编码**
+**命令式编码（如jquery)**
 
 ```javascript
 //准备html 字符串
@@ -179,7 +181,7 @@ list.innerHTML=htmlStr
 + 想让Vue工作，必须创建一个Vue实例，且要传入一个配置对象。
 + root容器中的代码依然符合html规范，但混入了一些Vue特殊语法。
 + root容器中的代码被称为vue模板。
-+ vue实例和容器一一对应。
++ **vue实例和容器一一对应。**
 + 真实开发中只有一个vue实例，且会配合组件一起使用。
 + {{xxx}}中xxx写js表达式，且xxx可自动读取data中所有属性。
 + data 数据随模板数据自动更新。
@@ -223,6 +225,21 @@ list.innerHTML=htmlStr
 
 监听DOM事件，并在触发时运行js代码。
 
+简写
+```javascript
+<input @onclick="事件名">
+//
+```
+
+**方法**
++ `@submit.prevent`
+在表单中有提交或按钮，立马触发后面紧跟的方法。
+
+
+
+
+
+
 :
 
 ### v-bind
@@ -233,7 +250,7 @@ list.innerHTML=htmlStr
 
 
 
-`v-model`只能用在表单类/输入类元素上。
+`v-model`**只能用在表单类/输入类元素上。**
 
 输入类元素：input,radio,checkbox,select...特点：**都有value值**
 
