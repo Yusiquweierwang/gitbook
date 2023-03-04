@@ -1,6 +1,12 @@
 ### css权重（优先级）
+下面优先级递增：
 
 类型选择器（`h1`或伪元素 `::before`）
+类选择器（`.example`属性选择器`[type = 'radio']`伪类`:hover`
+ID选择器（#example）
+
+
+
 
 ### 伪类
 
