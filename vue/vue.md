@@ -1,4 +1,4 @@
-[toc]
+                               [toc]
 
 # Vue
 
@@ -234,7 +234,7 @@ setTimeout(()=>{
 
 ```javascript
 data:{
-    ...
+      ...
 }
 ```
 
