@@ -42,6 +42,10 @@
 
 ## 输入网址后，发生了什么
 
+
+
+
+![Alt text](https://pic4.zhimg.com/v2-fd6349571db925bc12b9e0d320dd6f1b_b.jpg)
 应用层按HTTP协议构建一个HTTP请求报文。
 
 ![1675741866175](image/computeNet/1675741866175.png)
@@ -196,3 +200,13 @@ TCP协议负责发现传输问题，出现问题即发送信号，要求重新�
 ### VPN和网络地址转换NAT
 
 虚拟专用网vpn
+
+
+
+## socket 
+是一套用于不同主机间通信的API,工作在TCP/IP协议上。
+
+
+
+
+
