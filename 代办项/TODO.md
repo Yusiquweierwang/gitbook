@@ -434,28 +434,27 @@ clock 的 getDelta()方法获得前后两次执行该方法的事件间隔
 
 1.看es6
 
-
 ## March
+
 ### 1st
-
-
-
-
 
 ## April
 
 ### 18th
-**daily plans**
 
+**daily plans**
 
 英语翻译translation 2phrases
 
+## May
+
+### 1st
+
+**PBR**
 
 
-
-
-
-
+### 13th 
+神中神，我配置好了c/c++ 在windows 下运行的环境变量。(mingw / gcc )
 
 
 

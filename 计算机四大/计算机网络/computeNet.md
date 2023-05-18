@@ -43,7 +43,15 @@
 ## 输入网址后，发生了什么
 
 
-
+**
++ DNS解析：将域名解析成IP地址
++ TCP连接：TCP三次握手
++ 发送HTTP请求
++ 服务器处理请求并返回HTTP报文
++ 浏览器解析渲染页面
++ 断开连接：TCP四次挥手
+  
+**
 
 ![Alt text](https://pic4.zhimg.com/v2-fd6349571db925bc12b9e0d320dd6f1b_b.jpg)
 应用层按HTTP协议构建一个HTTP请求报文。
