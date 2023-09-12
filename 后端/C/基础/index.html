@@ -1,0 +1,1200 @@
+<!DOCTYPE html><html><head>
+      <title>index</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:///c:\Users\yusiquweierwang\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.6.8\node_modules\@shd101wyy\mume\dependencies\katex\katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p,html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div{display:inline}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  300px/2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <div class="md-toc">
+<details style="padding:0;;padding-left:0px;" open>
+        <summary class="md-toc-link-wrapper">
+          <a href="#&#x73B0;&#x4EE3;c" class="md-toc-link"><p>&#x73B0;&#x4EE3;c++</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#&#x8D44;&#x6E90;&#x548C;&#x667A;&#x80FD;&#x6307;&#x9488;" class="md-toc-link">
+            <p>&#x8D44;&#x6E90;&#x548C;&#x667A;&#x80FD;&#x6307;&#x9488;</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#stdstring--stdstring_view" class="md-toc-link">
+            <p>std::string &amp; std::string_view</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#stdvector--&#x5176;&#x4ED6;&#x6807;&#x51C6;&#x5E93;&#x5BB9;&#x5668;" class="md-toc-link">
+            <p>std::vector &amp; &#x5176;&#x4ED6;&#x6807;&#x51C6;&#x5E93;&#x5BB9;&#x5668;</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#&#x6807;&#x51C6;&#x5E93;&#x7B97;&#x6CD5;" class="md-toc-link">
+            <p>&#x6807;&#x51C6;&#x5E93;&#x7B97;&#x6CD5;</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#&#x7528;auto-&#x66FF;&#x4EE3;&#x663E;&#x793A;&#x7C7B;&#x578B;&#x540D;&#x79F0;" class="md-toc-link">
+            <p>&#x7528;auto &#x66FF;&#x4EE3;&#x663E;&#x793A;&#x7C7B;&#x578B;&#x540D;&#x79F0;</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#&#x57FA;&#x4E8E;&#x8303;&#x56F4;&#x7684;for-loop" class="md-toc-link">
+            <p>&#x57FA;&#x4E8E;&#x8303;&#x56F4;&#x7684;for loop</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#&#x7528;constexpr-&#x8868;&#x8FBE;&#x5F0F;&#x66FF;&#x4EE3;&#x5B8F;" class="md-toc-link">
+            <p>&#x7528;constexpr &#x8868;&#x8FBE;&#x5F0F;&#x66FF;&#x4EE3;&#x5B8F;</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#&#x7EDF;&#x4E00;&#x521D;&#x59CB;&#x5316;" class="md-toc-link">
+            <p>&#x7EDF;&#x4E00;&#x521D;&#x59CB;&#x5316;</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#&#x79FB;&#x52A8;&#x8BED;&#x4E49;" class="md-toc-link">
+            <p>&#x79FB;&#x52A8;&#x8BED;&#x4E49;</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#lambda&#x8868;&#x8FBE;&#x5F0F;" class="md-toc-link">
+            <p>lambda&#x8868;&#x8FBE;&#x5F0F;</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#&#x5F02;&#x5E38;" class="md-toc-link">
+            <p>&#x5F02;&#x5E38;</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#stdatomic" class="md-toc-link">
+            <p>std::atomic</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#stdvarientc17" class="md-toc-link">
+            <p>std::varient(C++17)</p>
+
+          </a></div>
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:0px;" open>
+        <summary class="md-toc-link-wrapper">
+          <a href="#&#x5E38;&#x7528;&#x64CD;&#x4F5C;" class="md-toc-link"><p>&#x5E38;&#x7528;&#x64CD;&#x4F5C;</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#&#x5C0F;&#x547D;&#x4EE4;" class="md-toc-link">
+            <p>&#x5C0F;&#x547D;&#x4EE4;</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#&#x8FDB;&#x5236;&#x8F6C;&#x6362;" class="md-toc-link">
+            <p>&#x8FDB;&#x5236;&#x8F6C;&#x6362;</p>
+
+          </a></div>
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:0px;" open>
+        <summary class="md-toc-link-wrapper">
+          <a href="#basic" class="md-toc-link"><p>basic</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#&#x5386;&#x53F2;" class="md-toc-link">
+            <p>&#x5386;&#x53F2;</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#compiler-and-link" class="md-toc-link">
+            <p>compiler and link</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#errors" class="md-toc-link">
+            <p>errors</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#&#x9884;&#x5904;&#x7406;preprocessor" class="md-toc-link">
+            <p>&#x9884;&#x5904;&#x7406;preprocessor</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#&#x5B8F;" class="md-toc-link">
+            <p>&#x5B8F;</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#input--output" class="md-toc-link">
+            <p>input &amp; output</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#&#x4E3A;&#x4EC0;&#x4E48;&#x6CA1;&#x6709;gui" class="md-toc-link">
+            <p>&#x4E3A;&#x4EC0;&#x4E48;&#x6CA1;&#x6709;GUI?</p>
+
+          </a></div>
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:0px;" open>
+        <summary class="md-toc-link-wrapper">
+          <a href="#interger-numbers" class="md-toc-link"><p>interger numbers</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#different-data-type-for-integer" class="md-toc-link">
+            <p>different data type for integer</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#char" class="md-toc-link">
+            <p>char</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#bool" class="md-toc-link">
+            <p>bool</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#floating-point" class="md-toc-link">
+            <p>floating point</p>
+
+          </a></div>
+        </div>
+      </details>
+    <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#arithmetic-operators" class="md-toc-link">
+            <p>arithmetic operators</p>
+
+          </a></div><details style="padding:0;;padding-left:0px;" open>
+        <summary class="md-toc-link-wrapper">
+          <a href="#if-statement" class="md-toc-link"><p>if statement</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#if--if-else" class="md-toc-link">
+            <p>if &amp; if-else</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#--operator" class="md-toc-link">
+            <p>? : operator</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#while-loop" class="md-toc-link">
+            <p>while loop</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#for-loop" class="md-toc-link">
+            <p>for loop</p>
+
+          </a></div>
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:0px;" open>
+        <summary class="md-toc-link-wrapper">
+          <a href="#arrays" class="md-toc-link"><p>arrays</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#arrays-1" class="md-toc-link">
+            <p>arrays</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#&#x591A;&#x7EF4;&#x6570;&#x7EC4;multidimensional-arrays" class="md-toc-link">
+            <p>&#x591A;&#x7EF4;&#x6570;&#x7EC4;multidimensional arrays</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#const-arrays" class="md-toc-link">
+            <p>const arrays</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#&#x6570;&#x7EC4;&#x62F7;&#x8D1D;" class="md-toc-link">
+            <p>&#x6570;&#x7EC4;&#x62F7;&#x8D1D;</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#array-style-strings" class="md-toc-link">
+            <p>array-style strings</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#&#x5B57;&#x7B26;&#x4E32;string-literal" class="md-toc-link">
+            <p>&#x5B57;&#x7B26;&#x4E32;string literal</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#string-class" class="md-toc-link">
+            <p>string class</p>
+
+          </a></div>
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:0px;" open>
+        <summary class="md-toc-link-wrapper">
+          <a href="#structures--unions-and-emenurations&#x7ED3;&#x6784;&#x4F53;&#x8054;&#x5408;&#x4F53;&#x679A;&#x4E3E;&#x7C7B;&#x578B;" class="md-toc-link"><p>structures , unions and emenurations&#x7ED3;&#x6784;&#x4F53;&#xFF0C;&#x8054;&#x5408;&#x4F53;&#xFF0C;&#x679A;&#x4E3E;&#x7C7B;&#x578B;</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#struct" class="md-toc-link">
+            <p>struct</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#union" class="md-toc-link">
+            <p>union</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#typedef" class="md-toc-link">
+            <p>typedef</p>
+
+          </a></div>
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:0px;" open>
+        <summary class="md-toc-link-wrapper">
+          <a href="#pointers" class="md-toc-link"><p>pointers</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#structure-member-accessing" class="md-toc-link">
+            <p>structure member accessing</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#pointer-pointer" class="md-toc-link">
+            <p>pointer-pointer</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#constant-pointers&#x5E38;&#x719F;&#x6307;&#x9488;" class="md-toc-link">
+            <p>constant pointers&#x5E38;&#x719F;&#x6307;&#x9488;</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#pointers-and-arrays" class="md-toc-link">
+            <p>pointers and arrays</p>
+
+          </a></div>
+        </div>
+      </details>
+    
+</div>
+<h2 class="mume-header" id="%E7%8E%B0%E4%BB%A3c">&#x73B0;&#x4EE3;c++</h2>
+
+<h3 class="mume-header" id="%E8%B5%84%E6%BA%90%E5%92%8C%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88">&#x8D44;&#x6E90;&#x548C;&#x667A;&#x80FD;&#x6307;&#x9488;</h3>
+
+<p>C&#x7F16;&#x7A0B;&#x7684;bug&#x7C7B;&#x578B;&#x4E4B;&#x4E00;&#x662F;&#x5185;&#x5B58;&#x6CC4;&#x6F0F;&#x3002;<br>
+&#x6CC4;&#x9732;&#x901A;&#x5E38;&#x7531;&#x672A;&#x80FD;&#x4E3A;&#x4F7F;&#x7528;<code>new</code>&#x5206;&#x914D;&#x7684;&#x5185;&#x5B58;&#x8C03;&#x7528;<code>delete</code>&#x5BFC;&#x81F4;&#x3002;</p>
+<p>C++&#x6807;&#x51C6;&#x5E93;&#x63D0;&#x4F9B;&#x4E86;&#x4E09;&#x79CD;&#x667A;&#x80FD;&#x6307;&#x9488;&#x7C7B;&#x578B;&#xFF1A;<br>
+<code>std::unique_ptr</code><br>
+<code>std::shared_ptr</code><br>
+<code>std::weak_ptr</code></p>
+<p>&#x53EF;&#x5904;&#x7406;&#x5BF9;&#x5176;&#x62E5;&#x6709;&#x7684;&#x5185;&#x5B58;&#x7684;&#x5206;&#x914D;&#x548C;&#x5220;&#x9664;&#x3002;</p>
+<h3 class="mume-header" id="stdstring--stdstring_view">std::string &amp; std::string_view</h3>
+
+<h3 class="mume-header" id="stdvector--%E5%85%B6%E4%BB%96%E6%A0%87%E5%87%86%E5%BA%93%E5%AE%B9%E5%99%A8">std::vector &amp; &#x5176;&#x4ED6;&#x6807;&#x51C6;&#x5E93;&#x5BB9;&#x5668;</h3>
+
+<h3 class="mume-header" id="%E6%A0%87%E5%87%86%E5%BA%93%E7%AE%97%E6%B3%95">&#x6807;&#x51C6;&#x5E93;&#x7B97;&#x6CD5;</h3>
+
+<ul>
+<li><code>for_each</code>&#x9ED8;&#x8BA4;&#x904D;&#x5386;&#x7B97;&#x6CD5;</li>
+<li><code>transform</code>&#x7528;&#x4E8E;&#x5BF9;&#x5BB9;&#x5668;&#x5143;&#x7D20;&#x8FDB;&#x884C;&#x975E;&#x5C31;&#x5730;&#x4FEE;&#x6539;</li>
+<li><code>find_if</code>&#x9ED8;&#x8BA4;&#x641C;&#x7D22;&#x7B97;&#x6CD5;</li>
+<li><code>sort/lower_bound</code>&#x548C;&#x5176;&#x4ED6;&#x9ED8;&#x8BA4;&#x6392;&#x5E8F;&#x548C;&#x641C;&#x7D22;&#x7B97;&#x6CD5;&#x3002;</li>
+</ul>
+<h3 class="mume-header" id="%E7%94%A8auto-%E6%9B%BF%E4%BB%A3%E6%98%BE%E7%A4%BA%E7%B1%BB%E5%9E%8B%E5%90%8D%E7%A7%B0">&#x7528;auto &#x66FF;&#x4EE3;&#x663E;&#x793A;&#x7C7B;&#x578B;&#x540D;&#x79F0;</h3>
+
+<h3 class="mume-header" id="%E5%9F%BA%E4%BA%8E%E8%8C%83%E5%9B%B4%E7%9A%84for-loop">&#x57FA;&#x4E8E;&#x8303;&#x56F4;&#x7684;for loop</h3>
+
+<h3 class="mume-header" id="%E7%94%A8constexpr-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%9B%BF%E4%BB%A3%E5%AE%8F">&#x7528;constexpr &#x8868;&#x8FBE;&#x5F0F;&#x66FF;&#x4EE3;&#x5B8F;</h3>
+
+<h3 class="mume-header" id="%E7%BB%9F%E4%B8%80%E5%88%9D%E5%A7%8B%E5%8C%96">&#x7EDF;&#x4E00;&#x521D;&#x59CB;&#x5316;</h3>
+
+<h3 class="mume-header" id="%E7%A7%BB%E5%8A%A8%E8%AF%AD%E4%B9%89">&#x79FB;&#x52A8;&#x8BED;&#x4E49;</h3>
+
+<h3 class="mume-header" id="lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F">lambda&#x8868;&#x8FBE;&#x5F0F;</h3>
+
+<h3 class="mume-header" id="%E5%BC%82%E5%B8%B8">&#x5F02;&#x5E38;</h3>
+
+<h3 class="mume-header" id="stdatomic">std::atomic</h3>
+
+<h3 class="mume-header" id="stdvarientc17">std::varient(C++17)</h3>
+
+<h2 class="mume-header" id="%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C">&#x5E38;&#x7528;&#x64CD;&#x4F5C;</h2>
+
+<h3 class="mume-header" id="%E5%B0%8F%E5%91%BD%E4%BB%A4">&#x5C0F;&#x547D;&#x4EE4;</h3>
+
+<pre data-role="codeBlock" data-info="c" class="language-c">g<span class="token operator">++</span> init<span class="token punctuation">.</span>cpp<span class="token operator">&amp;&amp;</span> <span class="token punctuation">.</span><span class="token operator">/</span>a<span class="token punctuation">.</span>out
+<span class="token comment">//&amp;&amp;&#x4EE3;&#x8868;&#x524D;&#x4E00;&#x4E2A;&#x547D;&#x4EE4;&#x7F16;&#x8BD1;&#x6210;&#x529F;&#x5C31;&#x6267;&#x884C;&#x540E;&#x4E00;&#x4E2A;&#x547D;&#x4EE4;&#x3002;</span>
+
+</pre><p><img src="image/index/1684034649314.png" alt="1684034649314"></p>
+<h3 class="mume-header" id="%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2">&#x8FDB;&#x5236;&#x8F6C;&#x6362;</h3>
+
+<h2 class="mume-header" id="basic">basic</h2>
+
+<h3 class="mume-header" id="%E5%8E%86%E5%8F%B2">&#x5386;&#x53F2;</h3>
+
+<p>&#x65E9;&#x671F;&#xFF1A;&#x6253;&#x5B54;&#x5E26;</p>
+<p>&#x4E8C;&#x8FDB;&#x5236;&#x6307;&#x4EE4;</p>
+<p>&#x6C47;&#x7F16;&#x8BED;&#x8A00;<br>
+10110000 01100001<br>
+&#x5BF9;&#x5E94;<br>
+MOVE AL</p>
+<p>&#x5E94;&#x7528;&#xFF1A;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7684;&#x5E95;&#x5C42;&#x4EE3;&#x7801;</p>
+<p>C:1973<br>
+C++ : 1979</p>
+<p>&#x96BE;&#x70B9;&#xFF1A;&#x5185;&#x5B58;&#x7BA1;&#x7406;</p>
+<p>java:&#x81EA;&#x52A8;&#x7533;&#x8BF7;&#x5185;&#x5B58;&#x3002;&#x4E0D;&#x7528;&#x53BB;&#x7533;&#x8BF7;&#x5185;&#x5B58;&#xFF0C;&#x624B;&#x52A8;&#x7533;&#x8BF7;&#x548C;&#x624B;&#x52A8;&#x91CA;&#x653E;&#x3002;&#x6709;&#x81EA;&#x5DF1;&#x7684;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x673A;&#x5236;&#x3002;</p>
+<p>write once , run anywhere !<br>
+not<br>
+&quot;write once , compile anywhere&quot;</p>
+<p>c/c++&#x53EF;&#x76F4;&#x63A5;&#x751F;&#x6210;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;</p>
+<p>java&#x751F;&#x6210;<code>*.class</code>&#x6587;&#x4EF6;&#xFF0C;&#x4E0D;&#x662F;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x3002;java&#x865A;&#x62DF;&#x673A;&#x53BB;&#x8FD0;&#x884C;&#x3002;</p>
+<p>python&#x662F;&#x811A;&#x672C;&#x8BED;&#x8A00;&#x3002;<br>
+&#x4E0E;&#x5176;&#x4ED6;&#x8BED;&#x8A00;&#x533A;&#x522B;&#xFF1A;&#x811A;&#x672C;&#x8BED;&#x8A00;&#x4E0D;&#x9700;&#x8981;&#x66F4;&#x4E25;&#x683C;&#x7684;&#x8BED;&#x6CD5;&#x3002;</p>
+<p><strong>development language of most fundamental compter systems</strong></p>
+<ul>
+<li>Linux</li>
+<li>MySQL</li>
+<li>OpenCV</li>
+<li>TensorFlow , PyTorch<br>
+...</li>
+</ul>
+<p><strong>high efficiency</strong></p>
+<ul>
+<li>widely optimized compilers</li>
+<li>access memory directly</li>
+<li>excellent on computing</li>
+</ul>
+<h3 class="mume-header" id="compiler-and-link">compiler and link</h3>
+
+<pre data-role="codeBlock" data-info="c++" class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
+<span class="token keyword keyword-using">using</span> <span class="token keyword keyword-namespace">namespace</span> std<span class="token punctuation">;</span>
+
+<span class="token keyword keyword-int">int</span> <span class="token function">mul</span><span class="token punctuation">(</span><span class="token keyword keyword-int">int</span> a <span class="token punctuation">,</span> <span class="token keyword keyword-int">int</span> b<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword keyword-return">return</span> a <span class="token operator">*</span> b<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">//&#x51FD;&#x6570;mul</span>
+
+<span class="token keyword keyword-int">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword keyword-int">int</span> a <span class="token punctuation">,</span> b<span class="token punctuation">;</span>
+    <span class="token keyword keyword-int">int</span> result<span class="token punctuation">;</span>
+    cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;pick two integers&quot;</span><span class="token punctuation">;</span>
+    cin <span class="token operator">&gt;&gt;</span> a<span class="token punctuation">;</span>
+    cin <span class="token operator">&gt;&gt;</span> b<span class="token punctuation">;</span>
+
+    result <span class="token operator">=</span> <span class="token function">mul</span><span class="token punctuation">(</span>a <span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+    cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;the result is &quot;</span> <span class="token operator">&lt;&lt;</span> result <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    <span class="token keyword keyword-return">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+<span class="token comment">//&#x4E3B;&#x51FD;&#x6570;&#x4E2D;&#x8C03;&#x7528;mul&#x51FD;&#x6570;</span>
+
+</pre><p><strong>&#x4E00;&#x822C;&#x628A;&#x51FD;&#x6570;&#x7684;&#x58F0;&#x660E;&#x653E;&#x5728;&#x5934;&#x6587;&#x4EF6;&#x91CC;&#x3002;<br>
+<code>*.h ; *.hpp</code><br>
+&#x628A;&#x51FD;&#x6570;&#x7684;&#x5B9E;&#x73B0;/&#x5B9A;&#x4E49;&#x653E;&#x5728;&#x6E90;&#x6587;&#x4EF6;&#x3002;<br>
+<code>*.c *.cpp</code></strong></p>
+<p><img src="image/index/1683966319320.png" alt="1683966319320"></p>
+<p>main.cpp<br>
+<img src="image/index/1683994787823.png" alt="1683994787823"></p>
+<p>mul.hpp<br>
+<img src="image/index/1683994803831.png" alt="1683994803831"></p>
+<p>mul.cpp<br>
+<img src="image/index/1683994814369.png" alt="1683994814369"></p>
+<pre data-role="codeBlock" data-info="c" class="language-c">g<span class="token operator">++</span> <span class="token operator">-</span>c main<span class="token punctuation">.</span>cpp
+g<span class="token operator">++</span> <span class="token operator">-</span>c mul<span class="token punctuation">.</span>cpp
+<span class="token comment">//&#x7F16;&#x8BD1;</span>
+g<span class="token operator">++</span> main<span class="token punctuation">.</span>o mul<span class="token punctuation">.</span>o <span class="token operator">-</span>o mul
+<span class="token comment">//&#x94FE;&#x63A5;</span>
+
+<span class="token punctuation">.</span><span class="token operator">/</span>mul
+<span class="token comment">//please pick two nums </span>
+<span class="token comment">//2 3</span>
+<span class="token comment">//6</span>
+</pre><h3 class="mume-header" id="errors">errors</h3>
+
+<p><strong>&#x94FE;&#x63A5;&#x9519;&#x8BEF;</strong></p>
+<pre data-role="codeBlock" data-info="c" class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&quot;mul.cpp&quot;</span></span>
+
+<span class="token keyword keyword-int">int</span> <span class="token function">Mul</span><span class="token punctuation">(</span><span class="token keyword keyword-int">int</span> a <span class="token punctuation">,</span> <span class="token keyword keyword-int">int</span> b<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword keyword-return">return</span> a <span class="token operator">*</span> b<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">//symbol not foudn </span>
+<span class="token comment">//Function mul() is misspelled to Mul()</span>
+<span class="token comment">//&#x6B64;&#x65F6;&#x5728;main.cpp&#x627E;&#x4E0D;&#x5230;&#x94FE;&#x63A5;mul()&#xFF0C;&#x56E0;&#x4E3A;&#x5927;&#x5C0F;&#x5199;</span>
+</pre><p><strong>&#x8FD0;&#x884C;&#x9519;&#x8BEF;runtime error</strong></p>
+<pre data-role="codeBlock" data-info="c" class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&quot;mul.cpp&quot;</span></span>
+
+<span class="token keyword keyword-int">int</span> <span class="token function">mul</span><span class="token punctuation">(</span><span class="token keyword keyword-int">int</span> a <span class="token punctuation">,</span> <span class="token keyword keyword-int">int</span> b<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword keyword-int">int</span> c <span class="token operator">=</span> a <span class="token operator">/</span> b<span class="token punctuation">;</span>
+    <span class="token keyword keyword-return">return</span> a <span class="token operator">*</span> b <span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">//&#x629B;&#x51FA;&#x5F02;&#x5E38;</span>
+</pre><h3 class="mume-header" id="%E9%A2%84%E5%A4%84%E7%90%86preprocessor">&#x9884;&#x5904;&#x7406;preprocessor</h3>
+
+<p><img src="image/index/1683995334403.png" alt="1683995334403"></p>
+<p><img src="image/index/1683995418239.png" alt="1683995418239"><br>
+PI&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#xFF0C;&#x800C;&#x662F;&#x4E00;&#x4E2A;&#x5B8F;&#x3002;</p>
+<h3 class="mume-header" id="%E5%AE%8F">&#x5B8F;</h3>
+
+<p>&#x7406;&#x89E3;&#xFF1A;&#x6587;&#x5B57;&#x66FF;&#x6362;&#x3002;<br>
+&#x7C7B;&#x4F3C;&#x901A;&#x8FC7;&#x6E90;&#x4EE3;&#x7801;&#x7684;&#x5168;&#x6587;&#x68C0;&#x7D22;&#xFF0C;&#x8FDB;&#x884C;&#x5168;&#x6587;&#x66FF;&#x6362;&#x3002;</p>
+<h3 class="mume-header" id="input--output">input &amp; output</h3>
+
+<p>what is cout ?</p>
+<pre data-role="codeBlock" data-info="c" class="language-c">std<span class="token operator">::</span>ostream cout<span class="token punctuation">;</span>
+</pre><ul>
+<li>std&#x662F;&#x4E00;&#x4E2A;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#xFF08;name space&#xFF09;&#x3002;</li>
+</ul>
+<pre data-role="codeBlock" data-info="c" class="language-c">&#x5357;&#x65B9;&#x79D1;&#x6280;&#x5927;&#x5B66;<span class="token operator">::</span>&#x9ECE;&#x660E;
+&#x6DF1;&#x5733;&#x5927;&#x5B66;<span class="token operator">::</span>&#x9ECE;&#x660E;
+</pre><p><strong>cin / cout</strong><br>
+c++&#x98CE;&#x683C;&#x7684;&#x8F93;&#x5165;&#x8F93;&#x51FA;<br>
+operator</p>
+<pre data-role="codeBlock" data-info="c" class="language-c">cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;hello&quot;</span> <span class="token operator">&lt;&lt;</span> endl
+<span class="token comment">//endl &#x7ED3;&#x675F;&#x6362;&#x884C;&#x7B26;</span>
+</pre><p>&#x5728;c&#x4E2D;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info="c" class="language-c"><span class="token keyword keyword-int">int</span> v<span class="token punctuation">;</span>
+<span class="token keyword keyword-int">int</span> ret <span class="token operator">=</span> <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">&quot;%d&quot;</span> <span class="token punctuation">,</span> <span class="token operator">&amp;</span>v<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//&amp;v&#x53D6;&#x5730;&#x5740;</span>
+</pre><p>&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x5206;&#x5272;&#x7EBF;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;</p>
+<h3 class="mume-header" id="%E4%B8%BA%E4%BB%80%E4%B9%88%E6%B2%A1%E6%9C%89gui">&#x4E3A;&#x4EC0;&#x4E48;&#x6CA1;&#x6709;GUI?</h3>
+
+<p>graphical user interface</p>
+<ul>
+<li>GUI is for human beings to interact with computers.<br>
+not all programs interact with human beings.<br>
+like DATABASE</li>
+</ul>
+<hr>
+<p><strong>command line arguments</strong></p>
+<pre data-role="codeBlock" data-info="c" class="language-c"><span class="token keyword keyword-int">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword keyword-int">int</span> argc <span class="token punctuation">,</span> <span class="token keyword keyword-char">char</span> <span class="token operator">*</span><span class="token operator">*</span>argv<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment">//argc &#x53C2;&#x6570;&#x4E2A;&#x6570;</span>
+    <span class="token comment">// **argv&#x53C2;&#x6570;&#x6570;&#x7EC4;</span>
+<span class="token punctuation">}</span>
+</pre><p><strong>&#x6BCF;&#x4E2A;&#x53D8;&#x91CF;&#x58F0;&#x660E;&#x65F6;&#x5FC5;&#x987B;&#x521D;&#x59CB;&#x5316;&#x53D8;&#x91CF;</strong></p>
+<h2 class="mume-header" id="interger-numbers">interger numbers</h2>
+
+<p><strong>overflow</strong></p>
+<pre data-role="codeBlock" data-info="c" class="language-c"><span class="token keyword keyword-int">int</span> a <span class="token operator">=</span> <span class="token number">56789</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-int">int</span> b <span class="token operator">=</span> <span class="token number">56789</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-int">int</span> c <span class="token operator">=</span> a <span class="token operator">*</span> b<span class="token punctuation">;</span>
+cout c <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+<span class="token comment">//the output is a negative number!</span>
+<span class="token comment">//-1069976775</span>
+</pre><p><em>why?</em></p>
+<p><strong>&#x8FD0;&#x7B97;&#x65F6;&#x4E00;&#x5B9A;&#x8981;&#x4E86;&#x89E3;&#x6570;&#x503C;&#x7684;&#x53D6;&#x503C;&#x8303;&#x56F4;</strong></p>
+<h3 class="mume-header" id="different-data-type-for-integer">different data type for integer</h3>
+
+<h3 class="mume-header" id="char">char</h3>
+
+<p>8-bit integer</p>
+<ul>
+<li>signed char</li>
+<li>unsigned char</li>
+<li>char</li>
+</ul>
+<pre data-role="codeBlock" data-info="c" class="language-c"><span class="token keyword keyword-char">char</span><span class="token punctuation">.</span>cpp
+<span class="token keyword keyword-char">char</span> c1 <span class="token operator">=</span> <span class="token string">&apos;C&apos;</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-char">char</span> c2 <span class="token operator">=</span> <span class="token number">80</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-char">char</span> c3 <span class="token operator">=</span> <span class="token number">0x50</span><span class="token punctuation">;</span>
+<span class="token comment">//3&#x4E2A;&#x53D8;&#x91CF;&#x8868;&#x8FBE;&#x4E00;&#x6837;</span>
+</pre><p><strong>Chinese characters?</strong></p>
+<ul>
+<li>char16</li>
+<li>char32</li>
+</ul>
+<h3 class="mume-header" id="bool">bool</h3>
+
+<pre data-role="codeBlock" data-info="c" class="language-c">bool b1 <span class="token operator">=</span> true<span class="token punctuation">;</span>
+<span class="token keyword keyword-int">int</span> i <span class="token operator">=</span> b1<span class="token punctuation">;</span>
+bool b2 <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">256</span><span class="token punctuation">;</span>
+<span class="token comment">//b1 = true;</span>
+<span class="token comment">//i = 1;</span>
+<span class="token comment">//b2 = 1 (&#x975E;0 &#x5373;1)</span>
+</pre><ul>
+<li>&#x7B2C;&#x4E00;&#x79CD; -&#x8001;&#x7684;&#x7C7B;&#x578B;&#x5B9A;&#x4E49;#define</li>
+</ul>
+<pre data-role="codeBlock" data-info="c" class="language-c"><span class="token keyword keyword-typedef">typedef</span> <span class="token keyword keyword-char">char</span> bool<span class="token punctuation">;</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">true</span> <span class="token expression"><span class="token number">1</span><span class="token punctuation">;</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">false</span> <span class="token expression"><span class="token number">0</span><span class="token punctuation">;</span></span></span>
+</pre><ul>
+<li>&#x7B2C;&#x4E8C;&#x79CD; - &#x5F15;<code>&lt;stdbool.h&gt;</code>&#x5E93;</li>
+</ul>
+<p><strong>size_t</strong>&#x5E93;</p>
+<p><strong>fixed with integer types</strong><br>
+(since c++11)</p>
+<p>defined in `<cstdint><br>
+int8_t<br>
+int32_t<br>
+uinit16_t<br>
+...</cstdint></p>
+<p><strong>&#x4F7F;&#x7528;&#x5B8F;</strong></p>
+<h3 class="mume-header" id="floating-point">floating point</h3>
+
+<p>&#x6D6E;&#x70B9;&#x6570;&#x8FD0;&#x7B97;&#x4E00;&#x76F4;&#x4F1A;&#x5E26;&#x6765;&#x5FAE;&#x5C0F;&#x8BEF;&#x5DEE;&#x3002;</p>
+<p>&#x5904;&#x7406;&#x8BEF;&#x5DEE;in range</p>
+<p><img src="image/index/1684037114772.png" alt="1684037114772"></p>
+<pre data-role="codeBlock" data-info="c" class="language-c">precision<span class="token punctuation">.</span>cpp
+
+<span class="token keyword keyword-float">float</span> f1 <span class="token operator">=</span> <span class="token number">2.34E+10f</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-float">float</span> f2 <span class="token operator">=</span> f1 <span class="token operator">+</span> <span class="token number">10</span><span class="token punctuation">;</span>
+<span class="token comment">//f1 - f2 = 0 (true)</span>
+</pre><p>&#x539F;&#x56E0;&#xFF1A;&#x91C7;&#x6837;&#x7CBE;&#x5EA6;&#x4E0D;&#x591F;&#x3002;<br>
+&#x5728;&#x53D6;&#x503C;&#x8303;&#x56F4;&#x5185;&#x95F4;&#x9694;&#x91C7;&#x6837;&#x3002;</p>
+<p><strong>inf &amp; nan</strong><br>
+&#x65E0;&#x7A77;&#x5927;&#x548C;not a number</p>
+<h2 class="mume-header" id="arithmetic-operators">arithmetic operators</h2>
+
+<p><strong>constant number</strong></p>
+<pre data-role="codeBlock" data-info="c" class="language-c"><span class="token number">84</span><span class="token comment">// decimal</span>
+<span class="token number">0135</span><span class="token comment">//octal</span>
+<span class="token number">0x4F</span><span class="token comment">//hexadeximal</span>
+</pre><p>&#x5341;&#x516D;&#x8FDB;&#x5236;&#x5BF9;&#x7A0B;&#x5E8F;&#x5458;&#x53CB;&#x597D;&#x3002;</p>
+<p>&#x6574;&#x6570;</p>
+<pre data-role="codeBlock" data-info="c" class="language-c"><span class="token number">54</span><span class="token comment">//int </span>
+<span class="token number">43u</span><span class="token comment">//unsigned int</span>
+<span class="token number">43l</span><span class="token comment">//long</span>
+<span class="token number">43ul</span><span class="token comment">//unsigned long</span>
+<span class="token number">43lu</span><span class="token comment">//unsigned long</span>
+</pre><p>&#x6D6E;&#x70B9;&#x6570;</p>
+<pre data-role="codeBlock" data-info="c" class="language-c"><span class="token number">3.43</span><span class="token comment">//3.43</span>
+<span class="token number">3.2e23</span><span class="token comment">//3.2 x 10^23</span>
+</pre><p><strong>constant type qualifier&#x5E38;&#x6570;&#x9650;&#x5B9A;&#x7B26;</strong></p>
+<p>&#x5FC5;&#x987B;&#x5728;&#x521D;&#x59CB;&#x5316;&#x65F6;&#x5B9A;&#x4E49;</p>
+<pre data-role="codeBlock" data-info="c" class="language-c"><span class="token keyword keyword-const">const</span> <span class="token keyword keyword-float">float</span> PI <span class="token operator">=</span> <span class="token number">3.32f</span><span class="token punctuation">;</span>
+PI <span class="token operator">+=</span> <span class="token number">1</span><span class="token punctuation">;</span><span class="token comment">//ERROR!</span>
+</pre><p><strong>auto(&#x5728;C&#x8BED;&#x8A00;&#x4E2D;&#x53EF;&#x4EE5;&#xFF0C;&#x5728;c+&#x4E2D;&#x4E0D;&#x5EFA;&#x8BAE;&#x505A;&#xFF09;</strong><br>
+&#x4E0D;&#x662F;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;&#x662F;&#x4E00;&#x4E2A;placeholder&#x3002;</p>
+<p>&#x8F93;&#x5165;&#x540E;&#x81EA;&#x52A8;&#x53D8;&#x6210;&#x76F8;&#x5E94;&#x7C7B;&#x578B;</p>
+<pre data-role="codeBlock" data-info="c" class="language-c"><span class="token keyword keyword-auto">auto</span> c <span class="token operator">=</span> <span class="token number">2</span> <span class="token punctuation">;</span> <span class="token comment">//type of a is int </span>
+<span class="token keyword keyword-auto">auto</span> be <span class="token operator">=</span>  <span class="token number">2.3</span> <span class="token comment">//type of be is double</span>
+</pre><p><img src="image/index/1684047407169.png" alt="1684047407169"></p>
+<p><strong>floating-point VS integers</strong></p>
+<ul>
+<li>double operations is slower than float</li>
+<li>lost precision</li>
+</ul>
+<h2 class="mume-header" id="if-statement">if statement</h2>
+
+<h3 class="mume-header" id="if--if-else">if &amp; if-else</h3>
+
+<pre data-role="codeBlock" data-info="c" class="language-c"><span class="token keyword keyword-if">if</span> num  <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-if">if</span><span class="token punctuation">(</span>num <span class="token operator">&lt;</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;the number is less than 5&quot;</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword keyword-if">if</span><span class="token punctuation">(</span>num <span class="token operator">==</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;the num is 5&quot;</span> <span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword keyword-else">else</span> 
+    cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;the num is in range [4,10]&quot;</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+</pre><p><strong>else&#x8DDF;&#x6700;&#x8FD1;&#x7684;if&#x914D;&#x5BF9;</strong></p>
+<h3 class="mume-header" id="--operator">? : operator</h3>
+
+<pre data-role="codeBlock" data-info="c" class="language-c">bool isPositive <span class="token operator">=</span> true<span class="token punctuation">;</span>
+<span class="token keyword keyword-int">int</span> factor <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token comment">//some operations may change isPositive&apos;s value </span>
+factor <span class="token operator">=</span> isPositive <span class="token operator">?</span> <span class="token number">1</span> <span class="token operator">:</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+</pre><p><strong>condition</strong><br>
+what should be a condition?</p>
+<pre data-role="codeBlock" data-info="c" class="language-c"><span class="token keyword keyword-int">int</span> num  <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-if">if</span><span class="token punctuation">(</span>num <span class="token operator">&lt;</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;the num is less than 5&quot;</span> <span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> 
+</pre><p><strong>the condition should be a expression which is convertible to bool !</strong></p>
+<ul>
+<li>its value can be <strong>bool/char/int/float</strong></li>
+<li></li>
+</ul>
+<p><strong>&#x5173;&#x7CFB;&#x8868;&#x8FBE;&#x5F0F;</strong><br>
+<img src="image/index/1684051380275.png" alt="1684051380275"></p>
+<p><strong>&#x903B;&#x8F91;&#x8868;&#x8FBE;&#x5F0F;</strong><br>
+<img src="image/index/1684051346674.png" alt="1684051346674"></p>
+<p><strong>precedence</strong><br>
+! &gt; &amp;&amp; &gt; ||</p>
+<p>&#x4E0D;&#x786E;&#x5B9A;&#x65F6;&#xFF0C;&#x52A0;&#x62EC;&#x53F7;&#xFF08;&#x4F18;&#x5148;&#x7EA7;&#x6700;&#x9AD8;&#xFF09;</p>
+<ul>
+<li>pointers are also frequently used as conditions</li>
+</ul>
+<pre data-role="codeBlock" data-info="c" class="language-c"><span class="token keyword keyword-int">int</span> <span class="token operator">*</span> p <span class="token operator">=</span> new <span class="token keyword keyword-int">int</span><span class="token punctuation">[</span><span class="token number">1024</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-if">if</span><span class="token punctuation">(</span><span class="token operator">!</span>p<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;memory allocation failed&quot;</span> <span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><h3 class="mume-header" id="while-loop">while loop</h3>
+
+<p>syntax:</p>
+<pre data-role="codeBlock" data-info="c" class="language-c"><span class="token keyword keyword-while">while</span><span class="token punctuation">(</span>expression<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment">//...</span>
+<span class="token punctuation">}</span>
+</pre><pre data-role="codeBlock" data-info="c" class="language-c"><span class="token class-name">size_t</span> num <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-while">while</span> <span class="token punctuation">(</span>num <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    cout <span class="token operator">&lt;&lt;</span> num <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    num<span class="token operator">--</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">//2</span>
+<span class="token comment">//1</span>
+<span class="token comment">//0</span>
+<span class="token comment">//18446744073708458...</span>
+</pre><p>&#x539F;&#x56E0;&#xFF1A;size_t &#x662F;&#x4E00;&#x4E2A;&#x65E0;&#x7B26;&#x53F7;&#x6570;&#xFF0C;&#x5F53;num = 0&#x65F6;&#x518D;--&#x4F1A;&#x53D8;&#x6210;range&#x5185;&#x6700;&#x5927;&#x7684;&#x6570;&#x6B7B;&#x5FAA;&#x73AF;&#x3002;<br>
+&#x5199;&#x6210;int &#xFF0C;&#x95EE;&#x9898;&#x89E3;&#x51B3;&#x3002;</p>
+<pre data-role="codeBlock" data-info="c" class="language-c">bool flag <span class="token operator">=</span> true <span class="token punctuation">;</span>
+<span class="token keyword keyword-int">int</span> count <span class="token operator">=</span> <span class="token number">0</span> <span class="token punctuation">;</span>
+<span class="token keyword keyword-while">while</span><span class="token punctuation">(</span>flag <span class="token operator">=</span> true<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    cout <span class="token operator">&lt;&lt;</span> count<span class="token operator">++</span> <span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+    <span class="token comment">//and do sth</span>
+    <span class="token keyword keyword-if">if</span><span class="token punctuation">(</span>count <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">)</span>
+    flag <span class="token operator">=</span> false<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><hr>
+<p><strong>&#x6CE8;&#x610F; = &amp; ==</strong></p>
+<hr>
+<h3 class="mume-header" id="for-loop">for loop</h3>
+
+<ul>
+<li>syntax</li>
+</ul>
+<pre data-role="codeBlock" data-info="c" class="language-c"><span class="token keyword keyword-for">for</span><span class="token punctuation">(</span>init<span class="token operator">-</span>clause<span class="token punctuation">;</span>cond<span class="token operator">-</span>expression<span class="token punctuation">;</span>iteraion<span class="token operator">-</span>expression<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    loop<span class="token operator">-</span>statement<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><h2 class="mume-header" id="arrays">arrays</h2>
+
+<h3 class="mume-header" id="arrays-1">arrays</h3>
+
+<pre data-role="codeBlock" data-info="c" class="language-c"><span class="token keyword keyword-int">int</span> num_arr1<span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-int">int</span> num_arr2<span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">0</span> <span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token comment">//&#x5BF9;&#x6570;&#x7EC4;&#x8FDB;&#x884C;&#x4E86;&#x521D;&#x59CB;&#x5316;</span>
+<span class="token comment">//&#x672A;&#x521D;&#x59CB;&#x5316;&#x53EF;&#x80FD;&#x4F1A;&#x51FA;&#x73B0;&#x968F;&#x673A;&#x503C;</span>
+</pre><p><strong>arrays of unknown size</strong></p>
+<pre data-role="codeBlock" data-info="c" class="language-c"><span class="token keyword keyword-int">int</span> num_arr<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token comment">//the number is not specified in the declaration</span>
+
+<span class="token keyword keyword-float">float</span> <span class="token function">arr_sum</span><span class="token punctuation">(</span><span class="token keyword keyword-float">float</span> values<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">,</span> <span class="token class-name">size_t</span> length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-float">float</span> <span class="token function">arr_sum</span><span class="token punctuation">(</span><span class="token keyword keyword-float">float</span> <span class="token operator">*</span>values <span class="token punctuation">,</span> <span class="token class-name">size_t</span> length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//the arguments of a function</span>
+
+</pre><pre data-role="codeBlock" data-info="c" class="language-c"><span class="token keyword keyword-int">int</span> arr1<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">9</span>&#xFF0C;<span class="token number">8</span>&#xFF0C;<span class="token number">7</span>&#xFF0C;<span class="token number">6</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-int">int</span> arr2<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+arr2 <span class="token operator">=</span> arr1<span class="token punctuation">;</span><span class="token comment">//error</span>
+</pre><p><img src="image/index/1684307529705.png" alt="1684307529705"></p>
+<p><strong>&#x518D;c++&#x4E2D;&#x4E00;&#x822C;&#x6CA1;&#x6709;&#x8FB9;&#x754C;&#x68C0;&#x67E5;&#xFF0C;&#x8D8A;&#x754C;&#x4E86;&#x4F9D;&#x7136;&#x4F1A;&#x64CD;&#x4F5C;&#x4E14;&#x6CA1;&#x6709;&#x8B66;&#x544A;&#xFF01;</strong><br>
+<img src="image/index/1684307703059.png" alt="1684307703059"><br>
+<img src="image/index/1684307763471.png" alt="1684307763471"><br>
+<strong>python&#x4E2D;<code>arr[-1]</code>&#x662F;&#x6570;&#x7EC4;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5143;&#x7D20;</strong></p>
+<p>&#x4E0D;&#x8FDB;&#x884C;&#x8FB9;&#x754C;&#x68C0;&#x67E5;&#xFF1A;<br>
+&#x4F18;&#x70B9;-&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x5757;&#xFF0C;&#x6548;&#x7387;&#x9AD8;<br>
+&#x7F3A;&#x70B9;-&#x5BB9;&#x6613;&#x51FA;&#x9519;</p>
+<h3 class="mume-header" id="%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84multidimensional-arrays">&#x591A;&#x7EF4;&#x6570;&#x7EC4;multidimensional arrays</h3>
+
+<pre data-role="codeBlock" data-info="c++" class="language-cpp"><span class="token keyword keyword-int">int</span> mat<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">{</span><span class="token number">11</span><span class="token punctuation">,</span> <span class="token number">22</span><span class="token punctuation">,</span> <span class="token number">33</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token number">44</span> <span class="token punctuation">,</span> <span class="token number">55</span><span class="token punctuation">,</span> <span class="token number">66</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-for">for</span><span class="token punctuation">(</span><span class="token keyword keyword-int">int</span> r <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> r <span class="token operator">&lt;</span> rows<span class="token punctuation">;</span> r<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword keyword-for">for</span><span class="token punctuation">(</span><span class="token keyword keyword-int">int</span> c <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> c <span class="token operator">&lt;</span> cols<span class="token punctuation">;</span> c<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        cout <span class="token operator">&lt;&lt;</span> mat<span class="token punctuation">[</span>r<span class="token punctuation">]</span><span class="token punctuation">[</span>c<span class="token punctuation">]</span> <span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre><ul>
+<li><strong>arrays of unknown bound</strong></li>
+</ul>
+<pre data-role="codeBlock" data-info="c++" class="language-cpp"><span class="token keyword keyword-void">void</span> <span class="token function">init_2d_arr</span><span class="token punctuation">(</span><span class="token keyword keyword-float">float</span> mat<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+size_t rows <span class="token punctuation">,</span> size_t cols<span class="token punctuation">)</span>
+<span class="token comment">//correct</span>
+
+<span class="token keyword keyword-void">void</span> <span class="token function">init_2d_arr</span><span class="token punctuation">(</span><span class="token keyword keyword-float">float</span> mat<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+size_t rows <span class="token punctuation">,</span> size_t cols<span class="token punctuation">)</span>
+<span class="token comment">//error:&#x6CA1;&#x6709;&#x6307;&#x5B9A;&#x591A;&#x5C11;&#x5217;</span>
+</pre><p><img src="image/index/1684308316067.png" alt="1684308316067"><br>
+&#x5982;&#x4E0A;&#x56FE;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x6307;&#x5B9A;&#x5217;&#xFF0C;&#x5219;&#x4E0D;&#x77E5;&#x9053;&#x7B2C;&#x4E8C;&#x5217;&#x4ECE;&#x54EA;&#x5F00;&#x59CB;&#x8BBF;&#x95EE;&#x3002;</p>
+<h3 class="mume-header" id="const-arrays">const arrays</h3>
+
+<pre data-role="codeBlock" data-info="c++" class="language-cpp"><span class="token keyword keyword-const">const</span> <span class="token keyword keyword-float">float</span> PI <span class="token operator">=</span> <span class="token number">3.14</span><span class="token punctuation">;</span>
+PI <span class="token operator">=</span> <span class="token number">1.f</span> <span class="token operator">+</span> PI<span class="token punctuation">;</span><span class="token comment">//error</span>
+<span class="token keyword keyword-const">const</span> <span class="token keyword keyword-float">float</span> values<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">1.1f</span> <span class="token punctuation">,</span> <span class="token number">2.2f</span> <span class="token punctuation">,</span> <span class="token number">3.3f</span><span class="token punctuation">}</span>
+values<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1.0f</span><span class="token punctuation">;</span><span class="token comment">//error</span>
+</pre><h3 class="mume-header" id="%E6%95%B0%E7%BB%84%E6%8B%B7%E8%B4%9D">&#x6570;&#x7EC4;&#x62F7;&#x8D1D;</h3>
+
+<p>&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5FAA;&#x73AF;&#x904D;&#x5386;&#x62F7;&#x8D1D;&#xFF0C;&#x4E5F;&#x53EF;&#x4F7F;&#x7528;&#x6807;&#x51C6;&#x5E93;&#x51FD;&#x6570;memcpy()&#x8FDB;&#x884C;&#x62F7;&#x8D1D;&#x3002;</p>
+<pre data-role="codeBlock" data-info="c++" class="language-cpp"><span class="token keyword keyword-for">for</span><span class="token punctuation">(</span><span class="token keyword keyword-int">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    b<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">//&#x5FAA;&#x73AF;&#x62F7;&#x8D1D;</span>
+
+<span class="token function">memcpy</span><span class="token punctuation">(</span>b <span class="token punctuation">,</span> a <span class="token punctuation">,</span> n <span class="token operator">*</span> <span class="token keyword keyword-sizeof">sizeof</span><span class="token punctuation">(</span><span class="token keyword keyword-int">int</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//&#x4F7F;&#x7528;memcpy()&#x62F7;&#x8D1D;</span>
+</pre><p><strong>memcpy()</strong><br>
+&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#xFF1A;&#x76EE;&#x6807;&#x6570;&#x7EC4;&#x7684;&#x6307;&#x9488;&#xFF1B;<br>
+&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#xFF1A;&#x539F;&#x6570;&#x7EC4;&#x7684;&#x6307;&#x9488;&#xFF1B;<br>
+&#x7B2C;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#xFF1A;&#x62F7;&#x8D1D;&#x7684;&#x5B57;&#x8282;&#x6570;&#xFF1B;</p>
+<h3 class="mume-header" id="array-style-strings">array-style strings</h3>
+
+<p><strong>&#x8B66;&#x60D5;&#x6570;&#x7EC4;&#x8D8A;&#x754C;</strong><br>
+<strong>&#x6570;&#x7EC4;&#x7C7B;&#x578B;&#x5B57;&#x7B26;&#x4E32;&#x540E;&#x9762;&#x5FC5;&#x987B;&#x52A0;0</strong></p>
+<h3 class="mume-header" id="%E5%AD%97%E7%AC%A6%E4%B8%B2string-literal">&#x5B57;&#x7B26;&#x4E32;string literal</h3>
+
+<p><img src="image/index/1684312707255.png" alt="1684312707255"></p>
+<p>&#x4E00;&#x5171;5&#x4E2A;&#xFF0C;&#x5B57;&#x7B26;&#x4E32;&#x9700;&#x8981;&#x4E00;&#x4E2A;&apos;0&apos;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x7ED3;&#x675F;&#x6807;&#x5FD7;&#x3002;</p>
+<p>&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>std::string</code>&#x6587;&#x672C;</p>
+<pre data-role="codeBlock" data-info="c++" class="language-cpp"><span class="token keyword keyword-using">using</span> <span class="token keyword keyword-namespace">namespace</span> std<span class="token double-colon punctuation">::</span>string_literals<span class="token punctuation">;</span>
+</pre><p><strong>string manipulation and examination</strong></p>
+<ul>
+<li>copy</li>
+</ul>
+<pre data-role="codeBlock" data-info="c++" class="language-cpp"><span class="token keyword keyword-char">char</span> <span class="token operator">*</span> <span class="token function">strcpy</span><span class="token punctuation">(</span><span class="token keyword keyword-char">char</span><span class="token operator">*</span> dest <span class="token punctuation">,</span> <span class="token keyword keyword-const">const</span> cahr <span class="token operator">*</span> src<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//safer</span>
+<span class="token keyword keyword-char">char</span> <span class="token operator">*</span> <span class="token function">strncpy</span><span class="token punctuation">(</span><span class="token keyword keyword-char">char</span> <span class="token operator">*</span>dest <span class="token punctuation">,</span> <span class="token keyword keyword-const">const</span> <span class="token keyword keyword-char">char</span> <span class="token operator">*</span> src <span class="token punctuation">,</span> size_t count<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+</pre><h3 class="mume-header" id="string-class">string class</h3>
+
+<p>string&#x7C7B;&#x4E5F;&#x6CA1;&#x6709;&#x8D8A;&#x754C;&#x68C0;&#x67E5;&#x3002;</p>
+<ul>
+<li>
+<p>strcmp</p>
+</li>
+<li>
+<p>str</p>
+</li>
+</ul>
+<h2 class="mume-header" id="structures--unions-and-emenurations%E7%BB%93%E6%9E%84%E4%BD%93%E8%81%94%E5%90%88%E4%BD%93%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%9E%8B">structures , unions and emenurations&#x7ED3;&#x6784;&#x4F53;&#xFF0C;&#x8054;&#x5408;&#x4F53;&#xFF0C;&#x679A;&#x4E3E;&#x7C7B;&#x578B;</h2>
+
+<h3 class="mume-header" id="struct">struct</h3>
+
+<ul>
+<li>a struct is a type consisting of a sequence of members.</li>
+<li>the members are allocated in an ordered sequence.</li>
+</ul>
+<pre data-role="codeBlock" data-info="c++" class="language-cpp"><span class="token keyword keyword-struct">struct</span> <span class="token class-name">Student</span><span class="token punctuation">{</span>
+    <span class="token keyword keyword-char">char</span> name<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-int">int</span> born<span class="token punctuation">;</span>
+    <span class="token keyword keyword-bool">bool</span> male<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword keyword-struct">struct</span> <span class="token class-name">Student</span> stu<span class="token punctuation">;</span>
+<span class="token function">strcpy</span><span class="token punctuation">(</span>stu<span class="token punctuation">.</span>name <span class="token punctuation">,</span> <span class="token string">&quot;yu&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+stu<span class="token punctuation">.</span>born <span class="token operator">=</span> <span class="token number">2000</span><span class="token punctuation">;</span>
+stu<span class="token punctuation">.</span>male <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+
+
+
+</pre><p><img src="image/index/1684381037471.png" alt="1684381037471"></p>
+<p><strong>struct padding</strong><br>
+<strong>&#x7ED3;&#x6784;&#x4F53;&#x9700;&#x8981;&#x5BF9;&#x9F50;&#xFF01;</strong></p>
+<p><img src="image/index/1684382071511.png" alt="1684382071511"></p>
+<p>&#x4E00;&#x822C;&#x7CFB;&#x7EDF;4&#x4E2A;&#x5B57;&#x5BF9;&#x9F50;</p>
+<h3 class="mume-header" id="union">union</h3>
+
+<p>&#x5171;&#x4EAB;&#x5185;&#x5B58;</p>
+<p>the storage of members overlaps/shared:</p>
+<pre data-role="codeBlock" data-info="c" class="language-c"><span class="token keyword keyword-union">union</span> ipv4address<span class="token punctuation">{</span>
+    std<span class="token operator">::</span><span class="token class-name">uint32_t</span> address32<span class="token punctuation">;</span>
+    std<span class="token operator">::</span><span class="token class-name">uint8_t</span> address8<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">//sizeof(union ipv4address) is 4;</span>
+</pre><p><strong>&#x4E92;&#x65A5;&#x8D4B;&#x503C;</strong><br>
+&#x5728;&#x4EFB;&#x610F;&#x65F6;&#x523B;&#xFF0C;&#x8054;&#x5408;&#x4E2D;&#x53EA;&#x80FD;&#x6709;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x6210;&#x5458;&#x53EF;&#x4EE5;&#x6709;&#x503C;&#xFF0C;&#x5F53;&#x7ED9;&#x8054;&#x5408;&#x4E2D;&#x67D0;&#x4E2A;&#x6210;&#x5458;&#x8D4B;&#x503C;&#x4E4B;&#x540E;&#xFF0C;&#x8BE5;&#x8054;&#x5408;&#x4E2D;&#x5176;&#x4ED6;&#x6210;&#x5458;&#x5C31;&#x7F16;&#x7A0B;&#x672A;&#x5B9A;&#x4E49;&#x72B6;&#x6001;&#x4E86;&#x3002;</p>
+<p><strong>&#x5728;C++17&#x540E;&#xFF0C;<code>std::variant</code>class&#x662F;union&#x7684;&#x4E00;&#x4E2A;&#x7C7B;&#x578B;&#x5B89;&#x5168;&#x66FF;&#x4EE3;&#x9879;&#x3002;</strong></p>
+<p>&#x6240;&#x6709;&#x6210;&#x5458;&#x90FD;&#x5171;&#x4EAB;&#x540C;&#x4E00;&#x4E2A;&#x5185;&#x5B58;&#x4F4D;&#x7F6E;&#x3002;</p>
+<h3 class="mume-header" id="typedef">typedef</h3>
+
+<ul>
+<li>
+<p>can create an alias for a type<br>
+&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7C7B;&#x578B;&#x7684;&#x522B;&#x540D;</p>
+</li>
+<li>
+<p>typedef struct<br>
+&#x5B9A;&#x4E49; &#x7ED3;&#x6784;&#x540D;&#x3002;</p>
+</li>
+</ul>
+<pre data-role="codeBlock" data-info="c++" class="language-cpp"><span class="token keyword keyword-typedef">typedef</span> &#x7ED3;&#x6784;&#x540D;<span class="token punctuation">{</span>
+
+<span class="token punctuation">}</span> &#x5BF9;&#x8C61;&#x540D;<span class="token punctuation">;</span>
+</pre><ul>
+<li>&#x4E3A;&#x590D;&#x6742;&#x7684;&#x58F0;&#x660E;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x522B;&#x540D;</li>
+</ul>
+<pre data-role="codeBlock" data-info="c++" class="language-cpp"><span class="token keyword keyword-typedef">typedef</span> <span class="token keyword keyword-int">int</span> myint<span class="token punctuation">;</span>
+
+<span class="token keyword keyword-typedef">typedef</span> <span class="token keyword keyword-unsigned">unsigned</span> <span class="token keyword keyword-char">char</span> vec3b<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+myinit num <span class="token operator">=</span> <span class="token number">32</span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-unsigned">unsigned</span> <span class="token keyword keyword-char">char</span> color<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+vec3b color <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">255</span> <span class="token punctuation">,</span> <span class="token number">255</span> <span class="token punctuation">,</span> <span class="token number">255</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+</pre><p>&#x5728;&#x4E00;&#x4E9B;&#x7CFB;&#x7EDF;&#x5934;&#x6587;&#x4EF6;&#x4E2D;&#x7ECF;&#x5E38;&#x89C1;&#x5230;&#x3002;<br>
+<img src="image/index/1684398920944.png" alt="1684398920944"></p>
+<h2 class="mume-header" id="pointers">pointers</h2>
+
+<pre data-role="codeBlock" data-info="c" class="language-c"><span class="token keyword keyword-int">int</span> num <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-int">int</span> <span class="token operator">*</span> p1 <span class="token operator">=</span> null<span class="token punctuation">,</span><span class="token operator">*</span> p2 <span class="token operator">=</span> null<span class="token punctuation">;</span>
+<span class="token comment">//declaration two pointers</span>
+p1 <span class="token operator">=</span> <span class="token operator">&amp;</span>num<span class="token punctuation">;</span>
+<span class="token comment">//take the address of num , assign to p1</span>
+p2 <span class="token operator">=</span> <span class="token operator">&amp;</span>num<span class="token punctuation">;</span>
+<span class="token comment">//take the address of num , assign to p2</span>
+
+<span class="token operator">*</span>p1 <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span>
+<span class="token comment">//assign 20 to num</span>
+<span class="token operator">*</span>p2 <span class="token operator">=</span> <span class="token number">30</span><span class="token punctuation">;</span>
+<span class="token comment">//assign 30 to num</span>
+</pre><p><img src="image/index/1684399948935.png" alt="1684399948935"></p>
+<p><img src="image/index/1684400136274.png" alt="1684400136274"></p>
+<h3 class="mume-header" id="structure-member-accessing">structure member accessing</h3>
+
+<ul>
+<li>p-&gt; member</li>
+<li>(*p).member</li>
+</ul>
+<pre data-role="codeBlock" data-info="c" class="language-c"><span class="token keyword keyword-struct">struct</span> <span class="token class-name">Student</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword keyword-char">char</span> name<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-int">int</span> born<span class="token punctuation">;</span>
+    bool male<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+Student stu <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">&quot;yu&quot;</span> <span class="token punctuation">,</span> <span class="token number">2000</span> <span class="token punctuation">,</span> true<span class="token punctuation">}</span><span class="token punctuation">;</span>
+Student <span class="token operator">*</span> pStu <span class="token operator">=</span> <span class="token operator">&amp;</span>stu<span class="token punctuation">;</span>
+</pre><p><img src="image/index/1684400440292.png" alt="1684400440292"></p>
+<p><img src="image/index/1684400675309.png" alt="1684400675309"></p>
+<p>&#x5B8C;&#x6574;</p>
+<pre data-role="codeBlock" data-info="c" class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;cstring&gt;</span></span>
+using namespace std<span class="token punctuation">;</span>
+<span class="token keyword keyword-struct">struct</span> <span class="token class-name">Student</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword keyword-char">char</span> name<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-int">int</span> born<span class="token punctuation">;</span>
+    bool male<span class="token punctuation">;</span> 
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-int">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    Student stu <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">&quot;Yu&quot;</span><span class="token punctuation">,</span> <span class="token number">2000</span><span class="token punctuation">,</span> true<span class="token punctuation">}</span><span class="token punctuation">;</span>
+    Student <span class="token operator">*</span> pStu <span class="token operator">=</span> <span class="token operator">&amp;</span>stu<span class="token punctuation">;</span>
+    cout <span class="token operator">&lt;&lt;</span> stu<span class="token punctuation">.</span>name <span class="token operator">&lt;&lt;</span> <span class="token string">&quot; was born in &quot;</span> <span class="token operator">&lt;&lt;</span> stu<span class="token punctuation">.</span>born 
+         <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;. Gender: &quot;</span> <span class="token operator">&lt;&lt;</span> <span class="token punctuation">(</span>stu<span class="token punctuation">.</span>male <span class="token operator">?</span> <span class="token string">&quot;male&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;female&quot;</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    <span class="token function">strncpy</span><span class="token punctuation">(</span>pStu<span class="token operator">-&gt;</span>name<span class="token punctuation">,</span> <span class="token string">&quot;Li&quot;</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    pStu<span class="token operator">-&gt;</span>born <span class="token operator">=</span> <span class="token number">2001</span><span class="token punctuation">;</span>
+    <span class="token punctuation">(</span><span class="token operator">*</span>pStu<span class="token punctuation">)</span><span class="token punctuation">.</span>born <span class="token operator">=</span> <span class="token number">2002</span><span class="token punctuation">;</span>
+    pStu<span class="token operator">-&gt;</span>male <span class="token operator">=</span> false<span class="token punctuation">;</span>
+    cout <span class="token operator">&lt;&lt;</span> stu<span class="token punctuation">.</span>name <span class="token operator">&lt;&lt;</span> <span class="token string">&quot; was born in &quot;</span> <span class="token operator">&lt;&lt;</span> stu<span class="token punctuation">.</span>born 
+         <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;. Gender: &quot;</span> <span class="token operator">&lt;&lt;</span> <span class="token punctuation">(</span>stu<span class="token punctuation">.</span>male <span class="token operator">?</span> <span class="token string">&quot;male&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;female&quot;</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Address of stu: %p\n&quot;</span><span class="token punctuation">,</span> pStu<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//C style</span>
+    cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;Address of stu: &quot;</span> <span class="token operator">&lt;&lt;</span> pStu <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span> <span class="token comment">//C++ style</span>
+    cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;Address of stu: &quot;</span> <span class="token operator">&lt;&lt;</span> <span class="token operator">&amp;</span>stu <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;Address of member name: &quot;</span> <span class="token operator">&lt;&lt;</span> <span class="token operator">&amp;</span><span class="token punctuation">(</span>pStu<span class="token operator">-&gt;</span>name<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;Address of member born: &quot;</span> <span class="token operator">&lt;&lt;</span> <span class="token operator">&amp;</span><span class="token punctuation">(</span>pStu<span class="token operator">-&gt;</span>born<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;Address of member male: &quot;</span> <span class="token operator">&lt;&lt;</span> <span class="token operator">&amp;</span><span class="token punctuation">(</span>pStu<span class="token operator">-&gt;</span>male<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;sizeof(pStu) = &quot;</span> <span class="token operator">&lt;&lt;</span> <span class="token keyword keyword-sizeof">sizeof</span><span class="token punctuation">(</span>pStu<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    
+    <span class="token keyword keyword-return">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><p><img src="image/index/1684401377533.png" alt="1684401377533"></p>
+<h3 class="mume-header" id="pointer-pointer">pointer-pointer</h3>
+
+<p><img src="image/index/1684402164756.png" alt="1684402164756"></p>
+<p><img src="image/index/1684402179574.png" alt="1684402179574"></p>
+<h3 class="mume-header" id="constant-pointers%E5%B8%B8%E7%86%9F%E6%8C%87%E9%92%88">constant pointers&#x5E38;&#x719F;&#x6307;&#x9488;</h3>
+
+<pre data-role="codeBlock" data-info="c++" class="language-cpp"><span class="token keyword keyword-int">int</span> num <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-int">int</span> another <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token comment">//cannot change the value the p1 points to through p1</span>
+<span class="token comment">//&#x6307;&#x9488;&#x672C;&#x8EAB;&#x5730;&#x5740;&#x4E0D;&#x80FD;&#x4FEE;&#x6539;&#xFF0C;&#x4F46;&#x662F;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4FEE;&#x6539;&#x503C;&#x4FEE;&#x6539;</span>
+<span class="token keyword keyword-const">const</span> <span class="token keyword keyword-int">int</span> <span class="token operator">*</span> p1 <span class="token operator">=</span> <span class="token operator">&amp;</span>num<span class="token punctuation">;</span>
+<span class="token operator">*</span> p1 <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span><span class="token comment">//error</span>
+num <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span><span class="token comment">//okey</span>
+</pre><h3 class="mume-header" id="pointers-and-arrays">pointers and arrays</h3>
+
+<ul>
+<li>use &amp; operator to get the addresses of elements</li>
+</ul>
+<pre data-role="codeBlock" data-info="c" class="language-c">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
