@@ -1079,13 +1079,14 @@ props :{
 
 **父组件访问子组件，$refs 开发中常用**
 
-**子组件访问父组件，$parent 在开发中尽量少用**
+**子组件访问父组件，$parent 在开发中尽量少用。原因：组件的耦合性很高，复用性很高。**
 
 **子组件访问根组件，$root**
 
 ### 通过 `$refs`父组件**访问**子组件或子组件访问跟组件（需要搭配 ref 指令使用）
 
-**注册信息时，`ref`;访问信息时，`$refs`**
+**用来给元素或子组件注册引用信息时，`ref`;访问信息时，`$refs`**
+
 在 Content.vue 中：
 
 ```javascript
@@ -1224,6 +1225,84 @@ const errorClass = ref('text-danger')
 <div :class="[isActive ? activeClass : '' , errorCLass]"></div>
 ```
 
+### 插槽`v-slot` 具名插槽和匿名插槽
+
+向子组件的**指定位置**插入一段内容， 这个内容可以是**html**或者**其他的组件**。
+（ 在页面上预留坑 ，未来想使用时 ， 可以自己决定 。）
+
+**结论：在父组件的 template 中，只能访问父组件的数据，不能访问子组件的数据**
+
+- **具名插槽 && 匿名插槽**
+  Child.vue 中：
+
+```javascript
+<template>
+  <main>
+    <slot></slot>
+    //匿名插槽
+  </main>
+  <footer>
+    <slot name="footer"></slot>
+    //具名插槽
+  </footer>
+</template>
+```
+
+Parent.vue 中：
+
+```javascript
+<div slot = "footer">
+  <h1>header</h1>
+  //会放到footer插槽中
+</div>
+<div>
+  <p>一段内容</p>
+  //会放到匿名插槽中
+</div>
+```
+
+- **插槽作用域问题**
+
+Child.vue 中：
+
+```javascript
+<template>
+  <a :href = "url" class = "nav-link">
+    <slot :url = "url"></slot>
+  </a>
+</template>
+
+<script>
+  export default {
+    props : ['url']
+  }
+</script>
+```
+
+Parent.vue 中：
+
+````javascript
+<template>
+  <div id = "parent">
+  <h1>插槽</h1>
+  <Child url = "https:baidu.com" v-slot = "slotProps">
+    访问 {{ slotProps }}
+  </Child>
+</template>
+
+<script>
+  import Child from './Child';
+
+  export default{
+    components :{
+      Child
+    },
+  }
+  </script>
+
+
+
+
 ### 什么是组合式 API 和选项式 API?
 
 通常与 `<script setup>`搭配使用。
@@ -1256,7 +1335,7 @@ const errorClass = ref('text-danger')
   <template>
     <button @click = "increment">count is :{{count}}
     </button>
-```
+````
 
 **可以将同一个逻辑关注点的代码整合在一起。**
 

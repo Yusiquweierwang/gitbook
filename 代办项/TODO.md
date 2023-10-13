@@ -627,7 +627,7 @@ sql 没有实际应用过
 - 照大一寸免冠照
 - 晚上看奥本海默
 
-7th
+### 7th
 
 - 新生大会
 
@@ -640,4 +640,228 @@ sql 没有实际应用过
 - 学习 arcgis
 - 学习 python
 - 学习线性代数
+- 学习插槽
+
+看看初试题目
+
+- 问问泓达学长
+
+### 10th
+
+石圣心大教堂
+沙面
+越秀公园
+中山纪念堂
+广东省博
+永庆坊
+
+问一下耀勇的方向
+
+茶具
+
+### 11th
+
 -
+
+犯罪地理、知识图谱：
+窦振铎
+巩成龙
+任玲灵
+陈洁莹
+
+未来一周工作：
+arcgis pro
+mysql
+vue 学到 pinia
+nginx
+计算机网络
+ue4 着手启动 32
+cesium
+
+- 宿舍使用电器申请书
+- 体检表
+- 国家助学金
+- 找找 navicat 包
+- 银行卡
+- 问问学校图书馆查文献的事
+
+### 13th
+
+- 照耀龙讲座
+- 去时尚天河
+- 练习多表查询
+- MYSQL -- 时间函数
+- GROUP BY HAVING
+- 执行顺序
+
+### 14th
+
+- 班会
+- 相关子查询
+
+### 15th
+
+- 体检
+- 数据库训练
+
+### 18th
+
+- 奖学金
+
+- 英语课
+- book
+  for one more day
+  educated 你当像鸟飞向你的山
+  born a crime
+
+- foreign key
+- 自增列
+
+55 22
+
+66 26
+
+![1695003819750](image/TODO/1695003819750.png)
+
+### 19th
+
+- 数据库约束
+-
+
+### 20th
+
+- 数据库--
+- 付迎春--地学遥感进展
+- 入党申请书
+- 梦见 zx?d
+
+- 遥感--空间统计--付迎春-罗文斐-刘亦书-胡伟平
+  多元统计--植被反演
+
+### 21th
+
+- 机器学习书
+- 入党申请书
+
+### 22th
+
+- 机器学习 -- 吴恩达
+- python
+-
+
+### 23th
+
+- 微积分
+- 线性代数
+
+![1695565446811](image/TODO/1695565446811.png)
+唉，这下拉了
+
+### 24th
+
+- 逛宜家
+
+* 逛海珠
+
+### 25th
+
+- 学英语
+- python 学到 import
+- 机器学习了解--数学公式 7
+
+what's the difference?
+her daughter playing piano .
+when people like Malaysians went into English conversations they were afraid of being judged by how many mistakes they were going to make .
+
+2 , Some people have self-image . 网咖 玩的不好，身边有人但还要专心去玩，水平不行还是要专注去说。a person went to the Internet cafe
+when Faizar goes into conversations , he is entirely focused on the person that he's speaking to and the result he wants to get . He's got no self-awareness . no thoughts of what he makes .
+
+3 , by a true story hanppened in ted's speaker , to the pharmacy to buy omega ,
+a sailors
+两个 sailors ，一个解释了很久毫无头绪，一个简单
+One talked at a high level , but totally focused on herself and getting it right , which results in ineffective conversations .
+Another got no level , but focuesd on the person she's talking to and getting a result . effective .
+
+4 , babecu talk between Francies , Korean and Japanese to tell us that English is just a tool to play around with to get a result like a computer game .
+In schools , students are judged more on correctness than on clarity which is not a good way to buld the confidence
+
+listening goes .
+speaking goes .
+confidence goes .
+
+so the core point is , when you speak , don't focus on yourself , focus on the other person and the result you want to achieve .
+
+smoothly , calmly confident .
+
+### 27th
+
+- 练习输出素数
+- arcgis pro 安装和操作视频
+
+* python 传参数--可变 / 不变
+* 数据容器练习
+
+### 28th
+
+- 刘亦书--机器学习高数 / 线代 / 概率论
+- 党的主题教育
+- 看文献软件
+- zotero
+
+因为自己面对多线程时会束手无策。
+
+醉鹅
+乳鸽
+煲仔饭
+
+大良中楼--清晖园--华盖路步行街
+--金榜--大良中楼--顺峰山公园--换了海岸
+
+## October
+
+### 8th
+
+- 提交遥感开题报告--11th
+
+* 机器学习作业--（概率论 / sklearn）
+  - 贝叶斯定理
+  - 求 x\*
+  - 搭 python sklearn 平台--iris 数据集贝叶斯训练
+
+- python --jupyter--pandas
+
+### 9th
+
+- 下午英语课 or
+
+* 下午傅伯杰院士汇报
+
+- arcgis --学校制图'''
+
+### 10th
+
+- ppt 做好
+- 下午政治课
+
+### 11th
+
+- 下午建模仿真组单独汇报
+- 搜集 4 校园标准地图数据
+- 付遥感综述文献汇报
+
+寻找的时候度没有把握好
+
+林业生态估算
+
+- 缴团费
+
+anaconda 会覆盖 python 之前版本？
+
+### 12th
+
+- 决策树 review +
+- anaconda 测试 iris 数据集
+- python from 引用
+- 下午听答辩
+- 晚上讲座
+- 建筑物面包围
