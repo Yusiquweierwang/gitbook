@@ -1,7 +1,6 @@
 [toc]
 
-。
-吗
+
 
 ```c
 #include <stdio.h>
