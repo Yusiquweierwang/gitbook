@@ -184,12 +184,24 @@ UML 表示法
 ![1697510828943](image/index/1697510828943.png)
 仅适用于类 AnyFeature。AnyFeature 是元类 FeatureType 的一个实例，充当 CityGML UML 模型中所有类的超类，构造型为 «FeatureType»。元类是其实例为类的类。
 
+
+![1698240762500](image/index/1698240762500.png)
+
 白色
 用于 UML 图中提供的注释和对象约束语言
 
 **示例**
 黄色类与 CityGML 建筑模块相关联，蓝色类来自 CityGML 核心和构造模块，绿色类描述由 ISO 19107：2003 定义的几何元素
 ![1697511198060](image/index/1697511198060.png)
+
+
+## GML3几何拓扑模型
+![1698242227416](image/index/1698242227416.png)
+
+
+
+
+
 
 ## 城市 GML
 
@@ -256,6 +268,66 @@ cityGML 虽然不适用 19107 的拓扑类，但可通过在不同几何对象�
 ### 坐标参考系
 
 与 CAD 或 BIM 相比，每个 3D 点都是绝对地理参考的，这使得 CityGML 特别适合表示地理上较大的扩展结构，如机场，铁路，桥梁，水坝，其中地球曲率对物体的几何形状有显着影响
+
+
+
+可以通过从抽象GML超类GML:_Geometry继承放入属性srsName指向其CRS定义
+
+
+### 8.3 隐式几何
+implicit geometry
+
+一个几何对象，形状只作为原型集合体存储一次。
+此原型集合体对象被多次重复使用或引用。
+用一个基点和一个变化来表示。
+
+与使用绝对世界坐标表达物体的显式建模比，更节省空间，加快可视化速度。
+
+## 9 外观模型
+
+
+## 10 主题模型
+
+![1698249974595](image/index/1698249974595.png)
+
+
+CityGML数据模型中所有主题类的基类都是抽象类 _CityObject。 _CityObject提供了创建日期与终止日期，用于管理特征的历史记录，以及在其他数据集中对同一对象的外部引用。
+
+
+
+### 10.2 地形模型 - relief
+
+### 10.3 建筑模型
+
+
+
+
+
+
+
+### 10.6 水体模型
+
+
+在LOD1中，水体通过solid形式建模。
+
+![1698309134840](image/index/1698309134840.png)
+如果水体由LOD2或更高细节级别的gml:Solid表示，则对应专题的WaterClosureSurface，WaterGroundSurface和WaterSurface对象的表面几何形状必须与gml:Solid的外壳重合。
+
+
+WaterSurface的可选属性waterLevel可用于描述水位，此时必须给定相应的三维表面几何形状。当水体受潮汐影响时，这一点尤其重要。
+
+水体模型还隐含了TerrainIntersectionCurves(TIC) 的概念。例如，为了指定DTM与WaterBody的三维几何图形的精确交集，或将WaterBody或WaterSurface调整到周围的DTM上（参见第6.5章）。此时WaterSurface多边形的环则暗示了水体与地形或盆地的交集。
+
+
+
+### 10.7 transportation 
+![1698319832218](image/index/1698319832218.png)
+
+![1698319850431](image/index/1698319850431.png)
+
+surfaceMaterial属性指定路面类型，且可用于AuxiliaryTrafficArea（例如沥青，混凝土，砾石，土壤，铁路，草地）
+
+
 
 ## cityGML core model--空间概念 / 细节层次 / 特殊空间类型
 
@@ -391,6 +463,11 @@ PlaneCover 类：
 - usage
 - averageHeight
 
+
+![1698320683527](image/index/1698320683527.png)
+
+
+
 ## WaterBody
 
 界——水面 / 水表面（表示水体和大气之间的上外部界面） / 水地表（表示水体淹没底部的外部边界表面（如 DTM 和 3D 盆地的地板））
@@ -458,3 +535,82 @@ citygml -- citygml core
 ![1698070410752](image/index/1698070410752.png)
 
 ![1698109929924](image/index/1698109929924.png)
+
+
+## 基于citygml的LOD多尺度三维语义模型构建方法
+
++ LOD0 
+使用含有高程坐标的建筑物底部轮廓或屋顶边缘形成的2.5D多边形表达，将采集的建筑物轮廓矢量数据叠加到数字高程模型（DEM）。
+
++ LOD1
+使用块状对象简单表示建筑物三维模型，通过建筑物二维轮廓数据结合建筑高度简单拉伸自动生成。
+arcgis / qgis 根据高度字段拉伸形成lod1模型，利用arcgis工具箱或插件转换为citygml模型；
+也可编程读取shapefile / geojson格式矢量数据，用代码输出citygml lod1块状模型。
+
++ LOD2
+当前许 多部门已经积累了大量基于 SketchUp 和 Autodesk 3ds Max 等三维交互设计软件建立的建筑物格网MESH模型。
+几何精度较高，但缺乏语义信息。
+
+法1：计算法向量
+
+法2：基于点云数据三维重建。
+
++ LOD3
+利用FME feature manipulate engine 等空间数据软件编程实现。
+
+FME 不仅支持 SketchUp，Collada，Autodesk 3ds Max， Autodesk Revit，IFC 和 CityGML 等各类三维模型 的读写，而且还可提供要素类型过滤 (FeatureTypeFilter)、几何图形过滤(GeometryFilter)、 几何图元提取(GeometryPartExtractor)、几何类型转 换 (GeometryCoercer) 和几何属性设置
+(GeometryPropertySetter)等大量语义和几何处理函 数，有利于不同三维模型数据的快速转换。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

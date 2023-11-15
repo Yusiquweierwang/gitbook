@@ -46,6 +46,15 @@ C++标准库提供了三种智能指针类型：
 using namespace std;
 ```
 
+### c++标准库
+
+是类库和函数的集合
+
+分为**标准库函数**和**面向对象类库**
+标准库函数--I/O 、 字符串和字符处理 、 数学 、 日期和本地化 、 动态分配 、其他 、宽字符函数
+
+面向对象类库--标准 C++I/O 类 、 String 类 、 数值类 、 STL 容器类 、STL 算法 、 STL 函数对象 、 STL 迭代器 、 STL 分配器 、 本地化库 、 异常处理类 、 杂项支持库。
+
 ### std::string & std::string_view
 
 ### std::vector & 其他标准库容器
@@ -164,6 +173,17 @@ int main(){
 
 ```
 
+### 两种使用头文件的方式-<> / ""
+
+```c++
+# include <code.h>
+# include "code.h"
+```
+
+![1698579144300](image/index/1698579144300.png)
+
+### hpp / cpp
+
 **一般把函数的声明放在头文件里。
 `*.h ; *.hpp`
 把函数的实现/定义放在源文件。
@@ -192,6 +212,13 @@ g++ main.o mul.o -o mul
 //2 3
 //6
 ```
+
+### 字 / 字节 / 字长 / 位数
+
+1Byte = 8bit
+
+字：CPU 一次能处理的数据
+字长：CPU 一次能处理的二进制的位数
 
 ### errors
 
@@ -264,6 +291,7 @@ int ret = scanf("%d" , &v);
 //&v取地址
 ```
 
+![1698580507265](image/index/1698580507265.png)
 ————————分割线———————
 
 ### 为什么没有 GUI?
@@ -287,7 +315,69 @@ int main(int argc , char **argv){
 
 **每个变量声明时必须初始化变量**
 
+## 变量
+
+### 初始化和赋值
+
+初始化不是赋值。
+初始化是创建变量时赋予其一个初始值。
+赋值时把对象的当前值擦除，以一个新值替代。
+
+### 分离式编程 seperate compilation
+
+将声明和定义区分开来。
+
+declaration
+
+definition 定义--申请存储空间。
+
+**extern**
+想声明而非定义一个变量：
+
+```c
+extern int i;
+```
+
+### static
+
+用 static 修饰变量或函数时：
+
+- 局部静态变量
+- 外部静态变量/函数
+- 类内静态数据成员/成员函数（只有 c++中有）
+
+**变量只能被定义 一次，但能被多次声明**
+
 ## interger numbers
+
+### 原码 / 反码 / 补码
+
+- 原码——符号位加上真值的绝对值
+  ![1698582538958](image/index/1698582538958.png)
+
+- 反码
+  ![1698582615446](image/index/1698582615446.png)
+
+- 补码
+  ![1698582653464](image/index/1698582653464.png)
+
+**为何用原码补码反码？**
+让计算机底层设计更简单
+
+![1698630911285](image/index/1698630911285.png)
+
+### 含有无符号数的表达式
+
+![1698587537677](image/index/1698587537677.png)
+
+![1698587552165](image/index/1698587552165.png)
+
+![1698587563634](image/index/1698587563634.png)
+解决方法：用 while 语句替代 for 语句。
+![1698587728552](image/index/1698587728552.png)
+区别：可以先执行条件判断。
+
+### 溢出
 
 **overflow**
 
@@ -303,6 +393,7 @@ cout c << endl;
 _why?_
 
 **运算时一定要了解数值的取值范围**
+![1698631533842](image/index/1698631533842.png)
 
 ### different data type for integer
 
@@ -383,6 +474,23 @@ float f2 = f1 + 10;
 **inf & nan**
 无穷大和 not a number
 
+**-2.15 整数部分 / 小数部分**
+整数部分：-3
+小数部分 0.85
+![1698717127145](image/index/1698717127145.png)
+
+![1698668095032](image/index/1698668095032.png)
+
+![1698668158101](image/index/1698668158101.png)
+
+![1698668179789](image/index/1698668179789.png)
+
+整数部分 1 是固定的所以隐藏不写
+
+### 浮点数 float / double 运算精度丢失问题
+
+![1698666829083](image/index/1698666829083.png)
+
 ## arithmetic operators
 
 **constant number**
@@ -437,6 +545,12 @@ auto be =  2.3 //type of be is double
 
 - double operations is slower than float
 - lost precision
+
+### 自增 ++a / a++
+
+![1698568433214](image/index/1698568433214.png)
+
+![1698568491454](image/index/1698568491454.png)
 
 ## if statement
 
@@ -1720,3 +1834,7 @@ int main(){
 ## some Default Operations
 
 ## An example with Dynamic Memory
+
+## visual studio 中 c++
+
+软件工程中，在一个项目中只能使用一个 main()。
