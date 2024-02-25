@@ -24,7 +24,7 @@ C++泛型编程
 ### 资源和智能指针
 
 C 编程的 bug 类型之一是内存泄漏。
-泄露通常由未能为使用`new`分配的内存调用`delete`导致。
+泄露通常由未能为使用 `new`分配的内存调用 `delete`导致。
 
 C++标准库提供了三种智能指针类型：
 `std::unique_ptr`
@@ -126,7 +126,7 @@ not
 
 c/c++可直接生成可执行程序
 
-java 生成`*.class`文件，不是可执行文件。java 虚拟机去运行。
+java 生成 `*.class`文件，不是可执行文件。java 虚拟机去运行。
 
 python 是脚本语言。
 与其他语言区别：脚本语言不需要更严格的语法。
@@ -173,11 +173,41 @@ int main(){
 
 ```
 
+### 头文件 / 源文件
+
+一个头文件一般包含类、子程序、变量和其他标识符的前置声明。需要在一个以上源文件中被声明的标识符可以被放在一个头文件中，并在需要的地方包含这个头文件。
+
+`#include`**文件包含命令**，用来引入对应的头文件。
+
+**常用头文件**：
+
+```c
+#include <assert.h>    //设定插入点
+#include <ctype.h>     //字符处理
+#include <errno.h>     //定义错误码
+#include <float.h>     //浮点数处理
+#include <fstream.h>    //文件输入／输出
+#include <iomanip.h>    //参数化输入／输出
+#include <iostream.h>   //数据流输入／输出
+#include <limits.h>    //定义各种数据类型最值常量
+#include <locale.h>    //定义本地化函数
+#include <math.h>     //定义数学函数
+#include <stdio.h>     //定义输入／输出函数
+#include <stdlib.h>    //定义杂项函数及内存分配函数
+#include <string.h>    //字符串处理
+#include <strstrea.h>   //基于数组的输入／输出
+#include <time.h>     //定义关于时间的函数
+#include <wchar.h>     //宽字符处理及输入／输出
+#include <wctype.h>    //宽字符分类
+```
+
 ### 两种使用头文件的方式-<> / ""
 
 ```c++
 # include <code.h>
+//编译器在系统路径下查找头文件
 # include "code.h"
+////编译器首先在当前目录下查找头文件，若没找到，在系统路径下查找
 ```
 
 ![1698579144300](image/index/1698579144300.png)
@@ -331,12 +361,31 @@ declaration
 
 definition 定义--申请存储空间。
 
+### 常量-const
+
 **extern**
 想声明而非定义一个变量：
 
+### 外部变量修饰-extern
+
+**作用**提示编译器遇到此变量和函数时在其他模块中寻找其定义。
+
+**如何调用？**
+
+- 将变量或函数定义在头文件中；
+- 通过 `extern`调用，此时变量或函数声明在其他源文件中；
+
 ```c
 extern int i;
+extern void func();
+//必须加上修饰符类型
 ```
+
+### 作用域 / 生命周期
+
+作用域：
+global variable
+local variable
 
 ### static
 
@@ -354,10 +403,8 @@ extern int i;
 
 - 原码——符号位加上真值的绝对值
   ![1698582538958](image/index/1698582538958.png)
-
 - 反码
   ![1698582615446](image/index/1698582615446.png)
-
 - 补码
   ![1698582653464](image/index/1698582653464.png)
 
@@ -391,6 +438,8 @@ cout c << endl;
 ```
 
 _why?_
+
+### 数据类型及范围
 
 **运算时一定要了解数值的取值范围**
 ![1698631533842](image/index/1698631533842.png)
@@ -437,14 +486,14 @@ typedef char bool;
 #define false 0;
 ```
 
-- 第二种 - 引`<stdbool.h>`库
+- 第二种 - 引 `<stdbool.h>`库
 
 **size_t**库
 
 **fixed with integer types**
 (since c++11)
 
-defined in `<cstdint>
+defined in ``<cstdint>`
 int8_t
 int32_t
 uinit16_t
@@ -699,7 +748,7 @@ arr2 = arr1;//error
 **再 c++中一般没有边界检查，越界了依然会操作且没有警告！**
 ![1684307703059](image/index/1684307703059.png)
 ![1684307763471](image/index/1684307763471.png)
-**python 中`arr[-1]`是数组最后一个元素**
+**python 中 `arr[-1]`是数组最后一个元素**
 
 不进行边界检查：
 优点-程序运行块，效率高
@@ -771,7 +820,7 @@ memcpy(b , a , n * sizeof(int));
 
 一共 5 个，字符串需要一个'0'作为一个结束标志。
 
-可以使用`std::string`文本
+可以使用 `std::string`文本
 
 ```c++
 using namespace std::string_literals;
@@ -793,12 +842,22 @@ char * strncpy(char *dest , const char * src , size_t count);
 string 类也没有越界检查。
 
 - strcmp
-
 - str
+
+## 复合类型
+
+复合类型 compound type 指基于其他类型定义的类型。
+
+- 结构体
+- 联合体
+- 类
+- 枚举
+- 引用
+- 指针
 
 ## structures , unions and emenurations 结构体，联合体，枚举类型
 
-### struct
+## 结构体-struct
 
 - a struct is a type consisting of a sequence of members.
 - the members are allocated in an ordered sequence.
@@ -815,94 +874,124 @@ strcpy(stu.name , "yu");
 stu.born = 2000;
 stu.male = true;
 
-
-
 ```
 
-![1684381037471](image/index/1684381037471.png)
+### 结构体数组
 
-**struct padding**
-**结构体需要对齐！**
+```c++
+
+struct Student{
+    string name;
+    int age;
+    int score;
+};
+
+//创建结构体数组
+struct Student stu[3] = {
+    {"张三" , 32 , 100},
+    {"里斯" , 34 , 89},
+    {"王五" , 32 , 98}
+};
+//给结构体元素赋值
+stu[2].name = "里忒";
+
+//遍历结构体数组
+for(int i = 0; i < 3; i++){
+    cout << "姓名" < stu[i].name <<endl;
+}
+```
+
+### 结构体指针
+
+```c++
+struct Student* p = &stu;
+//struct 也可以不写
+Student* p = &stu;
+
+//访问
+p->name;
+(*p).name
+```
+
+### 嵌套结构体
+
+![1701262248539](image/index/1701262248539.png)
+
+![1701262217904](image/index/1701262217904.png)
+
+![1701262295029](image/index/1701262295029.png)
+
+### 结构体内存分配
+
+结构体对齐！--struct padding !
+寻找能被整除的位置然后填充。
+![1701256103187](image/index/1701256103187.png)
+![1701256133978](image/index/1701256133978.png)
+
+所以上结构体需要占用 40 个字节。
 
 ![1684382071511](image/index/1684382071511.png)
 
 一般系统 4 个字对齐
 
-### union
+### 字节对齐
 
-共享内存
+32 位系统默认 4 字节对齐。
+（寻址空间：4 个字节）
 
-the storage of members overlaps/shared:
+### 结构体变量 / 数组 / 指针 作为函数参数调用
 
-```c
-union ipv4address{
-    std::uint32_t address32;
-    std::uint8_t address8[4];
-
-};
-
-//sizeof(union ipv4address) is 4;
-```
-
-**互斥赋值**
-在任意时刻，联合中只能有一个数据成员可以有值，当给联合中某个成员赋值之后，该联合中其他成员就编程未定义状态了。
-
-**在 C++17 后，`std::variant`class 是 union 的一个类型安全替代项。**
-
-所有成员都共享同一个内存位置。
-
-### typedef
-
-- can create an alias for a type
-  创建一个类型的别名
-
-- typedef struct
-  定义 结构名。
-
-```c++
-typedef 结构名{
-
-} 对象名;
-```
-
-- 为复杂的声明定义一个简单别名
-
-```c++
-typedef int myint;
-
-typedef unsigned char vec3b[3];
-
-myinit num = 32;
-
-unsigned char color[3];
-vec3b color = {255 , 255 , 255};
-```
-
-在一些系统头文件中经常见到。
-![1684398920944](image/index/1684398920944.png)
-
-## pointers
+结构体数组和结构体指针作为参数传递时可以直接修改原始的值；结构体变量作为函数参数传递时，修改不会影响原始的值。
 
 ```c
-int num = 10;
-int * p1 = null,* p2 = null;
-//declaration two pointers
-p1 = &num;
-//take the address of num , assign to p1
-p2 = &num;
-//take the address of num , assign to p2
-
-*p1 = 20;
-//assign 20 to num
-*p2 = 30;
-//assign 30 to num
+struct stu{
+    long int num;
+    float socre;
+}
 ```
 
-![1684399948935](image/index/1684399948935.png)
+- **结构体作为函数的参数，修改之后的成员值不能返回到主调函数**
 
-![1684400136274](image/index/1684400136274.png)
+```c++
+void func(struct stu t){
+    t.num = 2002;
+    t.score = 81.0;
+}
+```
 
-### structure member accessing
+- **结构体数组作为函数的参数，修改后的成员值能返回到主调函数**
+
+```c++
+void func(struct stu t[]){
+    t[0].num = 323440;
+    t[0].score = 23.0;
+    t[1].num = 3324332;
+    t[1].score = 34.0;
+}
+```
+
+- **结构体指针变量作为函数的参数，修改后的结构体成员的值能返回到主调函数**
+  将函数中的形参改为指针，可以减少内存空间（4 或 8 个字节），而且不会像值传递一样复制新的副本出来；
+
+```c++
+void func(struct* t){
+    t->num = 23423;
+    (*t).score = 23.0;
+}
+```
+
+### 结构体中 const
+
+加入 const 后，一旦又修改的操作就会报错，可以防止误操作。
+
+```c++
+void func(const struct* t){
+    t->num = 23423;
+    (*t).score = 23.0;
+}
+```
+
+### 访问结构体成员-structure member accessing
 
 - p-> member
 - (\*p).member
@@ -961,27 +1050,124 @@ int main()
 
 ![1684401377533](image/index/1684401377533.png)
 
-### pointer-pointer
+### typedef
+
+- can create an alias for a type
+  创建一个类型的别名
+- typedef struct
+  定义 结构名。
+
+```c++
+typedef 结构名{
+
+} 对象名;
+```
+
+- 为复杂的声明定义一个简单别名
+
+```c++
+typedef int myint;
+
+typedef unsigned char vec3b[3];
+
+myinit num = 32;
+
+unsigned char color[3];
+vec3b color = {255 , 255 , 255};
+```
+
+在一些系统头文件中经常见到。
+![1684398920944](image/index/1684398920944.png)
+
+## 指针-pointers
+
+利用解引用符来访问对象：
+
+```c
+int ival = 43;
+int* p = &ival;
+
+cout << *p;  //43
+```
+
+![1700751040121](image/index/1700751040121.png)
+![1700751074704](image/index/1700751074704.png)'
+如上图中目标'
+
+此时若指针指向的 client.exe 改变位置，快捷方式仍能打开；
+即：
+**指针指向的内容，内容可以改变，但指针不会变**
+
+![1700755345550](image/index/1700755345550.png)
+![1700756257960](image/index/1700756257960.png)
+
+```c
+int num = 10;
+int * p1 = null,* p2 = null;
+//declaration two pointers
+p1 = #
+//take the address of num , assign to p1
+p2 = #
+//take the address of num , assign to p2
+
+*p1 = 20;
+//assign 20 to num
+*p2 = 30;
+//assign 30 to num
+```
+
+![1684399948935](image/index/1684399948935.png)
+
+![1684400136274](image/index/1684400136274.png)
+
+### 空指针——NULL pointer
+
+### 野指针
+
+![1700751687727](image/index/1700751687727.png)
+
+### 指向指针的指针-pointer-pointer（套娃）
 
 ![1684402164756](image/index/1684402164756.png)
 
 ![1684402179574](image/index/1684402179574.png)
 
-### constant pointers 常熟指针
+### 常数指针-constant pointer
+
+![1700903582068](image/index/1700903582068.png)
 
 ```c++
 int num = 1;
 int another = 2;
 //cannot change the value the p1 points to through p1
 //指针本身地址不能修改，但是可以直接修改值修改
-const int * p1 = &num;
+const int * p1 = #
 * p1 = 3;//error
 num = 3;//okey
 ```
 
-### pointers and arrays
+**指针常量 / 常量指针**
+
+```c++
+int * const p =  &a;
+//p是指针常量
+//即指向的右边的地址不能修改
+
+const int *p = &a;
+//p是常量指针
+//即指向的右边的值不能修改
+```
+
+**建议**
+![1700636380193](image/index/1700636380193.png)
+
+### 指针和数组-pointers and arrays
 
 - use & operator to get the addresses of elements
+
+![1700753635521](image/index/1700753635521.png)
+
+//**保存地址的时候可以不用写&符,此时保存数组首个元素地址**
 
 ```c++
 #include <iostream>
@@ -1012,7 +1198,7 @@ int main()
     printf("students = %p\n", students);
     printf("&students[0] = %p\n", &students[0]);
 
-    Student * p = students;
+    Student * p = &students;
     p[0].born = 2000;
     p[1].born = 2001;
     p[2].born = 2002;
@@ -1028,6 +1214,12 @@ int main()
 16 进制的每 6 个代表 128
 
 ### 数组指针和指针数组
+
+**数组指针：数组的指针
+指针指向数组**
+
+**指针数组：
+指针组成的数组**
 
 **数组指针**
 形式：
@@ -1046,7 +1238,28 @@ int *(p[3])
 //p是一个数组，数组内有3个元素，每个元素都是指针，指向整型数组
 ```
 
-### function-pointers
+### 函数指针-function-pointers
+
+和普通函数区别：可以动态的确定要调用的函数，而普通函数是静态确定的。
+（普通函数是在编译时确定的，函数名直接代表函数的入口地址。在程序执行时，调用普通函数时，编译器会将函数名替换为函数的入口地址，这是静态确定的过程。
+
+而函数指针允许在运行时动态地确定要调用的函数。通过函数指针，我们可以根据需要在运行时指定要调用的函数，从而实现动态调用的功能。）
+
+**函数指针：
+函数的指针--定义一个指向函数的指针变量**
+
+```c
+int (*p)(int x , int y);
+//参数名可以去掉，且通常都去掉，以此p可以保存函数类型为两个整形参数，返回值是整形的函数地址了
+
+int (*p)(int , int);
+```
+
+例：
+![1700646495795](image/index/1700646495795.png)
+![1700646436765](image/index/1700646436765.png)
+上：
+函数名保存了内存地址，也存储了函数开始执行的位置
 
 函数三要素：
 
@@ -1056,8 +1269,10 @@ int *(p[3])
 
 ```c
 void *func(void)
-//返回值 函数名 参数
+/函数名 参数
 ```
+
+### 多级指针--（套娃）
 
 ### 指针的代数操作 pointer arithmetic
 
@@ -1067,26 +1282,65 @@ int * p = nums + 1;
 //p此时是nums[1]地址，即偏倚了一个元素
 p++
 //p[2]地址，真实物理地址加8
-
-
 ```
 
-### difference between a pointer and an array
+### 回调函数-函数指针常见用途
 
-数组是一个常量指针
+**引言**
+![1700903949080](image/index/1700903949080.png)
+
+**应用场合**
+
+- 事件驱动编程
+- 异步编程
+- 定时器
+- 自定义排序
+- 遍历
+- 线程或任务回调
+- 中间件或狗子
+- 错误处理
+- 数据库查询
+- 动画渲染或游戏事件发生
+
+### 指针和数组区别-difference between a pointer and an array
+
+数组是一个常量指针，数组名代表数组的首地址。
 
 ```c++
 int numbers[4] = {0, 1, 2, 3};
 int * p = numbers;
-cout << sizeof(numbers) << endl; //4*sizeof(int)
-cout << sizeof(p) << endl; // 4 or 8
+cout << sizeof(numbers) << endl; //4*sizeof(int)：16
+cout << sizeof(p) << endl; // 4 or 8：32位电脑4，64位电脑8;
 cout << sizeof(double * ) << endl; // 4 or 8
 ```
 
-## allocate memory:C style
+sizeof
+![1700665133242](image/index/1700665133242.png)
+
+## 分配内存—C 风格-allocate memory:C style
+
+过去内存分配：
+![1700756885818](image/index/1700756885818.png)
+![1700757012602](image/index/1700757012602.png)
+![1700757210602](image/index/1700757210602.png)
+
+常见内存分布图：
+**图 1：**
+![1700666608543](image/index/1700666608543.png)
+
+- 栈：系统自动分配的空间。向下增长。(const 在栈里)
+- 堆：使用动态内存分配的方式可以申请堆空间，用完需要手动释放。
+- 全局区：全局变量、静态变量。
+- 常量区（数字、字符等常量）。
+- 代码区：存放可执行代码，避免频繁读盘。
 
 大部分情况下，指针指向的内存是动态存储的。
 
+**当内存开辟空间时，内存分配从高位到地位**
+
+**当往内存存储数据，从低位往高位存储**
+
+**图 2：**
 ![1684647755421](image/index/1684647755421.png)
 
 五段：
@@ -1097,11 +1351,22 @@ cout << sizeof(double * ) << endl; // 4 or 8
 - heap 动态申请内存放堆里
 - stack 临时变量放栈里
 
+### malloc()
+
+**工作机制**
+![1701086296048](image/index/1701086296048.png)
+
 malloc 最后一位要对齐
+
+![1701085411582](image/index/1701085411582.png)
+临时变量栈中分配地址越来越小，
+动态分配堆中分配地址越来越大。
+
+（要申请大内存时，用堆存储）
 
 ### memory allocation
 
-再 c 语言中，用 size_t 表达一个最大的大小。
+再 c 语言中，用 size_t 表达**C 中任何对象所能达到的最大长度。它是无符号整数**
 
 ```c
 void* malloc(size_t size)
@@ -1118,6 +1383,17 @@ int * p1 = (int*) malloc(3);
 
 ```c
 void free(void * ptr);
+```
+
+**注:释放的是指针指向的内存空间而不是指针本身，释放后指针仍存在，可以被赋值**：
+
+```c
+int* p = (int*)malloc(sizeof(int));
+
+free(p);
+
+int a = 10;
+p = &a; //指针仍然存在且可以被赋值
 ```
 
 **在 c 和 c++中申请的内存必须手动来释放，因为 c/c++中没有内存回收机制**
@@ -1137,12 +1413,23 @@ for(int i = 0; i < 1024; i++){
     p = (int*) malloc(1024 * 1024 * 1024)
 }
 printf("end\n");
-
+//此时需要有1TB内存程序才不会崩
 //在一些系统里会崩，但在windows里作为无效内存申请没有崩掉
 
 ```
 
-## memory allocation-CPP
+## 内存分配—CPP-memory allocation-CPP
+
+### new
+
+![1701086411790](image/index/1701086411790.png)
+![1701761512201](image/index/1701761512201.png)
+![1701087322111](image/index/1701087322111.png)
+
+### delete
+
+释放指针 p 指向的内存，p 必须是 new 操作的返回值
+![1701087394006](image/index/1701087394006.png)
 
 ### operator new and new[]
 
@@ -1150,11 +1437,30 @@ printf("end\n");
 
 **和 malloc()区别：**
 
-- new[] 是 c++中的运算符，malloc()是 c 中的运算符；
-- new[] 会调用对象的构造函数，malloc()只是简单地分配内存，不会调用构造函数；
-- new[] 可以自动计算所需的内存大小，malloc()需要手动指定所需的内存大小；
-- new[] 返回的指针是类型安全的， malloc()返回的指针需进行强制类型转换；
+- new[] 是 c++中的运算符，需要编译器支持；malloc()是 c 中的运算符，是库函数，需要头文件支持；
+- new[] 会调用对象的构造函数 `operator new`（通常底层使用 malloc 实现），delete 先调用析构函数，然后调用 operator delete 函数释放内粗（通常底层使用 free 实现）；malloc()/free()是库函数，只是简单地分配内存，不会调用构造函数和析构函数；
+- new[] 可以自动计算所需的内存大小，无需指定内存块的大小；malloc()需要显式指定所需的内存大小；
+- new[] 返回的指针是类型安全的， malloc()返回的指针若内存分配成功返回 `void*`，需要通过强制类型转换将 `void*`指针转换为需要的类型；
+-
 - new[] 可以抛出异常，malloc()不能；
+
+**new 关键字调用关系**：
+
+```c++
+A *pa = new A(); // 操作符·
+    operator new(); //函数
+    malloc(); //（买地建房）C风格函数分配内存
+A::A();       //有构造函数就调用构造函数
+```
+
+**delete 关键字调用关系**
+
+```c++
+delete pa;
+    A::~A(); //如果有析构函数，先调用析构函数
+    operator delete(); //函数
+    free(); //C风格函数释放内存
+```
 
 ```cpp
 //allocate an int , default initializer(do nothing)
@@ -1169,7 +1475,7 @@ int *p = new int[16]{1,2,3}
 //allocate a Student object , default initializer
 Student * ps1 = new Student[16];
 
-//allocate memory for 16 Student objects, the fist two are
+//
 Student * ps1 = new Student[16]{{"li" , 2000 ,1},{"yu" , 1888 , 0}};
 
 ```
@@ -1184,7 +1490,7 @@ delete ps1;
 //释放所有函数，应该常用此种
 ```
 
-## memory leak
+## 内存泄漏-memory leak
 
 3 中情况：
 
@@ -1222,7 +1528,7 @@ free(n -> np);
 free(p);
 ```
 
-### 返回值的不正确处理
+### ？返回值的不正确处理
 
 ```c
 char *f(){
@@ -1239,9 +1545,10 @@ f1 中对 f()的调用未处理该内存位置的返回地址，结果将导致 
 
 ### how to avoid the memory leak?
 
-## functions
+## 函数-functions
 
 **求出矩阵最大数**
+引例：
 
 ```cpp
 struct Matrix
@@ -1250,6 +1557,7 @@ struct Matrix
     int cols;
     float * pData;
 }
+
 
 Matrix matA;
 float maxa = FLT_MIN;
@@ -1262,48 +1570,160 @@ for(int r = 0;r < matA.rows; r++)
 
 ![1684914333055](image/index/1684914333055.png)
 
-### how are function called ?
+### 注意事项
 
-- store the address the program returns after the function call
-- store the registers
-- store the local variables
-- //do some work of the called functionn
-- restore the registers
-- restore the local variables
-
-### 参数 parameters
-
-- pass by value
-- pass by reference
+### - **1.C 中，不支持嵌套定义函数**
 
 ```c
-int foo(int x){
-    // x is a copy
-    x += 10;
-    return x;
+void func1(){
+    void func2(){
+        //...
+    }
 }
+```
+
+### 可以通过使用函数指针或 lambda 表达式模拟实现类似功能
+
+````C++
+#include <iostream>
+
+void outerFunction(){
+    std::cout << "this is the outer function" << std::endl
+
+    //定义嵌套函数
+    void nestedFunction(){
+        std::cout << "this is the nested function" << std::endl;
+    }
+
+    //定义函数指针并调用嵌套函数
+    void (*nestedPtr)() = nestedFunction;
+    nestedPtr();
+}
+
 int main(){
-    int num1 = 20;
-    int num2 = foo(num1);
-
+    outerFunction();
     return 0;
 }
-```
+
+**或用lambda**
+
+
+
+
+### - **2.c/c++中，不支持函数重载**
+  同一个程序中函数不能重名，函数名用来唯一标识一个函数
 
 ```c
-int foo(int * P){
-    int num1 = 20;
-    int * p = &num1;
-    int num2 = foo(p);
-    return 0;
+int add(int i , int j){
+    return i + j;
+}
+
+int add(int i , int j, int k){
+    return i + j + k;
+}
+````
+
+### main()函数
+
+- main()是可以带参数的：
+
+形参 argc，argument count，标识传给程序的参数个数；
+argc[],指向字符串的指针数组。
+
+```c
+int main(int argc , char *agv[]){
+
 }
 ```
+
+### exit()
+
+原型在 stdlib.h
+
+```c
+//程序运行成功相当于 exit(0)
+exit(EXIT_SUCCESS);
+
+//程序异常中止相当于 exit(1)
+exit(EXIT_FAILURE);
+```
+
+main()函数结束时也会隐式调用 exit(),等价于 return。
+
+**c 还提供了 atexit()**
+
+### 函数原型
+
+函数必须先声明，再使用
+![1701102325579](image/index/1701102325579.png)
+![1701102431326](image/index/1701102431326.png)
+
+### 函数内变量的传递机制
+
+![1701103009791](image/index/1701103009791.png)
+
+![1701103108009](image/index/1701103108009.png)
+![1701103144100](image/index/1701103144100.png)
+
+![1701103232251](image/index/1701103232251.png)
 
 ![1684913584625](image/index/1684913584625.png)
 
 ![1684913621301](image/index/1684913621301.png)
 
-### pass by reference
+### 参数传递机制 - 传值
+
+- 传值 pass by value
+- 传递引用 pass by reference
+
+**实参值赋值给被调用函数的形参**
+
+**如果在函数内部修改形参的值，不会影响函数外部实参的值-->单向传递**
+
+对应的数据类型：基本数据类型（整形/浮点型/字符型）/ 结构体 / 共用体 / 枚举类型
+
+![1701146547237](image/index/1701146547237.png)
+
+### 参数传递机制 - 传址
+
+又称指针传递，把实参地址常量进行赋值，传送给形参。
+
+**默认传址的类型：指针 / 数组**
+
+当指针作为函数形参时，实参传给形参的是地址，**双向 传递**
+
+![1701146220001](image/index/1701146220001.png)
+右边错误，因为 `*temp`没有初始化。
+
+![1701146678391](image/index/1701146678391.png)
+
+### 数组作为形参
+
+**数组名本身代表 数组首地址**，传数组本质就是传地址。
+
+![1701147362903](image/index/1701147362903.png)
+
+由于数组实际是以指针的形式传递给函数，因此函数一开始并不知道数组的确切尺寸，有 3 种解决 方法：
+
+- **显式传递一个表示数组大小的形参**
+  专门定义一个表示数组大小的形参
+  ![1701147586755](image/index/1701147586755.png)
+- **使用标记指定数组长度**
+- **使用标准库函数 `iterator.h`中的 `begin / end`函数**
+  begin(array)返回函数首指针,end(array)返回函数尾指针。
+  ![1701147723301](image/index/1701147723301.png)
+
+### 字符串作为形参
+
+也是传址。
+![1701148066450](image/index/1701148066450.png)
+
+## 引用-reference
+
+引用就是某一变量（目标）的另一个别名，即某已存在变量的另一个名字。
+**对引用的操作和对变量名的直接操作完全一样**
+**引用与指针**：
+![1701179339646](image/index/1701179339646.png)
 
 - reference are in C++,not in C
 - a reference is an alias to an already-existing variable/object.
@@ -1316,28 +1736,44 @@ int & num_ref = num;
 
 ![1684915506618](image/index/1684915506618.png)
 
-### reference in C++
+### C++中的引用-reference in C++
 
-```cpp
-struct Matrix
-{
-    int rows ;
-    int cols;
-    float * pData;
+- **传入数值型变量**
+  ![1701226853028](image/index/1701226853028.png)
+- **传入结构体变量**
+
+```c
+void insert(SqList &L, int x){
+    //修改L内部data[]数组的内容，则认为修改了L，因此需要传入引用型L
+}
+```
+
+- **传入指针型变量**
+  `int* &x`表示引用指向整数的指针。
+
+```c
+void f(int* &x){
+    x++; //将指针x向后移一个整数的大小
 }
 
-Matrix matA = {3,4};
-matA.pData = new float[matA.rows * matA.cols]{};
-Matrix & matA_ref = matA;
-Matrix & pMatA = &matA;
 ```
+
+例 1：
+![1701241780729](image/index/1701241780729.png)
+
+例 2：
+将两个链表合并成一个 C，此时 C 发生了改变，需要引用型。A/B 没有改变，不需要引用型。
+![1701241856411](image/index/1701241856411.png)
 
 ![1684915864733](image/index/1684915864733.png)
 
 **引用在声明时一定要初始化**
+`类型标识符 &引用名 = 目标变量名`
 
 ```cpp
 int & num_ref;//error
+int & num_ref = num; //corect
+
 ```
 
 **references are much safer**
@@ -1361,7 +1797,11 @@ bool matrix_add(const Matrix & matA , const Matrix & matB , Matrix & matC){
 }
 ```
 
-### Inline functions
+### 引用与指针
+
+![1701226396583](image/index/1701226396583.png)
+
+### 内联函数-Inline functions
 
 - 当一个函数被声明为 inline 时，编译器会尝试将该函数的代码直接插入到调用该函数的地方，而不是像普通函数那样在调用时跳转到函数代码所在的地址。这样可以减少函数调用的开销，提高程序的执行效率。
 - 但是，inline 函数的定义必须放在头文件中，因为编译器需要在调用该函数的地方看到函数的定义才能将其插入到代码中。
@@ -1402,9 +1842,46 @@ int main(){
 
 **默认参数必须设在尾部**
 
-### 函数承载 function overload
+### 函数重载 function overload
 
 在同一个作用域内，定义多个同名函数，但他们的参数列表（包括参数个数/类型/顺序）不同。这样在调用这些同名函数时，编译器会根据实际传入的参数类型/个数/顺序来选择最匹配的函数进行调用。
+
+**函数重载的满足条件：**
+
+- 同一个作用域下
+- 函数名称相同
+- 函数参数类型不同，或者个数不同，或者顺序不同。
+
+**注 1：返回值不能作为函数重载的条件**
+
+```C
+void func(double a , int b);
+
+int func(double a , int b);
+```
+
+**注 2：引用作为重载条件**
+
+```c
+void fun(int &a);
+
+void fun(const int &a);
+
+int main(){
+    int a = 10;
+    fun(a);//会调用fun(int &a)，因为a是一个变量
+
+    //a = 10;
+    //fun(a);
+    //会调用const int &a，引用必须是一个合法的空间，所以不是int &a;
+    //又因为此时编译器会优化，创建一个临时的数据，让a指向这个临时的空间，此时加上const 合法
+}
+
+//此时类型不同，
+```
+
+**注 3：函数重载碰到函数默认参数**
+当函数重载碰到默认参数，会出现二义性；
 
 ```c
 #include <iostream>
@@ -1424,6 +1901,12 @@ int main(){
     return 0;
 }
 
+```
+
+### 运算符重载
+
+```c
+Box operator+(const Box&);
 ```
 
 ### 函数模板 function templates
@@ -1465,7 +1948,6 @@ print(10);
 ```
 
 - **显式实例化只能在全局作用域中进行，而不能在函数内部进行。**
-
 - **显式实例化不会覆盖隐式实例化，即如果已存在一个隐式实例化函数，再进行显式实例化时，不会生成新的函数实例**
 
 ```cpp
@@ -1514,15 +1996,11 @@ norm_ptr = &norm_l2;
 
 ## 递归函数 Recursive functions
 
-a simple examle
-
-```cpp
-int main(){
-    div2(1024.);//call the recursive function
-    return 0;
-}
-
-```
+- 递归函数包含了一种 `隐式的循环`
+- 递归函数会重复执行某段代码，但这种重复执行无需循环控制。
+- 递归一定要向 `已知方向`递归，否则就变成了无穷递归，`死循环->内存溢出`。
+- 直接递归
+- 间接递归
 
 ---
 
@@ -1578,20 +2056,44 @@ class CV_EXPORTS Mat
 
 ---
 
-## Classes and Objects
+## 类和对象-Classes and Objects
+
+类定义：
+![1701259374219](image/index/1701259374219.png)
+
+**访问权限**
+![1701265918848](image/index/1701265918848.png)
 
 ![1685068295358](image/index/1685068295358.png)
 
 - 成员函数可以放在类的声明里面
-
 - 可以把成员函数的声明放在类的声明里，定义放在函数体的外面。
   ![1685068506619](image/index/1685068506619.png)
 
 建议简单函数/适合 inline 函数放在类的内部，打印操作等复杂函数放在类的外部。
 
-**用尖括号`<>`则从编译器指定 include 路径找，用双引号`""`则不仅从编译器找，还从当前目录下找。**
+### 空对象
+
+空对象占用内存空间-1；
+C++编译器会给每个空对象分配一个字节空间，是为了区分空对象占内存的位置。（每一个对象都应该有一个独一无二的内存空间，不能和别人占同一内存地址）
+
+### struct 和 class 区别
+
+唯一区别：**默认的访问权限不同**
+
+- struct 默认权限公共
+- class 默认权限 私有
+
+## 对象的初始化和处理
 
 ### **构造函数 constructors**
+
+`类名(){}`
+
+- 1.构造函数，没有返回值也不写 void
+- 2.函数名称和类名相同
+- 3.构造函数可以有参数，因此可以发生重载
+- 4.程序在调用对象时自动调用构造，无需手动调用，且只会调用一次
 
 对比：c 结构体再分配内存时就是分配内存，
 c++创建对象时，分配内存和调用 constructor。
@@ -1623,17 +2125,314 @@ class Student {
 }
 ```
 
+### 构造函数分类和调用
+
+**按照参数构造**：无参构造（默认构造） / 有参构造
+**按照类型分类**：普通构造 / 拷贝构造
+
+**拷贝构造函数**
+`const 类 &p`
+
+- 自定义拷贝构造函数
+
+```c
+//假设已经定义了一个类Box，通过一下方式拷贝欸定义函数
+Box (const Box &p){
+    age = p.age;
+    name = p.name;
+}
+//调用拷贝函数
+Box b3(b2);//传入参数就是一个对象b2
+```
+
+**调用构造 函数**：
+
+- 括号法
+- 显式法
+- 隐式转换法
+
+- 括号法
+  注意：调用默认构造函数时，不要加()
+  ![1701312491710](image/index/1701312491710.png)
+
+```c++
+Box b1;//调用无参构造函数,不要加()
+Box b2(10);//有参构造函数
+Box b3(b2);//调用拷贝函数
+```
+
+- 显式法调用构造函数（实例化）
+
+```c
+//假设已经定义好了类Box，则实例化对象可以用显式法
+Box b1 = Box(10 , "Chung");//调用有参构造函数
+Box b2 = Box();//调用无参构造函数
+Box b3 = Box(b1);//调用拷贝函数
+
+Box(10);//匿名对象，当前行执行结束后，系统会立即回收掉匿名对象，尽量不要用。
+
+
+```
+
+- 隐式法调用构造函数（实例化）
+  **禁止隐式法调用构造函数可在构造函数定义前加上：`explicit`**
+
+```c
+//假设已定义好类Box，则调用隐式法实例化对象有三种情况：
+Box b1 = {10 , "Chung"};//调用有参构造函数
+Box b2 = b1;//调用拷贝函数
+
+//注意：隐式法无法调用无参构造函数，即不能写成：
+Box b3 = {};
+```
+
+### 构造函数重载
+
+### 拷贝构造函数调用时机
+
+- 使用一个已经创建完毕的对象初始化一个新对象
+
+```c++
+Person p1(20);
+p2(p1);
+```
+
+- 值传递的方式给函数参数传值
+
+```c++
+void doWork(Person p){
+
+}
+
+void test01(){
+    Person p;
+    doWork(p);
+}
+```
+
+- 值方式返回局部对象
+
+### 构造函数调用规则
+
+C++默认情况下会给一个类添加 3 个函数：默认构造函数/默认析构函数/默认拷贝函数
+即：
+默认构造（空实现）
+析构函数（空实现）
+拷贝构造（值拷贝）
+
+**构造函数调用规则：**
+若用户定义有参构造函数，c++不再提供默认无参构造，但会提供默认拷贝构造。
+若用户定义拷贝构造函数，c++不会再提供其他构造函数。
+
 ### **析构函数**
 
-是一个成员函数，在**对象超出范围或通过调用`delete`显示销毁对象**时，会自动调用析构函数。
+是一个成员函数，在**对象超出范围或通过调用 `delete`显示销毁对象**时，会自动调用析构函数。有助于在跳出程序（如关闭文件、释放内存）前释放资源。
 
-析构函数具有和类相同的名称
+- 1.析构函数，没有返回值也不写 void
+- 2.函数名称和类名相同，前面加~
+- 3.析构函数不可以有参数，因此不可以发生重载
+- 4.程序在对象销毁时自动调用构造，无需手动调用，且只会调用一次
 
-当对象的生命期 结束时，会自动执行析构函数。
+**析构的顺序**：
+当对象超出范围或被删除时，完整析构中的事件序列： 1.将调用该类的析构函数，且会执行该析构函数的主体。 2.按照非静态成员对象的析构函数在类声明中的显示顺序的**相反顺序**调用这些函数。 用于这些成员的构造的可选成员初始化列表不影响构造或析构的顺序。 3.非虚拟基类的析构函数以声明的相反顺序被调用。 4.虚拟基类的析构函数以声明的相反顺序被调用。
 
-无返回类型
+### 深拷贝和浅拷贝
 
-## this_pointer
+![1701485913806](image/index/1701485913806.png)
+
+解决：深拷贝
+
+```cpp
+
+Person(const Person &p){
+    cout << "Person拷贝构造函数的调用" << endl;
+    //浅拷贝操作
+    //m_Height = p.Height;
+
+    //深拷贝操作
+    m_Height  = new int(*p.m_Height);
+}
+
+```
+
+### 初始化列表
+
+```cpp
+//传统方式初始化
+Person(int a, int b, int c){
+    m_a = a;
+    m_b = b;
+    m_c = c;
+}
+
+//初始化列表初始化
+Person(int a, int b, int c):m_a(a), m_b(b), m_c(c){
+
+}
+```
+
+### 类对象作为其它类的成员变量
+
+```cpp
+#include "stdio.h"
+#include <iostream>
+#include <string>
+using namespace std;
+
+
+//手机类
+class Phone {
+public:
+	//手机初始化时传入名称
+	Phone(string pName) {
+		m_PName = pName;
+		cout << "Phone构造函数调用" << endl;
+	};
+	~Phone() {
+		cout << "Phone析构函数调用" << endl;
+	}
+
+	string m_PName;
+};
+
+//人类
+class Person {
+public:
+	Person(string name, string pName):m_Name(name),m_Phone(pName) {
+		cout << "Person构造函数调用" << endl;
+	};
+	~Person() {
+		cout << "Person析构函数调用" << endl;
+	};
+	//姓名
+	string m_Name;
+	//手机
+	Phone m_Phone;
+};
+
+
+void test() {
+	Person p("yu", "huawei");
+	cout << p.m_Name << "拿着" << p.m_Phone.m_PName << endl;
+
+}
+
+int main() {
+	test();
+}
+
+```
+
+![1701505883168](image/index/1701505883168.png)
+上例代码中：
+`Phone m_Phone = pName`
+隐式转换法
+
+**当其他类的对象作为本类成员，构造的时候先构造其他类对象，再构造自身；**
+
+\*\*析构顺序，
+
+### 继承
+
+`class  子类 : 继承方式 父类`
+
+```c++
+class Animal{
+    //eat()
+    //sleep()
+};
+
+//派生类
+class Dog : public Animal{
+    //bark() 函数
+}
+```
+
+### 继承类型
+
+- 公有继承 public
+- 保护继承 protected
+- 私有继承 private
+
+![1701701489824](image/index/1701701489824.png)
+
+```c++
+#include <iostream>
+#include "stdio.h"
+
+
+using namespace std;
+
+class Shape {
+public:
+	void setArg(int w , int h);
+
+protected:
+	int width;
+	int height;
+
+};
+
+void  Shape::setArg(int w, int h) {
+	this->width = w;
+	this->height = h;
+}
+
+//派生类
+class Rectangle :public Shape {
+public:
+	int getArea() {
+		return (width * height);
+	}
+};
+
+
+int main(void) {
+	Rectangle Rect;
+
+	Rect.setArg(3, 5);
+
+	//输出对象的面积;
+	cout << "total area:" << Rect.getArea() << endl;
+
+	return 0;
+}
+```
+
+上中不能写成如下形式：
+![1701432541605](image/index/1701432541605.png)
+因为 width / height 会被重定义为局部变量，而不是被赋予给类的成员变量。
+解决：在 Shape 类的 setArg 函数中使用 this 指针来指向类的成员变量：
+![1701432647740](image/index/1701432647740.png)
+
+**多继承**
+一个子类可以有多个父类
+
+![1701430709079](image/index/1701430709079.png)
+
+一个派生类继承所有基类方法，但下面情况除外：
+
+- 基类的构造函数、析构函数和拷贝析构函数；
+- 基类的重载运算符
+- 基类的友元函数。
+
+父类中所有非静态成员都会被子类继承下去
+父类中私有成员属性 是被编译器隐藏了，虽访问不到，但确实被继承下去了。
+
+**可以利用开发人员命令提示工具查看对象模型**
+
+## 多态
+
+调用成员函数时，会根据调用函数的对象的类型执行不同的函数。
+
+## this 指针-this_pointer
+
+this 指针指向被调用的成员函数所属的对象。
+
+作用：
+
+- 当形参和成员变量同名时，可用 this 指针来区分（解决名称冲突）。
+- 在类的非静态成员函数中返回对象本身可使用`return* this`。
 
 ![1685242227215](image/index/1685242227215.png)
 
@@ -1666,9 +2465,12 @@ int main(){
 
 **为了避免和局部变量名冲突，建议在成员函数中始终使用 this 指针来引用成员变量**
 
----
+- **`return *this`返回对象**
 
----
+### 空指针调用 成员函数
+
+如果空指针调用普通成员函数，看该函数体中是否使用到了 this 指针（是否访问非静态成员变量）。如果使用到了 this 指针，程序会崩溃；如果没有使用到 this 指针，程序不会崩溃。当然，如果访问静态成员变量，是不会使用到 this 指针的。
+![1701521133270](image/index/1701521133270.png)
 
 ## const & static variables
 
@@ -1698,7 +2500,35 @@ const * int p_int;
 
 ### 静态变量
 
+静态成员就是在成员变量和成员函数前加上关键字 static。
+
+静态成员分类：
+
+- 静态成员变量
+  - 所有对象共享同一份数据
+  - 在编译阶段分配内存
+  - 类内声明，类外初始化
+- 静态成员函数
+  - 所有对象共享同一个函数
+  - 静态成员函数只能访问静态成员变量
+
+**静态变量**
 在程序运行期间只初始化一次的变量，存储在静态区域。
+
+**因为静态成员不属于某个对象上，所有对象都共享同一份数据，所以静态成员变量有两种访问方式：**
+
+- 通过对象进行访问
+
+```cpp
+Person p;
+cout << p.static_a << endl;
+```
+
+- 通过类名进行访问
+
+```cpp
+cout << P::static_a << endl;
+```
 
 - **可在函数内部或类中声明静态变量。**
 
@@ -1717,10 +2547,12 @@ void myFunction(){
 class MyClass{
     public:
         static int count;
+        //类内声明
 }
 
 int MyClass::count  = 0;
 //静态变量的初始化
+//类外初始化
 
 int main(){
     MyClass obj1 , obj2;
@@ -1729,14 +2561,28 @@ int main(){
     cout << "count" << obj1.count << endl;//output 2
     cout << "count" << obj2.count << endl;
     //output 2
+    //因为共享 内存
     return 0;
 }
 
 ```
 
+### 成员变量和成员函数内存分配（分开存储）
+
+**空对象占一个字节**
+![1701509354911](image/index/1701509354911.png)
+输出 1
+当空对象赋予一个非静态成员变量时，内存即按对象来分配内存：
+
+非静态成员变量属于
+
+**静态成员变量也有访问权限：**
+![1701508082511](image/index/1701508082511.png)
+
 ### 静态函数
 
-静态函数是不属于任何对象的函数，可以直接通过类名来调用。静态函数不能访问非静态成员变量和非静态成员函数，但可以访问静态成员变量和静态成员函数。。
+- 静态函数是不属于任何对象的函数，可以直接通过类名来调用。
+- 静态函数不能访问非静态成员变量和非静态成员函数，但可以访问静态成员变量和静态成员函数。。
 
 ```cpp
 class MyClass{
@@ -1749,6 +2595,9 @@ class MyClass{
 MyClass::myStaticFunction();
 //调用静态函数
 ```
+
+**静态成员函数不能访问非静态成员变量：**
+![1701508460052](image/index/1701508460052.png)
 
 ### 静态类成员
 
@@ -1774,11 +2623,124 @@ obj.count = 20;//使用对象名访问
 
 **静态类成员可以被继承和覆盖，但不能被声明为虚函数**
 
----
+## const 修饰成员函数
 
----
+### 常函数
+
+常函数：成员函数后加 const
+
+- 常函数内不可修改成员属性
+- 成员属性声明时加关键字 mutable 后，在常函数 中依然能修改。
+
+### 常对象
+
+常对象：声明对象前加 const
+常对象只能调用常函数。
+
+![1701523114165](image/index/1701523114165.png)
+![1701523375314](image/index/1701523375314.png)
+
+![1701523556930](image/index/1701523556930.png)
+
+## 友元
+
+家里有客厅（public），卧室（private）
+客厅所有客人能去。卧室只有自己能去。
+但可以邀请好友进去。
+
+程序里，有些私有属性 也想让类外 特殊的一些函数或类进行访问，即需要**友元**
+
+目的：让一个函数或类访问另一个类中的私有成员。
+
+`friend`.
+
+**三种实现**：
+
+- 全局函数做友元
+- 类做友元
+- 成员函数做友元
+
+- **全局函数做友元**
+  ![1701527605724](image/index/1701527605724.png)
+  解决：
+  ![1701527671820](image/index/1701527671820.png)
+
+- **类做友元**
+  ![1701534766435](image/index/1701534766435.png)
+
+- **成员函数做友元**
+  ![1701535434004](image/index/1701535434004.png)
 
 ## C++中的运算符承载
+
+对于内置数据类型，编译器知道如何进行运算：
+int a = 10;
+int b = 20;
+int c = a + b;
+
+### 加号运算符重载
+
+- 成员函数重载+号
+- 全局函数重载+号
+
+**成员函数重载+号**
+![1701572550695](image/index/1701572550695.png)
+
+### 左移运算符重载
+
+对自定义类型进行左移运算符（<<）的重载，使该类型能像基本类型一样进行左移运算。
+
+重载后的左移运算符可以用于输出该类型的对象。
+
+左移运算符重载的原理是通过在类中定义一个左移运算符重载函数来实现。这个函数需要返回一个 ostream&类型的引用，并且需要将要输出的内容插入到这个 ostream 对象中。
+
+![1701691324014](image/index/1701691324014.png)
+
+### 递增运算符重载 ++
+
+- 重载前置++运算符
+  ![1701691890831](image/index/1701691890831.png)
+
+- 重载后置++运算符
+  ![1701692324881](image/index/1701692324881.png)
+  后置递增返回的是值，
+  因为后置如果返回引用返回的是局部变量的引用，当前函数执行完后会被释放掉，后续操作视为非法操作。
+
+### 赋值运算符重载
+
+C++编译器至少给一个类添加 4 个函数：
+
+- 默认构造函数（无参，函数体为空）
+- 默认析构函数（无参，函数体为空）
+- 默认拷贝构造函数，对属性进行值拷贝
+- 赋值运算符 operator= , 对属性进行值拷贝
+
+如果类中有属性指向堆区，做赋值操作时也会出现深浅拷贝问题。
+
+编译器提供浅拷贝，但如果做析构函数时，会出现浅拷贝带来的堆区内存重复释放问题。所以需要自己写赋值运算符重载。
+
+![1701694947348](image/index/1701694947348.png)
+
+执行上面代码错误报告：
+![1701694922376](image/index/1701694922376.png)
+
+![1701695006809](image/index/1701695006809.png)
+解决：深拷贝
+
+![1701696507841](image/index/1701696507841.png)
+
+![1701696489058](image/index/1701696489058.png)
+
+### 关系运算符重载
+
+![1701698657454](image/index/1701698657454.png)
+
+### 函数调用运算符重载
+
+![1701700545131](image/index/1701700545131.png)
+![1701700560572](image/index/1701700560572.png)
+
+###
 
 ### operators for cv:Mat
 
@@ -1823,17 +2785,7 @@ int main(){
               18, 24]
 ```
 
-### operator overloading
-
-### friend functions
-
 ### 类型转换 user-defined type conversion
-
-### increment & decrement operators
-
-## some Default Operations
-
-## An example with Dynamic Memory
 
 ## visual studio 中 c++
 

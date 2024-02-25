@@ -184,7 +184,6 @@ UML 表示法
 ![1697510828943](image/index/1697510828943.png)
 仅适用于类 AnyFeature。AnyFeature 是元类 FeatureType 的一个实例，充当 CityGML UML 模型中所有类的超类，构造型为 «FeatureType»。元类是其实例为类的类。
 
-
 ![1698240762500](image/index/1698240762500.png)
 
 白色
@@ -194,14 +193,9 @@ UML 表示法
 黄色类与 CityGML 建筑模块相关联，蓝色类来自 CityGML 核心和构造模块，绿色类描述由 ISO 19107：2003 定义的几何元素
 ![1697511198060](image/index/1697511198060.png)
 
-
 ## GML3几何拓扑模型
+
 ![1698242227416](image/index/1698242227416.png)
-
-
-
-
-
 
 ## 城市 GML
 
@@ -213,11 +207,8 @@ UML 表示法
 三个模块建筑、桥梁和隧道对土木结构进行建模，并共享在施工模块中分组的通用概念
 
 - appearance--城市对象外观（纹理和颜色）
-
 - pointcloud
-
 - generics 泛型--定义泛型对象、属性和关系概念
-
 - dynamizer--按时间序列数据表示城市对象属性的概念，将其与传感器、传感器数据服务或外部文件链接的概念。
   ![1697603775443](image/index/1697603775443.png)
 
@@ -269,12 +260,10 @@ cityGML 虽然不适用 19107 的拓扑类，但可通过在不同几何对象�
 
 与 CAD 或 BIM 相比，每个 3D 点都是绝对地理参考的，这使得 CityGML 特别适合表示地理上较大的扩展结构，如机场，铁路，桥梁，水坝，其中地球曲率对物体的几何形状有显着影响
 
-
-
 可以通过从抽象GML超类GML:_Geometry继承放入属性srsName指向其CRS定义
 
-
 ### 8.3 隐式几何
+
 implicit geometry
 
 一个几何对象，形状只作为原型集合体存储一次。
@@ -285,49 +274,34 @@ implicit geometry
 
 ## 9 外观模型
 
-
 ## 10 主题模型
 
 ![1698249974595](image/index/1698249974595.png)
 
-
 CityGML数据模型中所有主题类的基类都是抽象类 _CityObject。 _CityObject提供了创建日期与终止日期，用于管理特征的历史记录，以及在其他数据集中对同一对象的外部引用。
-
-
 
 ### 10.2 地形模型 - relief
 
 ### 10.3 建筑模型
 
-
-
-
-
-
-
 ### 10.6 水体模型
-
 
 在LOD1中，水体通过solid形式建模。
 
 ![1698309134840](image/index/1698309134840.png)
 如果水体由LOD2或更高细节级别的gml:Solid表示，则对应专题的WaterClosureSurface，WaterGroundSurface和WaterSurface对象的表面几何形状必须与gml:Solid的外壳重合。
 
-
 WaterSurface的可选属性waterLevel可用于描述水位，此时必须给定相应的三维表面几何形状。当水体受潮汐影响时，这一点尤其重要。
 
 水体模型还隐含了TerrainIntersectionCurves(TIC) 的概念。例如，为了指定DTM与WaterBody的三维几何图形的精确交集，或将WaterBody或WaterSurface调整到周围的DTM上（参见第6.5章）。此时WaterSurface多边形的环则暗示了水体与地形或盆地的交集。
 
+### 10.7 transportation
 
-
-### 10.7 transportation 
 ![1698319832218](image/index/1698319832218.png)
 
 ![1698319850431](image/index/1698319850431.png)
 
 surfaceMaterial属性指定路面类型，且可用于AuxiliaryTrafficArea（例如沥青，混凝土，砾石，土壤，铁路，草地）
-
-
 
 ## cityGML core model--空间概念 / 细节层次 / 特殊空间类型
 
@@ -365,7 +339,7 @@ LOD-3
 - LOD4 删除
 - 细节层次不再和城市对象的语义分解程度相关联，仅指空间表示
 - **几何表示从主题模块移动到核心模块，现在和空间和空间边界的语义概念相关联。这大大简化了专题单元的模型。由于专题模块中的所有要素类型都定义为空间和空间边界类的子类，因此它们会自动继承几何类，因此不再需要与它们直接关联。这也导致了所有城市 GML 要素类型的统一 LOD 表示。**
--
+- 
 
 ![1697531360295](image/index/1697531360295.png)
 
@@ -463,10 +437,7 @@ PlaneCover 类：
 - usage
 - averageHeight
 
-
 ![1698320683527](image/index/1698320683527.png)
-
-
 
 ## WaterBody
 
@@ -492,7 +463,7 @@ citygml
 
 - 研究异构数据源向 CITYGML 标准模型转换方法
 - citygml 建筑物数据模型结构研究/基于 postgresql 管理
--
+- 
 
 研究最多领域：IFC 和 CITYGML 标准间转换
 
@@ -501,7 +472,7 @@ citygml
 - 传统重集合拓扑外观表达，轻语义
 - 传统缺乏拓扑结构明确的三维模型和数据结构，产品制作公司相互独立生产，数据结构和模型互操作性较低。
 - 传统与算法结合浅，无法实现几何和语义联动。
--
+- 
 
 ![1698045754951](image/index/1698045754951.png)
 
@@ -536,52 +507,32 @@ citygml -- citygml core
 
 ![1698109929924](image/index/1698109929924.png)
 
-
 ## 基于citygml的LOD多尺度三维语义模型构建方法
 
-+ LOD0 
-使用含有高程坐标的建筑物底部轮廓或屋顶边缘形成的2.5D多边形表达，将采集的建筑物轮廓矢量数据叠加到数字高程模型（DEM）。
-
-+ LOD1
-使用块状对象简单表示建筑物三维模型，通过建筑物二维轮廓数据结合建筑高度简单拉伸自动生成。
-arcgis / qgis 根据高度字段拉伸形成lod1模型，利用arcgis工具箱或插件转换为citygml模型；
-也可编程读取shapefile / geojson格式矢量数据，用代码输出citygml lod1块状模型。
-
++ LOD0
+  使用含有高程坐标的建筑物底部轮廓或屋顶边缘形成的2.5D多边形表达，将采集的建筑物轮廓矢量数据叠加到数字高程模型（DEM）。
++ LOD1}
+  使用块状对象简单表示建筑物三维模型，通过建筑物二维轮廓数据结合建筑高度简单拉伸自动生成。
+  arcgis / qgis 根据高度字段拉伸形成lod1模型，利用arcgis工具箱或插件转换为citygml模型；
+  也可编程读取shapefile / geojson格式矢量数据，用代码输出citygml lod1块状模型。
 + LOD2
-当前许 多部门已经积累了大量基于 SketchUp 和 Autodesk 3ds Max 等三维交互设计软件建立的建筑物格网MESH模型。
-几何精度较高，但缺乏语义信息。
+  当前许 多部门已经积累了大量基于 SketchUp 和 Autodesk 3ds Max 等三维交互设计软件建立的建筑物格网MESH模型。
+  几何精度较高，但缺乏语义信息。
 
 法1：计算法向量
 
 法2：基于点云数据三维重建。
 
 + LOD3
-利用FME feature manipulate engine 等空间数据软件编程实现。
+  利用FME feature manipulate engine 等空间数据软件编程实现。
 
 FME 不仅支持 SketchUp，Collada，Autodesk 3ds Max， Autodesk Revit，IFC 和 CityGML 等各类三维模型 的读写，而且还可提供要素类型过滤 (FeatureTypeFilter)、几何图形过滤(GeometryFilter)、 几何图元提取(GeometryPartExtractor)、几何类型转 换 (GeometryCoercer) 和几何属性设置
 (GeometryPropertySetter)等大量语义和几何处理函 数，有利于不同三维模型数据的快速转换。
 
 
+## IFC和cityGML数据标准对比
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+![1700788971788](image/index/1700788971788.png)
 
 
 
