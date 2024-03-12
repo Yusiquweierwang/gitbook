@@ -387,7 +387,76 @@ extern void func();
 global variable
 local variable
 
-### static
+### static- 静态变量
+
+指在程序运行期间只分配一次内存空间，不会随着函数活对象的调用创建或销毁，而是在全局数据区分配内存。
+
+- **在函数内部使用，只能被初始化一次，即使函数被多次调用，也不会重新初始化变量。**
+
+```cpp
+#include <iostream>
+
+void foo(){
+    static int count = 0;
+    count++;
+    std::cout << count << endl;
+}
+
+int main(){
+    foo();
+    // 1
+    foo();
+    // 2
+    foo();
+    // 3
+}
+```
+
+- **在类内部使用，被所有对象共享，存储在静态数据区中，可通过类名和作用域解析运算符访问。**
+
+```cpp
+#include <iostream>
+
+class MyClass {
+public:
+    static int count;
+};
+
+int MyClass::count = 0;
+
+int main() {
+    MyClass obj1;
+    MyClass obj2;
+    obj1.count++;
+    obj2.count++;
+    std::cout << "Count: " << obj1.count << std::endl;  // 输出：Count: 2
+    std::cout << "Count: " << obj2.count << std::endl;  // 输出：Count: 2
+    return 0;
+}
+```
+
+- **在文件内部使用时，在文件内部定义的静态变量对整个文件是可见的，但在其他文件中无法访问。**
+
+```cpp
+// file1.cpp
+#include <iostream>
+static int count  = 0;
+
+void foo(){
+    count++;
+    std::cout << count << std::endl;
+}
+
+// file2.cpp
+extern void foo();
+
+int main(){
+    foo();
+    // 1
+
+}
+
+```
 
 用 static 修饰变量或函数时：
 
@@ -826,6 +895,13 @@ memcpy(b , a , n * sizeof(int));
 using namespace std::string_literals;
 ```
 
+字符串常用处理函数：
+
+- strlen()
+- strcpy()
+- strcmp
+- strcat() --将一个字符串追加到另一个字符串末尾。
+
 **string manipulation and examination**
 
 - copy
@@ -835,6 +911,19 @@ char * strcpy(char* dest , const cahr * src);
 //safer
 char * strncpy(char *dest , const char * src , size_t count);
 
+```
+
+### 字符和字符串
+
+字符类型是 char, 字符串类型是 char / string.
+
+```cpp
+// 字符
+char ch = 'a';
+
+// 字符串,注意char 和 string 区别
+string str = 'hello';
+char str[] = 'hello1';
 ```
 
 ### string class
@@ -856,6 +945,16 @@ string 类也没有越界检查。
 - 指针
 
 ## structures , unions and emenurations 结构体，联合体，枚举类型
+
+### 枚举-enumeration
+
+```cpp
+enum Color{
+    RED, //值为1
+    GREEN, // 值为2
+    BLUE //值为3
+}
+```
 
 ## 结构体-struct
 
@@ -1149,13 +1248,25 @@ num = 3;//okey
 **指针常量 / 常量指针**
 
 ```c++
-int * const p =  &a;
-//p是指针常量
-//即指向的右边的地址不能修改
+// 指针常量
+int main() {
+    int num = 10;
+    int* const p = &num; // p是一个指向int类型的指针常量，指向num
+    *p = 20; // 可以通过p修改指向的int类型的值
+    // p = nullptr; // 错误，指针常量的值不可变
 
-const int *p = &a;
-//p是常量指针
-//即指向的右边的值不能修改
+    return 0;
+}
+
+// 常量指针
+int main() {
+    int num = 10;
+    const int* p = &num; // p是一个指向int类型的常量指针，指向num
+    // *p = 20; // 错误，常量指针所指向的内容不可变
+    p = nullptr; // 可以改变p的值，指向其他int类型的变量
+
+    return 0;
+}
 ```
 
 **建议**
@@ -1419,6 +1530,21 @@ printf("end\n");
 ```
 
 ## 内存分配—CPP-memory allocation-CPP
+
+**动态管理：malloc / calloc / realloc / free**
+
+### 计算机操作系统内存管理机制：栈内存和堆内存。
+
+**stack memory**
+函数调用的时候，局部变量被分配在栈上。当函数返回的时候，局部变量全部销毁释放。
+
+```cpp
+int number;
+// 4 bytes
+
+int arr[4];
+//编译的时候就确定式4个长度，式自动管理的机制
+```
 
 ### new
 
@@ -1800,6 +1926,44 @@ bool matrix_add(const Matrix & matA , const Matrix & matB , Matrix & matC){
 ### 引用与指针
 
 ![1701226396583](image/index/1701226396583.png)
+
+**指针可以有多级，引用只能有一级。**
+
+```cpp
+int **p;
+// 合法
+int &&p;
+// 不合法
+```
+
+**指针可以不初始化，引用必须初始化**
+
+**指针可以指向 null，引用不可指向 null**
+
+**指针初始化后可改变，引用不可以**
+
+```cpp
+int a = 33;
+int *p = &a;
+int &r = a;
+
+int b = 35;
+p = &b;
+// 合法
+r = b;
+// 不合法
+```
+
+**sizeof 运算结果不同**
+
+```cpp
+int a = 996;
+int *p = &a;
+int &r = a;
+
+cout << sizeof(p); // 返回 int* 类型的大小
+cout << sizeof(r); // 返回 int 类型的大小
+```
 
 ### 内联函数-Inline functions
 
@@ -2332,7 +2496,18 @@ int main() {
 
 \*\*析构顺序，
 
-### 继承
+## 封装
+
+**public**
+成员类内可以访问，类外可以范根
+
+**protected**
+成员类内可以访问，类外不能访问，子类可以访问父类中 的保护内容。
+
+**private**
+成员类内可以访问，类外不可访问，子类不可访问父类中的保护内容。
+
+## 继承
 
 `class  子类 : 继承方式 父类`
 
@@ -2421,9 +2596,95 @@ int main(void) {
 
 **可以利用开发人员命令提示工具查看对象模型**
 
+**多继承产生二义性问题：通过::域运算符对同名变量进行读写操作。**
+
+```cpp
+//基类A
+class A{
+    public:
+        A():m_data(1), m_a(1){
+
+        }}
+        ~A(){}
+
+    public:
+        int m_data;// 同名变量，类型无要求
+        int m_a;
+
+};
+
+//基类B
+class B{
+    public:
+        B():m_data(1), m_b(1){
+
+        }
+        ~B(){
+        }
+
+    public:
+        int m_data;//同名变量，类型无要求
+        int m_b;
+};
+
+//多继承C
+class C: public A , public B{
+
+};
+
+int main(){
+    C Data;
+    //通过域成员运算符才能访问
+    Data.A::m_data = 10.3;
+    Data.B::m_data = 34;
+}
+
+```
+
+**菱形继承**
+![1708957930010](image/index/1708957930010.png)
+
+**利用虚继承 解决菱形继承问题**
+
+**继承之前加上`virtual`变为虚继承**
+
+此时继承的是 vbptr ，继承的是两个指针。
+
 ## 多态
 
 调用成员函数时，会根据调用函数的对象的类型执行不同的函数。
+
+多态分为两类：
+
+- 静态多态：函数重载和运算符重载属于静态多态，复用函数名。（函数地址在编译的时候就确定）
+- 动态多态：派生类和虚函数实现运行时多态。（函数地址在运行阶段确定）
+
+**父类引用指向子类对象**
+
+![1709009535522](image/index/1709009535522.png)
+
+### 虚函数
+
+### 纯虚函数 / 抽象类
+
+```cpp
+//写法
+virtual void func() = 0
+```
+
+**目的：重写父类中的虚函数**
+在多态中，通常父类中的虚函数的实现是无意义的，主要都是调用子类重写的内容。因此可以把虚函数改为纯虚函数。
+
+**1.无法实例化对象**
+**2.抽象类的子类，必须要重写父类中的纯虚函数，否则也属于抽象类**
+
+![1709107860927](image/index/1709107860927.png)
+
+![1709108049487](image/index/1709108049487.png)
+
+### 虚析构和纯虚析构
+
+多态使用时，如果子类中有属性开辟到堆区，那么父类指针在释放时无法调用到子类的析构代码。
 
 ## this 指针-this_pointer
 
@@ -2507,10 +2768,34 @@ const * int p_int;
 - 静态成员变量
   - 所有对象共享同一份数据
   - 在编译阶段分配内存
-  - 类内声明，类外初始化
+  - **类内声明，类外初始化（必须）**
 - 静态成员函数
   - 所有对象共享同一个函数
-  - 静态成员函数只能访问静态成员变量
+  - **静态成员函数只能访问静态成员变量**
+
+```cpp
+//静态 成员
+class Person {
+public :
+	static int person_a;
+
+};
+
+//必须在 类外初始化，且要加Person::
+int Person::person_a;
+
+//静态成员共享数据
+void test(){
+    Person p1;
+    p1.person_a = 100;
+    Person p2;
+    p2.person_a = 200;
+    cout << p1.person_a << endl;
+};
+
+
+//输出：200
+```
 
 **静态变量**
 在程序运行期间只初始化一次的变量，存储在静态区域。
@@ -2790,3 +3075,454 @@ int main(){
 ## visual studio 中 c++
 
 软件工程中，在一个项目中只能使用一个 main()。
+
+## 文件操作
+
+程序运行时产生的数据属于临时数据，程序一旦运行结束都会被释放。
+通过文件可以将数据永久化。
+
+C++中 对文件操作需要包含头文件`<fstream>`.
+
+### ofstream 写操作
+
+![1709124866558](image/index/1709124866558.png)
+
+### ifstream 读操作
+
+### fstream 读写操作
+
+## STL
+
+C++的面向对象和泛型编程的思想，目的是**提升复用性**。
+
+**STL 基本概念**
+standard template library，标准模板库。
+
+从广义上分为：
+**容器 container;**
+各种 数据结构：
+vector / list / deque / set / map
+
+这些容器分为 序列式容器和关联式容器；
+**序列式容器**强调值的排序，每个元素都有固定的位置。
+**关联式容器**二叉树结构，个元素兼没有严格的物理上的顺序关系。
+
+**算法 algorithm;**
+各种常用算法:
+sort / find / copy / for_each
+
+**迭代器 iterator;**
+链接容器和算法。
+
+迭代器使用类似于指针。
+
+![1709125584934](image/index/1709125584934.png)
+
+**仿函数;**
+行为类似函数，可作为 算法的某种策略。
+
+**适配器;**
+一种用来修饰容器或仿函数或迭代器接口的东西。
+
+**空间配置器;**
+负责空间配置和管理
+
+## 容器
+
+### vector
+
+数据结构和数组非常相似，称为**单端数组**
+
+**与普通数组区别**
+数组是静态空间，vector 可以动态扩展。
+
+**动态扩展**
+并不是在原空间后续接新空间，而是寻找更大的内存空间，然后把原数据拷贝新空间，释放原空间。
+
+![1709523563850](image/index/1709523563850.png)
+
+vector 容器 的迭代器是支持随机访问的迭代器。
+
+### vector 函数原型
+
+![1709523740012](image/index/1709523740012.png)
+
+![1709611297018](image/index/1709611297018.png)
+
+### vector 赋值操作
+
+![1709611327066](image/index/1709611327066.png)
+
+![1709618644403](image/index/1709618644403.png)
+
+### vector 容量和大小
+
+功能：对 vector 容器的容量和大小操作
+
+函数原型：
+![1709618724278](image/index/1709618724278.png)
+
+![1709619230255](image/index/1709619230255.png)
+
+![1709619280941](image/index/1709619280941.png)
+
+另外，resize 默认填充 0
+`.size(const size_t N  ewsize , const int&_Val)`
+也可以填充其他数字。
+
+### vector 插入和删除
+
+![1709619652169](image/index/1709619652169.png)
+
+![1709620386172](image/index/1709620386172.png)
+![1709620371520](image/index/1709620371520.png)
+
+![1709620412137](image/index/1709620412137.png)
+
+`void erase(vec.begin() , vec.end());`相当于删除整个 vec。
+即删除迭代器 start 到 end 之间的元素。
+
+<-->
+
+`clear()`删除容器中所有元素
+
+### vector 数据存取
+
+![1709620673239](image/index/1709620673239.png)
+
+### vector 互换容器
+
+`swap(vec);`
+![1709625005348](image/index/1709625005348.png)
+
+### vector 动态扩展规律
+
+![1709622976452](image/index/1709622976452.png)
+与动态数组两倍扩展不一样，接近于 1.5 倍的容量扩展。
+
+### vector 预留空间
+
+减少 vector 在动态扩展容量时 的扩展次数
+
+`reserve(int len)`
+容器预留 len 个元素长度，预留位置不初始化，元素不可访问。
+
+![1709625708803](image/index/1709625708803.png)
+
+### vector 存放内置数据类型
+
+vector 可以理解为数组。
+
+容器:`vector`
+算法：`for_each`
+迭代器:`vector<int>::iterator`
+
+![1709126139164](image/index/1709126139164.png)
+
+![1709126921921](image/index/1709126921921.png)
+
+类似利用回调函数机制
+
+.begin()指向容器中第一个 数据
+.end() 指向容器元素的最后一个元素的下一个位置。
+
+vector<int>::iterator-拿到 vector<int>这种容器的迭代器类型。
+
+### vector 存放自定义数据类型
+
+![1709438532281](image/index/1709438532281.png)
+
+### vector 容器嵌套容器（相当于二维数组)
+
+## string
+
+string 本质是一个类。
+
+### string 和 char\*区别
+
+- char\* 是一个指针。
+- string 是一个类，内部封装了 char\* 。
+
+**特点**
+string 类中封装了很多成员方法。
+
+如:find / copy / delete / replace / insert。
+
+### string 构造函数
+
+构造函数原型：
+
+```cpp
+string()
+//创建一个空字符串
+
+string(const char* s);
+//使用字符串s初始化
+
+string(const string& str);
+//使用一个string对象初始化另一个string 对象
+
+string(int n , char c)
+//使用n个字符初始化
+```
+
+![1709519385244](image/index/1709519385244.png)
+
+### string 赋值操作 / 拼接操作 /查找替换操作 /
+
+string 赋值函数原型有 2 种：operator / assign
+
+```cpp
+string& operator=(const char *s); //char*类型字符串 赋值给当前的字符串
+
+string& operator=(const string *s); //把当前的字符串s赋值给当前的字符串
+
+string& operator=(char c); //字符赋值给当前的字符串
+
+string& assign(const char *s); //把字符串s赋给当前的字符串
+
+string& assign(const char *s, int n); //把字符串的前n个字符赋值给当前字符串
+
+string& assign(const string &s); //把字符串s赋给当前字符串
+
+string& assign(int n, char c); //用n个字符c赋给当前字符串
+
+
+
+//拼接操作
+
+
+```
+
+![1709521548767](image/index/1709521548767.png)
+
+### string 比较操作
+
+### string 字符存取操作
+
+![1709522084894](image/index/1709522084894.png)
+
+### string 插入删除
+
+![1709523196597](image/index/1709523196597.png)
+![1709523182233](image/index/1709523182233.png)
+
+## deque 容器
+
+双端数组，可以对头端进行插入和删除操作。
+
+**deque 和 vector 区别**
+
+- vector 对头部插入删除效率低，数据量越大，效率越低
+- veector 访问元素时速度比 deque 快，这和两者内部实现有关。
+
+![1709627605422](image/index/1709627605422.png)
+
+**特点：**
+
+- 容器两端进行常数时间复杂度的插入和删除操作，适合队列和栈。
+- 支持随机访问，课通过索引快速访问容器中元素。
+- 内存空间是动态分配的。
+- 可存储任意类型对象，包括自定义类型。
+
+**原理：**
+deque 内部有个**中控器**，维护每段缓冲区的内容，缓冲区中存放真实数据。
+
+中控器维护的是每个缓冲区的地址，使得使用 deque 时像一片连续内存空间。
+
+![1709627837024](image/index/1709627837024.png)
+
+### deque 大小操作
+
+![1709631028380](image/index/1709631028380.png)
+
+与 vector 不同，没有`.capacity`即没有容量大小限制。
+
+### deque 插入和删除
+
+![1709631141730](image/index/1709631141730.png)
+
+### deque 数据存取
+
+![1709631234491](image/index/1709631234491.png)
+
+## 案例--评委打分
+
+**案例描述**
+有 5 名选手：选手 ABCDE，10 个评委分别对每一名选手打分，去除最高分，去除评委中最低分，取平均分。
+
+**实现步骤**
+创建五名选手，放到 vector 中
+遍历 vector 容器，取出来每一个选手，执行 for 循环，可以把 10 个评分打分存到 deque 容器中
+sort 算法对 deque 容器中分数排序，去除最高和最低分
+deque 容器遍历一遍，累加总分
+获取平均分
+
+## stack 容器
+
+FILO
+
+![1709632937571](image/index/1709632937571.png)
+
+栈中只有顶端元素可以被外界使用，所以栈不允许有遍历行为。
+
+![1709648417185](image/index/1709648417185.png)
+
+![1709648859996](image/index/1709648859996.png)
+
+![1709648883966](image/index/1709648883966.png)
+
+## queue 容器
+
+队列
+
+只有队头和队尾才能被外界使用，因此队列不允许有遍历行为。
+
+FIFO
+
+![1709648954965](image/index/1709648954965.png)
+
+![1709649853145](image/index/1709649853145.png)
+
+![1709650973712](image/index/1709650973712.png)
+
+![1709650990562](image/index/1709650990562.png)
+
+## list 容器
+
+**链表**：将数据链式存储。
+
+是一种物理存储单元上非连续的存储结构，数据元素的逻辑顺序是通过链表中的指针链接实现的。
+
+STL 链表：双向循环链表。
+
+![1709654597465](image/index/1709654597465.png)
+
+![1709654608092](image/index/1709654608092.png)
+
+由于链表的存储方式并不是连续的内存空间，因此链表 list 中的迭代器只支持前移和后移，属于**双向迭代器**。
+
+![1709655145280](image/index/1709655145280.png)
+
+### list 构造函数
+
+![1709655290486](image/index/1709655290486.png)
+
+![1709655699090](image/index/1709655699090.png)
+
+### list 容器赋值和交换
+
+![1709655750124](image/index/1709655750124.png)
+
+### list 大小操作
+
+![1709655949486](image/index/1709655949486.png)
+
+### list 插入和删除
+
+![1709656102588](image/index/1709656102588.png)
+
+**不能用`[] / at() `方式访问 list 容器中的元素原因：list 本质是链表，存储空间不连续，迭代器不支持随机访问**
+
+### list 数据存取
+
+![1709712992094](image/index/1709712992094.png)
+
+### list 反转和排序
+
+所有不支持随机访问迭代器的容器，不可以用标准算法。
+
+不支持随机访问迭代器的容器，内部会提供算法。
+
+![1709713584004](image/index/1709713584004.png)
+
+## Set / MultiSet 容器
+
+**所有元素都会在插入时自动排序**
+
+**本质**
+属于关联式容器，底层结构由二叉树实现。
+
+**set 和 multiset 区别**
+set 不允许容器中由重复的元素
+multiset 允许容器中有重复的元素
+
+![1709714743731](image/index/1709714743731.png)
+
+![1709714770417](image/index/1709714770417.png)
+
+### set 大小和交换
+
+![1709715075695](image/index/1709715075695.png)
+
+### set 插入和删除
+
+![1709715170463](image/index/1709715170463.png)
+
+![1709715454399](image/index/1709715454399.png)
+
+![1709715444084](image/index/1709715444084.png)
+
+### set 查找和统计
+
+`find(key)`查找 key 是否存在，若存在，返回该键的元素的迭代器；若不存在，返回**set.end()**;
+`count(key)`统计 key 元素的个数
+
+![1709716237579](image/index/1709716237579.png)
+
+### multiset / set 区别
+
+![1709716274993](image/index/1709716274993.png)
+
+![1709725119745](image/index/1709725119745.png)
+
+![1709725130705](image/index/1709725130705.png)
+
+### pair 对组的创建
+
+**成对出现的数据，利用对组可以返回两个数据**
+
+![1709725215047](image/index/1709725215047.png)
+
+### set 容器排序
+
+![1709726274345](image/index/1709726274345.png)
+
+![1709726283502](image/index/1709726283502.png)
+
+### set 自定义类型排序
+
+**必须指定一个排序规则**
+![1709727615670](image/index/1709727615670.png)
+报错
+![1709727630366](image/index/1709727630366.png)
+
+解决：
+![1709727920298](image/index/1709727920298.png)
+![1709727952986](image/index/1709727952986.png)
+
+![1709727971112](image/index/1709727971112.png)
+
+### map/multimap 容器
+
+- map 中所有元素都是 pair
+- pair 中第一个元素为 key（键值），起到索引作用，第二个元素为 value（实值）
+- 所有元素都会根据元素的键值自动排序
+
+**本质**
+map/multimap 是关联式容器，底层是二叉树排序。
+
+map 和 multimap 区别：
+允不允许容器中有重复 key 值元素。
+
+![1709728862689](image/index/1709728862689.png)
+
+### map 插入和删除
+
+![1709728878947](image/index/1709728878947.png)
+
+![1709729207001](image/index/1709729207001.png)
+
+### map 查找和统计
+
+![1709729272644](image/index/1709729272644.png)
