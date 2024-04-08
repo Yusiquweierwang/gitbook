@@ -2069,13 +2069,92 @@ int main(){
 
 ### 运算符重载
 
-```c
+```cpp
 Box operator+(const Box&);
 ```
 
-### 函数模板 function templates
+## 函数模板 function templates
 
 是 cpp 中一种泛型编程技术，允许定义一个通用的函数。
+
+对于以下：
+
+```cpp
+#include <iostream>
+
+using namespace std;
+
+//比较int 类型
+int Max(int a, int b)
+{
+	return a > b ? a : b;
+}
+
+//比较char 类型
+char Max(char a, char b)
+{
+	return a > b ? a : b;
+}
+
+//比较float 类型
+float Max(float a, float b)
+{
+	return a > b ? a : b;
+}
+
+int main(void)
+{
+
+	int  n = 1;
+	int	 m = 2;
+	cout << "max(1, 2) = " << Max(n, m) << endl;
+
+	float a = 2.0;
+	float b = 3.0;
+	cout << "max(2.0, 3.0) = " << Max(a, b) << endl;
+
+	char i = 'a';
+	char j = 'b';
+	cout << "max('a', 'b') = " << Max(i, j) << endl;
+
+	return 0;
+}
+
+```
+
+只需定义
+
+```CPP
+#include <iostream>
+
+using namespace std;
+
+//template 关键字告诉C++编译器 要开始泛型编程了
+//T - 参数化数据类型
+template <typename T>
+T Max(T a, T b) {
+	return a > b ? a : b;
+}
+
+int main(void)
+{
+
+	int  n = 1;
+	int	 m = 2;
+	cout << "max(1, 2) = " << Max(n, m) << endl;
+
+	float a = 2.0;
+	float b = 3.0;
+	cout << "max(2.0, 3.0) = " << Max(a, b) << endl;
+
+	char i = 'a';
+	char j = 'b';
+	cout << "max('a', 'b') = " << Max(i, j) << endl;
+
+	return 0;
+}
+
+```
 
 ```cpp
 template<typename T>
@@ -2782,7 +2861,7 @@ public :
 };
 
 //必须在 类外初始化，且要加Person::
-int Person::person_a;
+int Person::person_a = 10;
 
 //静态成员共享数据
 void test(){
@@ -2799,6 +2878,8 @@ void test(){
 
 **静态变量**
 在程序运行期间只初始化一次的变量，存储在静态区域。
+
+静态成员变量时属于类而不是类的实例的成员变量，在类的所有实例之间共享，二可在没有创建类的实例的情况下被访问。
 
 **因为静态成员不属于某个对象上，所有对象都共享同一份数据，所以静态成员变量有两种访问方式：**
 
@@ -3526,3 +3607,74 @@ map 和 multimap 区别：
 ### map 查找和统计
 
 ![1709729272644](image/index/1709729272644.png)
+
+## C++11 被弃用的特性
+
+- 不再运行字符串字面值常量复制给一个 char\*
+
+应该使用*`const char*`或`auto`。
+
+```cpp
+char *str=  "hello,world"
+// 将出现弃用警告
+```
+
+- `auto_ptr`转为`unique_ptr`
+
+- `register`关键字被弃用
+
+## 原始字面量
+
+## 指针空置类型-nullptr
+
+用来区分**空指针 / 0**
+
+`nullptr`类型为`nullptr_t`,能够隐式转换为任何指针或成员指针的类型。
+
+![1711211080760](image/index/1711211080760.png)
+
+## 常量表达式修饰符-constexpr
+
+## 自动类型推导
+
+## final / override
+
+## 模板优化
+
+## 使用 using
+
+## 委托构造函数和继承构造函数
+
+## 列表初始化
+
+针对不同类型如普通数组{} / 类对象() 的初始化不能通用
+
+```cpp
+class Foo{
+    public:
+    int value_a;
+    int value_b;
+    Foo(int a,int b):value_a(a),value_b(b){
+
+    }
+}
+
+int main(){
+    int arr[3]={1, 2, 3};
+    Foo foo(1,2);
+    //before C++11
+}
+```
+
+解决：
+把初始化列表概念绑定到类型上：
+**`std::initializer_list`**
+允许构造函数或其他函数像参数一样使用初始化列表。
+
+## 基于范围的 for 循环
+
+## 可调用对象包装器 / 绑定器
+
+## lambda
+
+让 C++具有了【匿名函数】的【闭包】特性。
