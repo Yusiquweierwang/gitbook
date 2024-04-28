@@ -1,0 +1,73 @@
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix se: <http://www.smartearth.com/rdf-scehma#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sf: <http://www.opengis.net/ont/sf#> .
+
+se:GeoEntity a rdfs:Class;
+    rdfs:subClassOf geo:Feature .
+
+se:GeoObject a rdfs:Class,
+     rdfs:subClassOf se:GeoEntity .
+     
+se:Building a rdfs:Class ;
+    rdfs:subClassOf GeoObject .    
+
+se:Jiangmenbinhaitiyuguan a se:Buiding ; 
+    se:kjsfbm "NE312J323432323462124623232301011254"^^string ;   #空间身份编码
+    se:flm "250102"^^string ;                        #分类代码
+    se:sjnr " "^^string ;                            #数据内容
+    se:stmc "江门市滨江体育馆"^^string ;  #实体名称
+    se:dmdz "广东省江门市蓬江区天沙河大道68号"^^string ;  #地名地址
+    se:scsj " "^^date ;                              #产生时间
+    se:xwsj " "^^date ;                              #消亡时间
+    se:rksj "2024年4月26日"^^date ;                  #入库时间
+    se:gxsj "2024年4月26日"^^date ;                  #更新时间
+    se:sp " "^^string ;                             #视频            
+    se:yp " "^^string ;                             #音频              
+    se:tp " "^^string ;                             #图片             
+    se:qtfjg " "^^string ;                          #其他非结构           
+    se:bb "20240426v1"^^string ;                    #版本
+    se:bz " "^^string ;                             #备注
+    se:dscs "20"^^integer ;                         #地上层数
+    se:dxcs "0"^^integer ;                          #地下层数
+    se:jkcs "0"^^integer ;                          #架空层数
+    se:stgn "1001 住宅"^^string ;                    #实体功能
+    se:jzmj ""^^SpatialMeasure ;                    #建筑面积
+    se:jdmj ""^^SpatialMeasure ;                    #基底面积          
+    se:jg ""^^string ;                              #结构
+    se:gd "60m"^^SpatialMeasure ;                   #高度
+    se:lx " "^^string ;                             #类型         
+    se:zt "建成"^^string ;                           #状态
+    se:ysbm " "^^string ;                           #要素编码          
+    se:ssyl ""^^string ;                            #所属院落
+    se:ljcz ""^^string .                            #邻近车站 
+
+se:Room a rdfs:Class ;
+    rdfs:subClassOf Buiding .  
+
+se:Jiangmentiyuguanroom a se:Room ;  
+    se:kjsfbm "NE312J32343232346212462323230101125401"^^string ;     #空间身份编码
+    se:flm "250102"^^string ;                         #分类代码
+    se:sjnr " "^^string ;                             #数据内容               
+    se:stmc "江门市滨江体育馆4号馆"^^string ;            #实体名称   
+    se:dmdz "北京市朝阳区十里堡"^^string ;               #地名地址
+    se:scsj "2021年10月13日"^^date ;                   #产生时间
+    se:xwsj " "^^date ;                                  #消亡时间
+    se:rksj "2024年4月26日"^^date ;                   #入库时间
+    se:gxsj "2024年4月26日"^^date ;                   #更新时间
+    se:sp " "^^string ;                               #视频              
+    se:yp " "^^string ;                               #音频            
+    se:tp " "^^string ;                               #图片           
+    se:qtfjg " "^^string ;                           #其他非结构           
+    se:bb "20240426v1"^^string ;           #版本
+    se:bz " "^^string ;                               #备注
+    se:stgn " "^^string ;                 #实体功能
+    se:lcbs "11"^^integer ;                        #楼层标识
+    se:hbs "04"^^integer ;                         #户标识
+    se:fjbs " "^^string ;                              #房间标识
+    se:mx " "^^string ;                               #门线
+    se:dyh "01"^^integer ;                         #单元号
+    se:ssjz "NE312J323432323462124623232301011254"^^string ;   #所属建筑
+    se:jzmj " "^^SpatialMeasure ;       #建筑面积   
+    se:cg " "^^string .                           #层高

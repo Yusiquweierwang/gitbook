@@ -339,3 +339,19 @@ actor 包括两种 component.
 ## 常用函数
 
 ### 获取类的 actor
+
+## 案例-金币
+
+金币的每帧旋转
+![1713194565913](image/index/1713194565913.png)
+第二种方法：
+![1713194672327](image/index/1713194672327.png)
+
+**castto**:后接 actor
+castto 判断是否碰撞到，碰撞到则金币消失。
+（中间类型转换为 casttoBP_ThirdPersonCharacter）
+![1713195982103](image/index/1713195982103.png)
+
+### 通过一个容器去储存得分
+
+![1713196943491](image/index/1713196943491.png)
