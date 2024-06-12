@@ -1847,6 +1847,9 @@ main()函数结束时也会隐式调用 exit(),等价于 return。
 ## 引用-reference
 
 引用就是某一变量（目标）的另一个别名，即某已存在变量的另一个名字。
+
+![1713028473259](image/index/1713028473259.png)
+上操作错误：因为 ref 被 redifinition。
 **对引用的操作和对变量名的直接操作完全一样**
 **引用与指针**：
 ![1701179339646](image/index/1701179339646.png)
@@ -2077,6 +2080,37 @@ Box operator+(const Box&);
 
 是 cpp 中一种泛型编程技术，允许定义一个通用的函数。
 
+C++提供两种模板机制：**函数模板**和**类模板**
+
+### 函数模板语法
+
+函数模板作用：建立一个通用函数，其函数返回值类型和形参类型不具体制定，用一个虚拟类型代替：
+
+```cpp
+template <typename T>
+函数声明或定义
+//template --声明创建模板
+//typename --标识其后面的符号事一种数据类型，可以用class代替
+//T --通用的数据类型，名称可以替换，通常为大写字母
+```
+
+注意: 1.自动类型推导，必须推导出一致的数据类型 T 才可以使用； 2.模板必须要确定 T 的数据类型，才可以使用
+
+```cpp
+//模板必须要确定T的数据类型，才可以使用
+template<class T>
+void func(){
+    cout << "func 调用" << endl;
+}
+
+void test02(){
+    func();
+}
+
+
+
+```
+
 对于以下：
 
 ```cpp
@@ -2186,8 +2220,21 @@ template void print<int>(int);
 **隐式实例化**
 在代码调用函数模板时，编译器自动根据实际参数类型推导出需要实例化的模板类型，生成对应的函数实例。
 
-```c
-print(10);
+```cpp
+
+template<typename T>
+T ADD(T a, T b){
+    return a + b;
+}
+
+template int ADD<int, int>;//显式实例化
+int main(){
+    ADD<int>(1, 2);
+    add(1, 2);//自动推导模板参数
+}
+
+
+
 ```
 
 - **显式实例化只能在全局作用域中进行，而不能在函数内部进行。**
@@ -2754,6 +2801,8 @@ virtual void func() = 0
 **目的：重写父类中的虚函数**
 在多态中，通常父类中的虚函数的实现是无意义的，主要都是调用子类重写的内容。因此可以把虚函数改为纯虚函数。
 
+例如，动物作为一个基类可以派生出老虎、狮子等，但动物本身生成对象不合常理。
+
 **1.无法实例化对象**
 **2.抽象类的子类，必须要重写父类中的纯虚函数，否则也属于抽象类**
 
@@ -2806,6 +2855,28 @@ int main(){
 **为了避免和局部变量名冲突，建议在成员函数中始终使用 this 指针来引用成员变量**
 
 - **`return *this`返回对象**
+  **可以用来实现链式调用**
+
+```cpp
+class MyClass {
+public:
+    MyClass& setValue(int value) {
+        // 设置对象的值
+        this->value = value;
+        // 返回对象的引用
+        return *this;
+    }
+
+private:
+    int value;
+};
+
+int main() {
+    MyClass obj;
+    obj.setValue(1).setValue(2).setValue(3);
+    return 0;
+}
+```
 
 ### 空指针调用 成员函数
 
@@ -3584,7 +3655,7 @@ multiset 允许容器中有重复的元素
 
 ![1709727971112](image/index/1709727971112.png)
 
-### map/multimap 容器
+## map/multimap 容器
 
 - map 中所有元素都是 pair
 - pair 中第一个元素为 key（键值），起到索引作用，第二个元素为 value（实值）
@@ -3635,9 +3706,49 @@ char *str=  "hello,world"
 
 ## 常量表达式修饰符-constexpr
 
+### std::Thread
+
 ## 自动类型推导
 
-## final / override
+## final
+
+**final 关键字用来修饰类、函数或虚函数，表示他们是最终的，不能再被继承或重写。保护基类的设计不受子类修改，防止继承滥用。**
+
+- **final 关键字修饰类**
+
+```cpp
+class Animal final{
+
+};
+
+class Dog : public Animal{
+    //编译错误，无法继承final类
+}
+
+```
+
+- **final 关键字修饰成员函数**
+  意味该函数不能被子类重写。
+
+```cpp
+class Shape[
+    public:
+    virtual void draw() final{
+
+    }
+];
+
+class Rectangle : public Shape{
+    public:
+    void draw(){
+        //编译错误，无法重写final函数
+    }
+}
+```
+
+## override
+
+用于标记派生类中重新定义的虚函数
 
 ## 模板优化
 
@@ -3678,3 +3789,205 @@ int main(){
 ## lambda
 
 让 C++具有了【匿名函数】的【闭包】特性。
+
+## 左值和右值
+
+**区别：能否取地址**
+**左值**有地址和值，可以出现在赋值运算符左边或右边。
+
+**右值**只有值，只能出现在赋值运算符右边。
+
+- **字面常量**
+- **表达式返回值**
+- **传值返回函数的返回值**
+
+```cpp
+double x = 1.3, y = 3.8;
+// 以下几个都是常见的右值
+10;                 // 字面常量
+x + y;             // 表达式返回值
+fmin(x, y);        // 传值返回函数的返回值
+```
+
+### 左值引用
+
+```cpp
+// 以下几个是对上面左值的左值引用
+int& ra = a;
+int*& rp = p;
+int& r = *p;
+const int& rb = b;
+```
+
+- 左值引用只能引用左值，不能直接引用右值；
+- 但是`const 左值引用`既可以引用左值，也可以引用右值。
+
+```cpp
+// 1.左值引用只能引用左值
+int t = 8;
+int& rt1 = t;
+
+//int& rt2 = 8;  // 编译报错，因为10是右值，不能直接引用右值
+
+
+// 2.但是const左值引用既可以引用左值
+const int& rt3 = t;
+
+const int& rt4 = 8;  // 也可以引用右值
+const double& r1 = x + y;
+const double& r2 = fmin(x, y);
+```
+
+**为何？**
+答：在 C++11 标准产生之前，是没有右值引用这个概念的，当时如果想要一个类型既能接收左值也能接收右值的话，需要用 const 左值引用，比如标准容器的 push_back 接口：void push_back (const T& val)。
+也就是说，如果 const 左值引用不能引用右值的话，有些接口就不好支持了。
+
+```cpp
+#include <iostream>
+#include <string>
+
+// 参数中的 s 是引用，在调用函数时不会发生拷贝
+char& char_number(std::string& s, std::size_t n) {
+  s += s;          // 's' 与 main() 的 'str' 是同一对象
+                   // 此处还说明左值也是可以放在等号右侧的
+  return s.at(n);  // string::at() 返回 char 的引用
+}
+
+int main() {
+  std::string str = "Test";
+  char_number(str, 1) = 'a';  // 函数返回是左值，可被赋值
+  std::cout << str << '\n';   // 此处输出 "TastTest"
+}
+```
+
+### 右值引用
+
+对右值的引用，给右值取别名。
+右值**可以在内存里也可以在 CPU 寄存器里。**
+另外，右值引用可以被看做一种**延长临时对象生存期的方式**。
+
+```cpp
+// 以下几个是对上面右值的右值引用
+int&& rr1 = 10;
+double&& rr2 = x + y;
+double&& rr3 = fmin(x, y);
+```
+
+**注意：**
+右值引用引用右值，会使右值被存储到特定的位置。
+也就是说，右值引用变量其实是左值，可以对它取地址和赋值（const 右值引用变量可以取地址但不可以赋值，因为 const 在起作用）。
+当然，取地址是指取变量空间的地址（右值是不能取地址的）。
+
+比如：
+
+```cpp
+double&& rr2 = x + y;
+&rr2;
+rr2 = 9.4;
+//右值引用 rr2 引用右值 x + y 后，该表达式的返回值被存储到特定的位置，不能取表达式返回值 x + y 的地址，但是可以取 rr2 的地址，也可以修改 rr2 。
+const double&& rr4 = x + y;
+&rr4;
+//可以对 rr4 取地址，但不能修改 rr4，即写成rr4 = 5.3;会编译报错。
+```
+
+- 右值引用只能引用右值，不能直接引用左值
+- 但是右值引用可以引用被`move`的左值。
+
+```cpp
+// 1.右值引用只能引用右值
+int&& rr1 = 10;
+double&& rr2 = x + y;
+const double&& rr3 = x + y;
+
+int t = 10;
+//int&& rrt = t;  // 编译报错，不能直接引用左值
+
+
+// 2.但是右值引用可以引用被move的左值
+int&& rrt = std::move(t);
+int*&& rr4 = std::move(p);
+int&& rr5 = std::move(*p);
+const int&& rr6 = std::move(b);
+```
+
+```cpp
+#include <iostream>
+#include <string>
+
+int main() {
+  std::string s1 = "Test";
+  // std::string&& r1 = s1;           // 错误：不能绑定到左值
+
+  const std::string& r2 = s1 + s1;  // 可行：到常值的左值引用延长生存期
+  // r2 += "Test";                    // 错误：不能通过到常值的引用修改
+
+  std::string&& r3 = s1 + s1;  // 可行：右值引用延长生存期
+  r3 += "Test";  // 可行：能通过到非常值的右值引用修改
+  std::cout << r3 << '\n';
+}
+```
+
+### ++i 和 i++ 是典型的左值和右值
+
+### 移动语义和`std::move(C++11)`
+
+**move**:std::move(C++11)，将一个左值强制转换为右值，以实现移动语义。
+
+在 C++11 后，利用右值引用新增了对移动语义的支持，用来避免对象在堆空间的赋值（但无法避免栈空间赋值）。
+
+**注：一个对象被移动后不应该对其进行任何操作，无论是修改还是访问**
+
+```cpp
+// 移动构造函数
+std::vector<int> v{1, 2, 3, 4, 5};
+std::vector<int> v2(std::move(v));  // 移动v到v2, 不发生拷贝
+
+// 移动赋值函数
+std::vector<int> v3;
+v3 = std::move(v2);
+
+// 有移动能力的函数
+std::string s = "def";
+std::vector<std::string> numbers;
+numbers.push_back(std::move(s));
+```
+
+## cast 显式转换——explicit conversion-四种类型转换
+
+### static_cast 静态转换
+
+```cpp
+static_cast<type_name>(expression)
+```
+
+![1713063702288](image/index/1713063702288.png)
+
+![1713063687614](image/index/1713063687614.png)
+
+`static_cast`一般用于隐式转换，当 type_name 和 express 至少有一方可以隐式转换时，则可以用 static 进行强制类型转换。可以用于常见的 int、float、double 等类型转换；转换成功返回 true，否则返回 false（相当于 C 语言中的强制类型转换）。
+
+**static_cast 基类转换子类是不安全的**
+
+### dynamic_cast 动态转换
+
+dynamic_cast 一般用于基类指向派生类时的强制转换。
+其转换是安全的（RTTI 机制）。
+
+**RTTI**
+提供两个有用的操作符：
+
+- typeid
+- dynamic_cast<>
+
+### const_cast 常量转换
+
+加上 const：
+![1713077756317](image/index/1713077756317.png)
+
+去掉 const:
+
+- const 修饰指针，指针指向一个类对象（常量指针）-将一个常量指针转换为非常量指针。
+
+### reinterpret_cast 重新解释转换
+
+## 断点和读取内存

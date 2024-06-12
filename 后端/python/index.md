@@ -613,6 +613,10 @@ self 相对于 其他编程语言的 this 指针，self 通常作为类方法的
 - \_name : 类名
 -
 
+### 单下划线、双下划线、头尾双下划线说明
+
+![1711789378356](image/index/1711789378356.png)
+
 ## why anaconda?
 
 - 自带许多数据科学包
@@ -764,6 +768,59 @@ def func(data : Union[int , str]) -> Union[int , str]:
   ![1697550756817](image/index/1697550756817.png)
 
 ### duck typing
+
+## 接口
+
+### 接口类-Interface
+
+`接口类`是一个规范子类的类，与别的类不太一样。
+
+`接口`本身内部的方法不实现，`子类`继承接口类实现需要的接口功能。
+
+定义一个接口类，我们需要 `abc模块`（抽象类基类，Abstract Base Classes）中的两个工具 abstractmethod, ABCMeta
+
+![1711789935300](image/index/1711789935300.png)
+
+```python
+from abc import abstractmethod, ABCMeta
+
+
+class GraphicRule(metaclass=ABCMeta):
+    """图形接口类"""
+
+    @abstractmethod
+    def area(self):
+        """面积"""
+        pass
+
+    @abstractmethod
+    def perimeter(self):
+        """周长"""
+        pass
+
+
+class Rectangle(GraphicRule):
+    """矩形类"""
+    def __init__(self, b, h):
+        self.b = b
+        self.h = h
+
+    def area(self):
+        return self.b*self.h
+
+    def perimeter(self):
+        return (self.b+self.h)*2
+
+# 实例矩形类的一个对象
+rect1 = Rectangle(3, 7)
+print("矩形面积：{}".format(rect1.area()))
+print("矩形周长：{}".format(rect1.perimeter()))
+
+# =======控制台输出结果=======
+矩形面积：21
+矩形周长：20
+
+```
 
 ## python 新语法
 
