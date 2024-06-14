@@ -191,6 +191,39 @@ UGameInstance:全局唯一单例，在引擎初始化时就已生成，一直存
 
 ![1711377900433](image/C++forUnreal/1711377900433.png)
 
+## 创建对象的几种方式
+
+### 创建 actor 对象-UWorld::SpawnActor()
+
+```cpp
+/* <CreateObjectDemo>
+* 创建AActor派生类对象不要用NewObject或者new，而要用UWorld::SpawnActor()
+*/
+UWorld* World = GetWorld();
+FVector pos(150, 0, 20);
+
+AMyActor* MyActor = World->SpawnActor<AMyActor>(pos, FRotator::ZeroRotator);
+
+
+//示例：创建一个护甲道具
+AProp* armor = GetWorld()->SpawnActor<AProp>(pos , rotator);
+
+```
+
+### 创建组件
+
+为 actor 创建组件，可以使用`UObject::CreateDefaultSubObject()`模板函数，这个函数只能在构造函数中调用：
+
+```cpp
+/* <CreateObjectDemo>
+* 创建Component对象，要使用CreateDefaultSubobject模板函数
+*/
+MyComponent = CreateDefaultSubobject<UMyActorComponent>(TEXT("MyComponent"));
+
+```
+
+注意：这里有坑，TEXT(“MyComponent”)的名字不能重复！！
+
 ## Actor
 
 什么时候用 Actor?
@@ -215,6 +248,8 @@ AActor 是所有 Actor 的基类。
 **加载静态类时，在引用资源类的末尾需要加上 \_C，否则编译时会报错**
 
 ### TSubClassOf
+
+是提供 UCLASS 类型安全性的模板类，
 
 ### 动态加载类和资源
 
@@ -253,6 +288,36 @@ SceneComponent 提供两个功能：
 
 ![1711797972676](image/C++forUnreal/1711797972676.png)
 
+### 在场景中查找 actor 的几种方式）- tag / getAllActorOfClass()
+
+- 在蓝图中设置 tag 属性通过 tag 查找
+
+```cpp
+#include "Kismet/GameplayStatics.h"
+TArray<AActor*> Actors;
+UGameplayStatics::GetAllActorsWithTag(GetWorld(), TEXT("actorName"), Actors);
+for (AActor* Actor: Actors)
+{
+
+
+}
+```
+
+- 通过 UGamePlayStatics:GetAllActorsOfClass
+
+```cpp
+#include "Kismet/GameplayStatics.h"
+
+TArray<AActor*> Actors;
+UGameplayStatics::GetAllActorsOfClass(GetWorld(), AActor::StaticClass(), Actors);
+
+for (AActor* Actor : Actors)
+{
+
+
+}
+```
+
 ### ChildActorComponent
 
 ## Pawn
@@ -273,6 +338,23 @@ SceneComponent 提供两个功能：
 ### AController
 
 ![1711812089686](image/C++forUnreal/1711812089686.png)
+
+### 获取角色 Controller-可配合 cast 转换成相应的 controller
+
+- GetPlayerController
+
+```cpp
+static class APlayerController* GetPlayerController(const UObject* WorldContextObject, int32 PlayerIndex);
+```
+
+### 获取 Pawn
+
+- getPlayerPawn
+
+```cpp
+
+APawn* myPawn = Cast<ADrone>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
+```
 
 ### Controller 和 Pawn 必须 1：1 吗？
 
@@ -577,15 +659,34 @@ APlayerState 用来保存玩家的游戏数据集，对于一场游戏，需要�
 
 ## widget - 控件
 
+### 通过 widget 类型获取指定 UI
+
+```CPP
+void GetUI()
+{
+	TArray<UUserWidget*> FondWidgets;
+	//TSubclassOf<UMainWidget> MainWidgets;
+	UWidgetBlueprintLibrary::GetAllWidgetsOfClass(this, FondWidgets, UMainWidget::StaticClass(), false);
+	UMainWidget *ScreenWidget = Cast<UMainWidget>(FondWidgets[0]);
+	if(ScreenWidget->IsValidLowLevel())
+	{
+		ScreenWidget->CrossBackToCenter();
+	}
+}
+```
+
 ### NativeConstruct()
 
 用于初始化自定义的 Widget，获取内部的 button/combo 等 UMG 组件的 C++指针。
+![1718113510537](image/C++forUnreal/1718113510537.png)
 
 ## 一些函数
 
 ### createDefaultSubObject()
 
 在类的构造函数中创建默认的子对象。
+
+### convert world location to screen location - 世界坐标到屏幕坐标的转换
 
 ## 行为树
 

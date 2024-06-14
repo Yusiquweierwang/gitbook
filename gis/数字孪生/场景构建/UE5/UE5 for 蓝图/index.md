@@ -474,12 +474,18 @@ actor 包括两种 component.
 
 ### 实现多个 UI 界面切换显示
 
+#### 法 1
+
 创建各 UI 页面，并提升变量，设置\_TargetWidget 为登录页面变量
 ![Alt text](https://img-blog.csdnimg.cn/20190908215857686.png?x-oss-process%3Dimage%2Fwatermark%2Ctype_ZmFuZ3poZW5naGVpdGk%2Cshadow_10%2Ctext_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTE2MDIyNjM%3D%2Csize_16%2Ccolor_FFFFFF%2Ct_70)
 在第二步创建的蓝图类中新增函数 ShowWidgets（），增加一个接口，用于待显示页面的索引，在函数中首先移除显示在屏幕上的图像，Switch 语句用于判断显示那个图像，然后用 AddToViewPort 函数添加当前待显示页面，如图
 ![Alt text](https://img-blog.csdnimg.cn/20190908221228461.png?x-oss-process%3Dimage%2Fwatermark%2Ctype_ZmFuZ3poZW5naGVpdGk%2Cshadow_10%2Ctext_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTE2MDIyNjM%3D%2Csize_16%2Ccolor_FFFFFF%2Ct_70)
 在其他控件蓝图中调用 Show 函数并传入要显示的 UI 索引即可。
 ![Alt text](https://img-blog.csdnimg.cn/20190908221513362.png?x-oss-process%3Dimage%2Fwatermark%2Ctype_ZmFuZ3poZW5naGVpdGk%2Cshadow_10%2Ctext_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTE2MDIyNjM%3D%2Csize_16%2Ccolor_FFFFFF%2Ct_70)
+
+#### 法 2 WidgetSwitcher
+
+![1718266294280](image/index/1718266294280.png)![1718266294280](image/index/1718266294280.png)
 
 ## varest JSON 解析请求回来的 JSON
 
