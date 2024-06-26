@@ -487,6 +487,11 @@ actor 包括两种 component.
 
 ![1718266294280](image/index/1718266294280.png)![1718266294280](image/index/1718266294280.png)
 
+### 拖拽UI生成模型
+
+
+
+
 ## varest JSON 解析请求回来的 JSON
 
 ## 案例-金币
