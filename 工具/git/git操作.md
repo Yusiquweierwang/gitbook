@@ -49,6 +49,45 @@ modified
 staged
 ![1676343607581](image/git操作/1676343607581.png)
 
+暂存区stage / index：
+![1720158312756](image/git操作/1720158312756.png)
+
+### git checkout --file - 丢弃工作区的修改
+
+场景：乱改了工作区某个文件的内容，想直接丢弃工作区的修改时.
+![1720158574247](image/git操作/1720158574247.png)
+
+### git reset HEAD `<file>` - 撤销掉（unstage）暂存区的修改，重新放回工作区
+
+场景：不仅改了工作区某文件内容，还添加到暂存区时，想丢弃修改，两步：
+
+- git reset HEAD `<file>`
+- git checkout --file
+
+### reset - 回退到上一个commit 版本
+
+场景：已经提交了不合适的修改到版本库时，想要撤销本次提交，参考版本回退一节，不过前提是没有推送到远程库。
+
+```
+git reset --hard xx
+```
+
+回滚原理：
+![1720158157353](image/git操作/1720158157353.png)
+
+### git reflog - 查看命令历史，确定要回到未来的哪个版本。
+
+### 删除文件 两种情况——确实要删除和误删
+
++ 确定删除 `git rm`
++ 误删，想把误删文件恢复到最新版本。
+
+```
+git checkout -- file 
+```
+
+### **git checkout 原理：用版本库里的版本替换工作区的版本**
+
 ### fetch
 
 直接用 pull 会直接将远程仓库项目覆盖到工作区,所以应先用 fetch 将远程仓库项目添加到 repo,然后用 diff 对比区别，无问题再合并。
@@ -62,3 +101,77 @@ staged
 ### 项目中 git 提交
 
 git > 提交 > 勾选更改 > 提交信息 > 提交（不选提交并推送）> git > 拉取 > 合并冲突
+
+不提交直接拉取：
+
+git>更新分支  > 合并到  > 拉取
+
+未进行版本管理的文件。
+
+## 连接github
+
+本地git仓库和github 仓库之间的传输是通过SSH加密的。
+
+## 分支管理
+
+### 创建分支和合并分支
+
+每次提交，git将他们串成一条时间线，此时间线就是一个分支。
+
+![1720161145936](image/git操作/1720161145936.png)
+
+![1720160730524](image/git操作/1720160730524.png)
+
+- 创建dev分支，然后切换到dev分支:
+
+```
+git checkout -b dev
+Switched to a new branch 'dev'
+```
+
+- 在dev分支上正常提交，比如对readme.txt做个修改，然后提交
+
+```
+git add readme.txt
+git commit -m 'branch test'
+```
+
+- 现在dev 分支工作完成，可以切换回master分支：
+
+```
+git checkout master
+```
+
+- 把dev分支的工作成果合并到master分支上：
+
+```
+git merge dev
+```
+
+- 合并后，就可以放心删除dev分支了：
+
+```
+git branch -d dev
+//-d delete
+```
+
+### 分支策略
+
+master-仅用来发布新版本，平时不在上面干活；
+dev-干活分支；
+团队合作分支belike:
+![1720162018068](image/git操作/1720162018068.png)
+
+### BUG分支-git stash - 通过一个新的临时分支来修复，修复后，合并分支，然后删除临时分支
+
+**git stash**-
+
+### cherry-pick - 复制一个特定的提交到当前分支
+
+![1720162371342](image/git操作/1720162371342.png)
+
+### 多人协作
+
+![1720162720873](image/git操作/1720162720873.png)
+
+### rebase
