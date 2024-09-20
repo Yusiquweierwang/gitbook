@@ -469,6 +469,44 @@ AActor 必须在 world 中才能存在，而 Player 可以在游玩过程中 Lev
 
 ### ULocalPlayer
 
+## 定时器 Timer 和 事件绑定
+
+- 定时器在全局定时器管理器（FTimeManager 类型）中管理。
+
+- 设置定时器的函数：
+
+```cpp
+SetTimer
+//定时执行
+SetTimerForNextTick
+//下一帧执行
+```
+
+- 使用场景
+  - 定时 SpawnActor
+  - 定时销毁
+  - buff 持续，如霸体，持续伤害
+
+### 设置定时器 - SetTimer
+
+```cpp
+GetWorldTimerManager()
+//等价于
+GetWorld()->GetTimerManager()
+```
+
+![1720454230116](image/C++forUnreal/1720454230116.png)
+
+### 清空定时器
+
+## Tick 三种方式
+
+### 默认 Tick - Actor / Component / UMG
+
+### TimerManager 定时器
+
+### FTickableGameObject - 可以写原生 Object / 也可以直接继承 UObject 使用
+
 ## 重写 beginplay() / tick() / endPlay()
 
 .h 中
@@ -558,10 +596,80 @@ TSubclassOf<AActor> MyActorClass;
 
 ### 动态加载类
 
+## 接口 - Interface
+
+### 定义接口
+
+接口由 UInterface 宏定义，通常包含再.h 文件中。
+接口本身不能被实例化，只定义方法的原型，不包含任何实现。
+
+```cpp
+//接口由UInterface宏定义，通常包含再.h文件中。
+UINTERFACE()
+class UMyInterface : public UInterface
+{
+    GENERATED_UINTERFACE_BODY()
+
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+    virtual void MyInterfaceMethod() {};
+};
+```
+
+### 类实现接口
+
+任何类都可以实现接口，实现接口的类需要包含 IMyInterface 前缀的纯虚类，并使用 IMPLEMENTS_INTERFACE 宏来指定它实现了哪个接口。
+
+```cpp
+class AMyActor : public AActor, public IMyInterface
+{
+    GENERATED_BODY()
+    IMPLEMENTS_INTERFACE(UMyInterface)
+
+public:
+    // 实现接口中的方法
+    virtual void MyInterfaceMethod_Implementation() override
+    {
+        // 实现细节
+    }
+};
+```
+
 ## UI 编辑
 
 创建 UI 控件蓝图：
 内容浏览器右键--用户界面--控件蓝图 widget blueprint
+
+## 通信机制
+
+### 事件分发器
+
+### 委托
+
+以 BossDied 为例，
+
+在#include 下，声明：
+
+```cpp
+DECLARE_DELEGATE(FOnBossDiedDelegate);
+```
+
+在类默认值中：
+
+```cpp
+     protected:
+         UFUNCTION()
+         void HandleBossDiedEvent();
+         UPROPERTY(EditInstanceOnly, BlueprintReadWrite)
+         class UBoxComponent* BoxComp;
+         virtual void NotifyActorBeginOverlap(AActor* OtherActor);
+
+     public:
+         FOnBossDiedDelegate OnBossDied;
+```
+
+#### FTimerDelegate - 定时器委托允许在指定时间间隔后执行特定代码块
+
+- 绑定委托
 
 ## 反射机制
 
