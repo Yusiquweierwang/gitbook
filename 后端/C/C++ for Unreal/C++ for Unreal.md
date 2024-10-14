@@ -1,3 +1,7 @@
+## 基础图
+
+![1720168309148](image/C++forUnreal/1720168309148.png)
+
 ## 注意事项
 
 ### 改缓存！！
@@ -103,13 +107,18 @@ AGameMode 是 AGameModeBase 的子类，拥有一些额外的功能支持多人�
 
 ## UENUM
 
-## USTRUCT
-
 ### 利用结构体将表格导入 ue5
 
 ## TArray
 
 C++中的动态数组，所有元素为相同类型。
+
+是模板化的，意味着可以使用任何数据类型作为数组元素的类型，如 int/float/UObject\*/structs，或其他自定义类型。
+
+- 动态尺寸
+- 自动内存管理分配和释放
+- 安全性：提供多种安全方法访问和操作数组元素，如 add / remove/ find / contains / ForEach 等。
+- 序列化
 
 ![1710834771508](image/C++forUnreal/1710834771508.png)
 蓝图中
@@ -120,7 +129,30 @@ C++中
 
 ![1711254437249](image/C++forUnreal/1711254437249.png)
 
+### TArray 方法
+
+- Add
+- AddUnique
+- Append
+- Insert
+- Remove
+- Clear
+- Resize
+- Empty
+- Num
+- IsValidIndex
+- Get[]
+- ForEach
+
+### 与 std 中 array 区别
+
 ## TMap
+
+```cpp
+TMap<FString , int32>
+表示FString 为键， int32为值的映射。
+
+```
 
 ## TSet
 
@@ -288,6 +320,29 @@ SceneComponent 提供两个功能：
 
 ![1711797972676](image/C++forUnreal/1711797972676.png)
 
+### 创建和销毁 Component
+
+- 构造函数创建-`CreateDefaultSubObject<T>`
+
+```cpp
+UPROPERTY(VisibleAnywhere)
+	UStaticMeshComponent* paddle1;
+
+paddle1 = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("paddle1"));
+
+```
+
+- 运行时创建-`NewObject<T>` / `RegisterComponent()`
+
+```cpp
+Mesh = NewObject<UStaticMeshComponent>(this,TEXT("MyMesh"));
+Mesh->SetupAttachment(root);
+Mesh->RegisterComponent(); // 注册渲染/物理状态
+// 可配合 LoadObject()
+```
+
+#### 构造函数创建
+
 ### 在场景中查找 actor 的几种方式）- tag / getAllActorOfClass()
 
 - 在蓝图中设置 tag 属性通过 tag 查找
@@ -414,6 +469,44 @@ AActor 必须在 world 中才能存在，而 Player 可以在游玩过程中 Lev
 
 ### ULocalPlayer
 
+## 定时器 Timer 和 事件绑定
+
+- 定时器在全局定时器管理器（FTimeManager 类型）中管理。
+
+- 设置定时器的函数：
+
+```cpp
+SetTimer
+//定时执行
+SetTimerForNextTick
+//下一帧执行
+```
+
+- 使用场景
+  - 定时 SpawnActor
+  - 定时销毁
+  - buff 持续，如霸体，持续伤害
+
+### 设置定时器 - SetTimer
+
+```cpp
+GetWorldTimerManager()
+//等价于
+GetWorld()->GetTimerManager()
+```
+
+![1720454230116](image/C++forUnreal/1720454230116.png)
+
+### 清空定时器
+
+## Tick 三种方式
+
+### 默认 Tick - Actor / Component / UMG
+
+### TimerManager 定时器
+
+### FTickableGameObject - 可以写原生 Object / 也可以直接继承 UObject 使用
+
 ## 重写 beginplay() / tick() / endPlay()
 
 .h 中
@@ -423,49 +516,54 @@ AActor 必须在 world 中才能存在，而 Player 可以在游玩过程中 Lev
 
 ## UPROPERTY
 
-UPROPERTY()宏用来修饰 C++中的变量。
-
-使用 UPROPERTY 说明符赋予属性特性。
-
-![1713429919324](image/C++forUnreal/1713429919324.png)
-在蓝图中：
-![1713429964684](image/C++forUnreal/1713429964684.png)
-visibleDefaultOnly
-![1713429995979](image/C++forUnreal/1713429995979.png)
-visibleInstanceOnly
-![1713430045981](image/C++forUnreal/1713430045981.png)
-
-- visible
-
-![1710844757165](image/C++forUnreal/1710844757165.png)
-
-![1713444603281](image/C++forUnreal/1713444603281.png)
-在蓝图中只能获取
-
-![1713444658641](image/C++forUnreal/1713444658641.png)
-在蓝图中可以获取和设置
-
-```cpp
-public:
-	//class defaults可见不可写入,其他地方不可见,不可读写
-	UPROPERTY(VisibleDefaultsOnly, Category ="TestVisible|VisibleDefaultsOnly")
-	int32 VisibleDefaultsValue;
-```
-
-**Category**是分类的意思，可以在蓝图调用的时候去显现出来将想要的东西挂载到此分类下面。
-
-- edit
-- read / write
-
-![1710844106069](image/C++forUnreal/1710844106069.png)
+![1720235665603](image/C++forUnreal/1720235665603.png)
 
 ## UFUNCTION
 
-**设置变量和函数到蓝图中**：
-![Alt text](https://img-blog.csdnimg.cn/bafb61db47b04aef89c4ee284140ed47.png)
-![1711378434573](image/C++forUnreal/1711378434573.png)
-运行后，写的数据就可以到 UE 的蓝图类中使用：
-![1711378465395](image/C++forUnreal/1711378465395.png)
+![1720235720891](image/C++forUnreal/1720235720891.png)
+
+- `BluePrintCallable`
+  可以从蓝图 中 调用
+- `BluePrintNativeEvent` 蓝图原生事件
+  用于创建可以被蓝图覆盖的函数。
+  需要在 C++ 中添加一个后缀`_Implementation`。
+
+* C++中定义事件，C++和蓝图中都可以实现(C++必须实现)。
+* 如果蓝图不实现,会执行 C++的函数实现
+* 如果蓝图和 C++都实现,蓝图则会覆盖 C++实现，只执行蓝图实现.
+* C++函数实现,需要额外定义一个名为:函数名+\_Implementation 的返回值和参数列表都一致的函数.
+* BlueprintNativeEvent 需要配合 BlueprintCallable 一起使用,否则蓝图中不可调用
+* 有返回值和无返回值 表现形式有所区别
+
+```cpp
+//DisplayName 蓝图中实际调用的函数名
+//DeprecationMessage显示警告信息
+//此处参数用Fsting str 编译不通过
+UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "methods", meta=(DisplayName="FunBlueprintNativeEvent测试",DeprecatedFunction, DeprecationMessage = "This FunBlueprintNativeEvent 的测试."))
+	void FunBlueprintNativeEvent(const FString& str="From C++");
+```
+
+```cpp
+void AMyActor::FunBlueprintNativeEvent_Implementation(const FString& str)
+{
+	GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Blue, str);
+}
+```
+
+![Alt text](https://img2020.cnblogs.com/blog/2369154/202104/2369154-20210423182953746-1297205320.png)
+
+- `BluePrintImplementableEvent` 蓝图可实现事件
+  **无需再 C++写实现函数，需要在蓝图 override 有返回值和无返回值 有所区别**
+
+```cpp
+UFUNCTION(BlueprintImplementableEvent, Category = "methods")
+	void FunBlueprintImplementableEvent1();
+
+UFUNCTION(BlueprintImplementableEvent, Category = "methods")
+	void FunBlueprintImplementableEvent2(float& Value);
+```
+
+![Alt text](https://img2020.cnblogs.com/blog/2369154/202104/2369154-20210423182835582-352687030.png)
 
 ## 静态/动态加载类和资源
 
@@ -498,13 +596,84 @@ TSubclassOf<AActor> MyActorClass;
 
 ### 动态加载类
 
+## 接口 - Interface
+
+### 定义接口
+
+接口由 UInterface 宏定义，通常包含再.h 文件中。
+接口本身不能被实例化，只定义方法的原型，不包含任何实现。
+
+```cpp
+//接口由UInterface宏定义，通常包含再.h文件中。
+UINTERFACE()
+class UMyInterface : public UInterface
+{
+    GENERATED_UINTERFACE_BODY()
+
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+    virtual void MyInterfaceMethod() {};
+};
+```
+
+### 类实现接口
+
+任何类都可以实现接口，实现接口的类需要包含 IMyInterface 前缀的纯虚类，并使用 IMPLEMENTS_INTERFACE 宏来指定它实现了哪个接口。
+
+```cpp
+class AMyActor : public AActor, public IMyInterface
+{
+    GENERATED_BODY()
+    IMPLEMENTS_INTERFACE(UMyInterface)
+
+public:
+    // 实现接口中的方法
+    virtual void MyInterfaceMethod_Implementation() override
+    {
+        // 实现细节
+    }
+};
+```
+
 ## UI 编辑
 
 创建 UI 控件蓝图：
 内容浏览器右键--用户界面--控件蓝图 widget blueprint
 
+## 通信机制
+
+### 事件分发器
+
+### 委托
+
+以 BossDied 为例，
+
+在#include 下，声明：
+
+```cpp
+DECLARE_DELEGATE(FOnBossDiedDelegate);
+```
+
+在类默认值中：
+
+```cpp
+     protected:
+         UFUNCTION()
+         void HandleBossDiedEvent();
+         UPROPERTY(EditInstanceOnly, BlueprintReadWrite)
+         class UBoxComponent* BoxComp;
+         virtual void NotifyActorBeginOverlap(AActor* OtherActor);
+
+     public:
+         FOnBossDiedDelegate OnBossDied;
+```
+
+#### FTimerDelegate - 定时器委托允许在指定时间间隔后执行特定代码块
+
+- 绑定委托
+
 ## 反射机制
 
+反射是指在运行状态下，任意一个实体类都能知道这个类的所有属性和方法。
 反射数据描述了类在运行时的内容。
 
 包括
@@ -518,6 +687,23 @@ TSubclassOf<AActor> MyActorClass;
 创建了一个 Actor 类，有一个 Actor 类型指针去指向此 Actor 类，若指针被销毁了，则此 Actor 类 UE 系统会判断为垃圾，参与反射和垃圾回收系统后，UE 会在适当时机销毁此 Actor。
 
 - 使用宏进行标识，UE 的 UHT 系统会帮忙进行垃圾回收。
+
+### 垃圾回收机制
+
+关键阶段：
+
+- 标记（Marking）
+  - 引擎首先标记所有“根”对象，即被直接引用的对象，如在全局作用域、局部变量、函数参数或栈帧中引用的对象。
+  - 标记过程递归的访问这些对象的引用，将他们标记为“可达”。
+- 扫描（Scanning）
+  - 引擎扫描整个对象图，寻找未被标记的对象。
+  - 未被标记的对象被认为不可达，即没有活动引用指向他们
+- 清除（Sweeping）
+  - 最后，所有未被标记 的对象被摧毁，其内存被释放。
+
+### 序列化 机制
+
+将对象转换为字节流，从而存储对象或将对象传输到内存、数据库或文件的过程。
 
 ![1711378063602](image/C++forUnreal/1711378063602.png)
 
@@ -695,3 +881,34 @@ void GetUI()
 
 行为树：上班：
 ![1713177358004](image/C++forUnreal/1713177358004.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
