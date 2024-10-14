@@ -42,6 +42,13 @@ git 默认支持两种传输协议：`SSH`&`HTTPS`。
 从远程仓库拉取
 `git pull`
 
+`git diff filename`
+比较暂存区和工作区的文件差异
+
+`git blame filename`
+逐行查看文件的改动
+
+
 ### 进阶
 
 改写{amend}
