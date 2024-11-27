@@ -587,5 +587,50 @@ castto 判断是否碰撞到，碰撞到则金币消失。
 
 ![1716814395681](image/index/1716814395681.png)
 
+## UMG - 以背包系统（结合 youtube 和 b 站 甜筒筒视频）为例、
 
+![1730464812496](image/index/1730464812496.png)
+picture by 甜筒筒哟
 
+### **firstPersonPlayer**:
+
+**属性**
+moodValue
+HealthValue
+EnergeValue
+
+**接口**
+ActionInterface
+
+### UMG dir
+
+#### **GameHUD**
+
+事件构造器 / 添加一个变量"CharacterReference"作为 character 的引用
+![1730454786946](image/index/1730454786946.png)
+
+![1730455029679](image/index/1730455029679.png)
+可以绑定到 character 的 health
+
+- [ ] **EventDispatcher**
+
+* RefreshInventory
+
+#### **InventoryHUD**
+
+**InventorySlot**
+
+- [ ] **functions**
+
+* InventoryImage()
+  ![1730458820946](image/index/1730458820946.png)
+* CheckInventoryItem()
+  ![1730458767019](image/index/1730458767019.png)
+
+- [ ] **EventDispatcher**
+
+* OnButtonClicked
+
+不仅要知道插槽被点击了，还要知道是插槽里的那个东西被点击了
+
+**PickupText**

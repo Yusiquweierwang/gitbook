@@ -83,3 +83,31 @@ https://blog.csdn.net/weixin_44120025/article/details/115270215?spm=1001.2101.30
 ### crash 之后的解决
 
 **搜 log 日志，在 saved/log**
+
+### 行人具有初始身高 196
+
+在 BP_citizen 中 childcharacter ， 右侧细节面板 子 actor template 中 设置 default param。
+
+### 在 不同关卡出现问题
+
+1.考虑是否没有把 BP 拖入场景；
+
+### 蓝图冲突合并
+
+- 将本地资产更改与当前版本控制修订版进行对比
+  diff against depot.
+- 将本地资产更改与特定版本控制修订版本进行对比
+  diff against workspace file.
+- 将资产的早期修订版本与其上一修订版进行对比
+  diff against previous revision.
+
+| 颜色  | 说明                           |
+| ----- | ------------------------------ |
+| red   | 左侧内容在右侧缺失（内容减少） |
+| green | 内容增加                       |
+| blue  | 内容变化                       |
+| gray  | 移动了节点 / 注释              |
+
+**参考文档**：[虚幻引擎中的 UE 对比工具 | 虚幻引擎 5.5 文档 | Epic Developer Community | Epic Developer Community](https://dev.epicgames.com/documentation/zh-cn/unreal-engine/ue-diff-tool-in-unreal-engine)
+
+### 蓝图 ： 设置输入模式游戏和 UI

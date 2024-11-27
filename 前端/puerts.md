@@ -1,4 +1,5 @@
 ## puerts 入门
+
 ![1727418146388](image/puerts/1727418146388.png)
 ![1727148754398](image/puerts/1727148754398.png)
 
@@ -11,8 +12,8 @@
 - 对非反射 API 进行手动封装成反射后蓝图也可以访问（推荐基于模板的静态绑定 / 目前不太推荐的拓展函数）
 
 ## 调试
-### puerts:FJsEnv - 代表一个虚拟机实例（类似一个 nodejs 进程）-初始化puerts环境
 
+### puerts:FJsEnv - 代表一个虚拟机实例（类似一个 nodejs 进程）-初始化 puerts 环境
 
 - 1.ts 和 ue 相互调用
 
@@ -20,8 +21,6 @@
   把一个 ts 类 mixin 到一个蓝图类
 
 - 3.继承引擎类功能
-
-
 
 ```C++
 GameScript = MakeShared<puerts::FJsEnv>(std::make_unique<puerts::DefaultJSModuleLoader>(TEXT("JavaScript")), std::make_shared<puerts::FDefaultLogger>(), 8080);
@@ -32,46 +31,10 @@ GameScript->WaitDebugger();
 GameScript->Start("QuickStart", Arguments);
 ```
 
-
 ![1727590702263](image/puerts/1727590702263.png)
 
+## puerts 开发指南
 
+在 Editor 中新建 C++类：PuertsGameinstance.h
 
-
-
-
-## puerts开发指南
-在Editor中新建C++类：PuertsGameinstance.h
-
-
-
-
-
-## 基于模板的静态绑定-适用UCLASS/USTRUCT下未标记UROPERTY / UFUNCTION的属性和方法，以及c++ CLASS/STRUCT。
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+## 基于模板的静态绑定-适用 UCLASS/USTRUCT 下未标记 UROPERTY / UFUNCTION 的属性和方法，以及 c++ CLASS/STRUCT。

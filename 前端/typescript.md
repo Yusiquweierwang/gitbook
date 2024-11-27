@@ -300,7 +300,7 @@ arr; // 推断类型为 (string|number)[]
 
 ### 只读数组，const 断言
 
-在数组类型前面加上`readonly`关键字
+在数组类型前面加上 `readonly`关键字
 
 ```js
 const array: readonly number[] = [0, 1];
@@ -328,7 +328,7 @@ let a: [ number,number?] = [1];
 
 ![1726840175163](image/typescript/1726840175163.png)
 
-**扩展运算符`...`表示不限于成员数量的元组。**
+**扩展运算符 `...`表示不限于成员数量的元组。**
 
 ```js
 type NamedNums = [string, ...number[]];
@@ -385,8 +385,7 @@ f = function (y: number) {
 - js 函数在声明时可以有多余的餐宿，实际使用时之传入一部分参数。
   ![1727058381127](image/typescript/1727058381127.png)
 
-/ \
- |
+/  |
 
 - 解决方法：
   ![1727058443772](image/typescript/1727058443772.png)
@@ -725,7 +724,7 @@ w.age += 1;
 r.age; // 43
 ```
 
-如果希望属性值只是只读的方法： 1.声明时加入 readonly 关键词； 2.赋值时，在对象后面加上只读断言`as const`;
+如果希望属性值只是只读的方法： 1.声明时加入 readonly 关键词； 2.赋值时，在对象后面加上只读断言 `as const`;
 
 ```js
 const myUser = {
@@ -743,7 +742,7 @@ myUser.name = "Cynthia"; // 报错
 
 ### 空对象
 
-空对象只能使用继承的属性，即继承自原型对象`Object.prototype`的属性：
+空对象只能使用继承的属性，即继承自原型对象 `Object.prototype`的属性：
 
 ```js
 const obj = {};
@@ -1214,7 +1213,7 @@ interface Array<Type> {
 
 ![1727107179537](image/typescript/1727107179537.png)
 
-ts 默认提供`ReadonlyArray<T>`接口，表示只读数组。
+ts 默认提供 `ReadonlyArray<T>`接口，表示只读数组。
 
 ## ENUM
 
@@ -1390,7 +1389,7 @@ type B = {
 ## tsconfig.json
 
 放在项目的根目录
-\*\*可以不必手写，使用`tsc --init`参数自动生成 tsconfig.json
+\*\*可以不必手写，使用 `tsc --init`参数自动生成 tsconfig.json
 
 反过来说，如果一个目录中有 tsconfig.json，ts 就认为这事项目的根目录。
 
