@@ -36,7 +36,8 @@ Git的版本库里存了很多东西，其中最重要的就是称为**stage（�
 
 ### 撤销修改
 
-+ **git checkout --file 丢弃工作区的修改**
++ **git checkout -- file 丢弃工作区的修改**
+`--`很重要，没有就变成“切换到另一个分支的命令.
 
 
 
@@ -169,7 +170,20 @@ git reset --hard HEAD^
 ```
 git checkout -- file
 ```
+## 远程仓库
 
+关联远程仓库
+`git remote add origin git@server-name:path/repo-name.git
+`
+
+
+### 连接 github
+
+本地 git 仓库和 github 仓库之间的传输是通过 SSH 加密的。
+
+
+
+## 
 ### **git checkout 原理：用版本库里的版本替换工作区的版本**
 
 ### fetch
@@ -192,9 +206,6 @@ git>更新分支 > 合并到 > 拉取
 
 未进行版本管理的文件。
 
-## 连接 github
-
-本地 git 仓库和 github 仓库之间的传输是通过 SSH 加密的。
 
 ## 分支管理
 
