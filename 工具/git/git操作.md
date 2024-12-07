@@ -1,6 +1,51 @@
 ![img](https://pic2.zhimg.com/80/v2-3bc9d5f2c49a713c776e69676d7d56c5_1440w.webp)
 
+
+## what is git?
+**分布式版本控制系统。**
+
+git 管理的是 **-修改**，而不是 **文件**
+
 git 两大功能：版本管理/ 分布式协作
+
+
+## git 版本库 ( 仓库)
+repository
+
+  
+`pwd`显示当前目录
+
+```
+$ mkdir learngit
+$ cd learngit
+$ pwd
+/Users/michael/learngit
+```
+
+Git的版本库里存了很多东西，其中最重要的就是称为**stage（或者叫index）的暂存区**，还有Git为我们自动创建的**第一个分支master，以及指向master的一个指针叫HEAD**。
+
+![alt text](image.png)
+
+
+
+
+
+
+## git 管理修改
+提交后，可以用`git diff HEAD --你的文件`命令来查看工作区和版本库里面最新的版本的区别
+
+### 撤销修改
+
++ **git checkout --file 丢弃工作区的修改**
+
+
+
+场景：乱改了工作区某个文件的内容，想直接丢弃工作区的修改时.
+![1720158574247](image/git操作/1720158574247.png)
+
+
+
+
 
 ### 版本控制
 
@@ -70,10 +115,7 @@ staged
 暂存区 stage / index：
 ![1720158312756](image/git操作/1720158312756.png)
 
-### git checkout --file - 丢弃工作区的修改
 
-场景：乱改了工作区某个文件的内容，想直接丢弃工作区的修改时.
-![1720158574247](image/git操作/1720158574247.png)
 
 ### git reset HEAD `<file>` - 撤销掉（unstage）暂存区的修改，重新放回工作区
 
@@ -93,7 +135,31 @@ git reset --hard xx
 回滚原理：
 ![1720158157353](image/git操作/1720158157353.png)
 
+**回滚分类**
+```
+git reset --hard HEAD^
+//HEAD 表示当前版本，HEAD^^表示上上个版本
+//--hard 会回退到上个版本的已提交状态。
+
+//--soft 会回退到上个版本的未提交状态。
+
+//--mixed 会回退到上个版本已添加但未提交状态
+
+
+
+
+
+```
+
+
+
+
 ### git reflog - 查看命令历史，确定要回到未来的哪个版本。
+吃后悔药
+
+记录了每一次命令
+
+
 
 ### 删除文件 两种情况——确实要删除和误删
 
