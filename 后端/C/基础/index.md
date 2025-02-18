@@ -562,7 +562,7 @@ typedef char bool;
 **fixed with integer types**
 (since c++11)
 
-defined in ``<cstdint>`
+defined in ```<cstdint>``
 int8_t
 int32_t
 uinit16_t
@@ -1569,7 +1569,7 @@ int arr[4];
 - new[] 会调用对象的构造函数 `operator new`（通常底层使用 malloc 实现），delete 先调用析构函数，然后调用 operator delete 函数释放内粗（通常底层使用 free 实现）；malloc()/free()是库函数，只是简单地分配内存，不会调用构造函数和析构函数；
 - new[] 可以自动计算所需的内存大小，无需指定内存块的大小；malloc()需要显式指定所需的内存大小；
 - new[] 返回的指针是类型安全的， malloc()返回的指针若内存分配成功返回 `void*`，需要通过强制类型转换将 `void*`指针转换为需要的类型；
--
+- 
 - new[] 可以抛出异常，malloc()不能；
 
 **new 关键字调用关系**：
@@ -2397,7 +2397,7 @@ c++创建对象时，分配内存和调用 constructor。
 **构造函数**
 
 - 函数名字 跟类名完全一样且没有返回值；
--
+- 
 
 ```cpp
 class Student {
@@ -3345,6 +3345,10 @@ vector 容器 的迭代器是支持随机访问的迭代器。
 
 `swap(vec);`
 ![1709625005348](image/index/1709625005348.png)
+
+swap互换原理：
+
+![1733754691921](image/index/1733754691921.png)
 
 ### vector 动态扩展规律
 

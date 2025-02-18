@@ -105,6 +105,33 @@ AGameMode 是 AGameModeBase 的子类，拥有一些额外的功能支持多人�
 
 ![1710396430174](image/C++forUnreal/1710396430174.png)
 
+## UE 中指针 - 智能指针
+
+**原理：使用引用计数，当引用计数为 0 时，会自动析构**
+
+**类型**
+
+- TSharedPtr<class ObjectType , ESPMode Mode> : 共享指针
+- TSharedRef<class ObjectType, ESPMode Mode>：共享引用
+- TWeakPtr<class ObjectType, ESPMode Mode>：弱指针
+- TSharedFromThis<class OtherType, ESPMode OtherMode>：this 智能指针
+
+**TsharedPtr 和 TsharedRef 唯一区别**：TSharedRef 不能为空
+
+### TsharedPtr
+
+通过引用来管理对象的生命周期。
+
+当一个 TSharedPtr 指针被创建时，它会跟踪一个对象的所有引用。当引用计数**降为零**时，TSharedPtr 会自动删除对象。
+
+![1733651669318](image/C++forUnreal/1733651669318.png)
+
+### 为何更推荐用指针而非引用
+
+- 1.内存管理
+  指针可以更方便地与垃圾回收系统结合。例如，UObject\* 类型的指针可以传递给垃圾回收系统，以确保在对象引用计数减少到零时自动清除对象。引用不涉及内存管理，且必须在生命周期内始终有效，且不支持被置为 nullptr。
+- 2.可空性
+
 ## UENUM
 
 ### 利用结构体将表格导入 ue5
