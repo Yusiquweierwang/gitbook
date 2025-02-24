@@ -3389,6 +3389,18 @@ vector `<int>`::iterator-拿到 vector `<int>`这种容器的迭代器类型。
 
 ### vector 容器嵌套容器（相当于二维数组)
 
+#### 初始化二维动态数组
+```cpp
+vector<vector<int>> a(r, vector<int>(c))；
+int row = a.size();          //获取行数
+int column = a[0].size();    //获取列数
+```
+
+
+
+
+
+
 ## string
 
 string 本质是一个类。
