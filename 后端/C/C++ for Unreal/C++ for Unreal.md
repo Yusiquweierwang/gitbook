@@ -736,6 +736,22 @@ DECLARE_DELEGATE(FOnBossDiedDelegate);
 
 ## 自定义 C++类派生蓝图类
 
+## 射线检测
+
+### LineTraceByChannel()
+
+Channel 指 ECollisionChannel。
+
+Channel 射线的响应方式：
+
+- 忽略(ignore)
+- 重叠(Overlap)
+- 阻挡(Block)
+
+### LineTraceByObjectType()
+
+Object 指 ObjectType。
+
 ## 一些 function 用法
 
 ### Format Text

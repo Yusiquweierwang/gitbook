@@ -111,3 +111,13 @@ https://blog.csdn.net/weixin_44120025/article/details/115270215?spm=1001.2101.30
 **参考文档**：[虚幻引擎中的 UE 对比工具 | 虚幻引擎 5.5 文档 | Epic Developer Community | Epic Developer Community](https://dev.epicgames.com/documentation/zh-cn/unreal-engine/ue-diff-tool-in-unreal-engine)
 
 ### 蓝图 ： 设置输入模式游戏和 UI
+
+### 编译报错流程
+
+重新 generate
+
+打开.sln
+
+右键 Games/AgentSim，设为启动项目，选 developer editor ， win64, 启动，
+
+如果还不行，删掉临时文件 saved / intermediate /

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>古诗词随机抽查</title>
+    <h1>你好</h1>
+    <style>
+        body {
+            background: #f0f0e6; /* 米色背景 */
+            font-family: '华文行楷', cursive;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 90%;
+            text-align: center;
+        }
+
+        h1 {
+            color: #6b6054; /* 深灰色 */
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            border-bottom: 3px solid #a8c3bc; /* 浅青色 */
+            padding-bottom: 10px;
+        }
+
+        #result {
+            font-size: 2.8rem;
+            color: #5e5247;
+            margin: 40px 0;
+            min-height: 100px;
+            transition: all 0.3s;
+        }
+
+        button {
+            background: #d8a7a1; /* 淡红色 */
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            font-size: 2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            font-family: '隶书', cursive;
+            position: relative;
+            overflow: hidden;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.2);
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: rotate(45deg);
+        }
+
+        button:active::before {
+            animation: shine 1s;
+        }
+
+        @keyframes shine {
+            0% { transform: rotate(45deg) translateX(-200%); }
+            100%
