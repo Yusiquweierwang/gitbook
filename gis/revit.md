@@ -68,8 +68,8 @@ S
 
 2.栏杆连接处 有问题
 
-
-
+3.怎么将这些柱一起拉伸
+![alt text](image-13.png)
 
 ### 楼梯
 
@@ -96,10 +96,40 @@ S
 
 
 粉色这条线特别粗
-
-
+![alt text](image-14.png)
 ### 生成玻璃幕墙
 
 - [ ] 
 
 ![alt text](image-8.png)
+
+
+
+
+- 通过点的样条曲线
+- 样条曲线
+- 起点-终点-半径弧：不能创建实心曲面
+
+
+
+与参照平面对齐
+
+
+![alt text](image-9.png)
+
+![alt text](image-10.png)
+
+视图范围
+显示奇怪需要修改视图范围
+![alt text](image-11.png)
+
+
+
+![alt text](image-12.png)
+
+
+## revit 与 ue
+
+可以添加datasmith 自动同步
+![1744342915057](image/revit/1744342915057.png)
+
